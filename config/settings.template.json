@@ -1,0 +1,76 @@
+{
+  "env": {
+    "ANTHROPIC_AUTH_TOKEN": "YOUR_ANTHROPIC_API_KEY",
+    "ANTHROPIC_BASE_URL": "https://api.deepseek.com/anthropic",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "deepseek-v4-flash",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "deepseek-v4-pro",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "deepseek-v4-pro",
+    "ANTHROPIC_MODEL": "deepseek-v4-pro",
+    "CLAUDE_CODE_EFFORT_LEVEL": "max",
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
+    "ENABLE_TOOL_SEARCH": "true"
+  },
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "includeCoAuthoredBy": false,
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Read(//c/Users/renzhe/.claude/**)",
+      "Bash(gh repo:*)",
+      "Bash(git clone:*)",
+      "Read(//tmp/**)",
+      "Bash(Rscript -e \"if \\(!requireNamespace\\('mcptools', quietly = TRUE\\)\\) install.packages\\('mcptools', repos = 'https://cran.r-project.org'\\)\")",
+      "Bash(claude mcp:*)",
+      "Read(//c/Users/renzhe/.claude/skills/quarto-authoring/references/**)",
+      "Read(//c/Users/renzhe/.cc-switch/skills/quarto-authoring/references/**)",
+      "Bash(quarto render:*)",
+      "mcp__zotero-mcp__search_library",
+      "Read(//home/wtbxsjy/.claude/skills/pptx-generator/references/**)",
+      "Read(//mnt/c/Users/renzhe/.cc-switch/skills/pptx-generator/references/**)"
+    ],
+    "additionalDirectories": [
+      "\\tmp",
+      "/home/wtbxsjy/.claude",
+      "/mnt/c/Users/renzhe/.claude",
+      "/mnt/c/Users/renzhe/DataPalace/Polyu/Projects/RiboSeq/pipeline/reference_db",
+      "/mnt/c/Users/renzhe/.claude/plans",
+      "c:\\Users\\renzhe\\DataPalace\\Polyu\\Projects\\RiboSeq\\.claude",
+      "C:\\Users\\renzhe\\.claude"
+    ]
+  },
+  "enabledPlugins": {
+    "code-review@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "github@claude-plugins-official": true,
+    "playwright@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": true,
+    "claude-code-setup@claude-plugins-official": true,
+    "clangd-lsp@claude-plugins-official": true
+  },
+  "theme": "dark",
+  "mcpServers": {
+    "drawio": {
+      "args": ["@drawio/mcp"],
+      "command": "npx"
+    },
+    "github": {
+      "headers": {
+        "Authorization": "Bearer ${GITHUB_TOKEN}"
+      },
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/"
+    },
+    "mineru": {
+      "command": "python3",
+      "args": [
+        "c:/Users/renzhe/DataPalace/Polyu/Projects/RiboSeq/slides/riboseq_standards/mineru_mcp_server.py"
+      ],
+      "env": {
+        "MINERU_API_TOKEN": "YOUR_MINERU_API_TOKEN"
+      }
+    }
+  }
+}

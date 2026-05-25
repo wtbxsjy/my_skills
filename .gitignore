@@ -3,3 +3,10 @@
 __pycache__/
 *.zip
 *.tar.gz
+
+# Sensitive - do not commit actual API keys
+config/settings.json
+!config/settings.template.json
+
+# Machine-specific overrides
+**/settings.local.json
