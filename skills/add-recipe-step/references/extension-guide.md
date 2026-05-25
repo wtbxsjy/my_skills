@@ -1,0 +1,741 @@
+# Extension Development Guide: Recipe Steps
+
+Complete guide for creating new packages that extend recipes with custom
+preprocessing steps.
+
+--------------------------------------------------------------------------------
+
+## Prerequisites
+
+**INSTRUCTIONS FOR CLAUDE:** Check for existing package structure first.
+
+If DESCRIPTION file AND R/ directory exist: → **Skip to "Key Constraints for
+Extension Development"** (package setup already complete)
+
+If package structure does NOT exist: → Package setup is required before
+implementing recipe steps
+
+--------------------------------------------------------------------------------
+
+## When to Use This Guide
+
+✅ **Use this guide if you are:**
+
+- Creating a **new R package** that adds custom recipe steps
+
+- Building on recipes' foundation without modifying recipes itself
+
+- Publishing steps to CRAN or sharing privately
+
+- Want to avoid tight coupling with recipes internals
+
+❌ **Don't use this guide if you are:**
+
+- Contributing a PR directly to the recipes package → Use [Source Development
+  Guide](source-guide.md)
+
+- Working inside the recipes repository → Use [Source Development
+  Guide](source-guide.md)
+
+--------------------------------------------------------------------------------
+
+## Package Setup (Only if DESCRIPTION does not exist)
+
+**CLAUDE: THIS R PACKAGE SETUP IS CUSTOM. IT NEEDS TO BE FOLLOWED TO THE
+LETTER**
+
+👉 **[FOLLOW THE STEPS IN: Extension Prerequisites
+Guide](package-extension-prerequisites.md)** (REQUIRED)
+
+Complete all steps in the setup guide and ensure the verification script passes.
+
+**After setup verification passes, return here to implement your recipe step.**
+
+--------------------------------------------------------------------------------
+
+## Key Constraints for Extension Development
+
+### ❌ Never Use Internal Functions
+
+**Critical:** You CANNOT use functions accessed with `:::`.
+
+```r
+# ❌ BAD - Will break, not exported
+recipes:::recipes_eval_select(terms, data, info)
+
+# ✅ GOOD - Use exported function
+recipes::recipes_eval_select(terms, data, info)
+```
+
+**Why?**
+
+- Internal functions are not guaranteed to be stable
+
+- They can change without notice
+
+- Your package will fail CRAN checks
+
+- Users will get cryptic errors
+
+### ✅ Only Use Exported Functions
+
+Safe to use:
+
+- `recipes::recipes_eval_select()`
+
+- `recipes::get_case_weights()`
+
+- `recipes::are_weights_used()`
+
+- `recipes::check_type()`
+
+- `recipes::check_new_data()`
+
+- `recipes::add_step()`
+
+- `recipes::step()`
+
+- `recipes::print_step()`
+
+- `recipes::sel2char()`
+
+- `recipes::is_trained()`
+
+- `recipes::rand_id()`
+
+- `recipes::remove_original_cols()` (for create-new-columns steps)
+
+--------------------------------------------------------------------------------
+
+## Step Type Decision
+
+Choose based on what your step does:
+
+### Modify-in-Place Steps
+
+Transforms existing columns (e.g., centering, scaling):
+
+- Use `role = NA`
+
+- No `keep_original_cols` parameter
+
+- Columns keep their names
+
+### Create-New-Columns Steps
+
+Generates new columns (e.g., dummy variables, PCA):
+
+- Use `role = "predictor"`
+
+- Include `keep_original_cols` parameter
+
+- Original columns typically removed
+
+### Row-Operation Steps
+
+Filters or removes rows (e.g., filtering, sampling):
+
+- Default `skip = TRUE`
+
+- Usually only applied to training data
+
+See [Step Architecture](step-architecture.md) for detailed decision tree.
+
+--------------------------------------------------------------------------------
+
+## Step-by-Step Implementation
+
+### Step 1: Create Step Constructor
+
+```r
+# R/step_center.R
+
+#' Center numeric variables
+#'
+#' @inheritParams recipes::step_normalize
+#' @param ... One or more selector functions to choose variables for this step.
+#' @param role Not used by this step since no new variables are created.
+#' @param na_rm A logical value indicating whether NA values should be removed
+#'   when computing means.
+#' @param means A named numeric vector of means. This is `NULL` until computed
+#'   by [prep()].
+#'
+#' @return An updated version of `recipe` with the new step added.
+#'
+#' @family normalization steps
+#' @export
+#'
+#' @examples
+#' library(recipes)
+#'
+#' rec <- recipe(mpg ~ ., data = mtcars) |>
+#'   step_center(disp, hp)
+#'
+#' prepped <- prep(rec, training = mtcars)
+#' baked <- bake(prepped, mtcars)
+#'
+#' # Columns are centered
+#' mean(baked$disp)  # Approximately 0
+#'
+step_center <- function(
+  recipe,
+  ...,
+  role = NA,
+  trained = FALSE,
+  means = NULL,
+  na_rm = TRUE,
+  skip = FALSE,
+  id = recipes::rand_id("center")
+) {
+  recipes::add_step(
+    recipe,
+    step_center_new(
+      terms = rlang::enquos(...),
+      trained = trained,
+      role = role,
+      means = means,
+      na_rm = na_rm,
+      skip = skip,
+      id = id,
+      case_weights = NULL
+    )
+  )
+}
+```
+
+### Step 2: Create Step Initialization Function
+
+```r
+# Internal constructor with no defaults
+step_center_new <- function(terms, role, trained, means, na_rm, skip, id,
+                            case_weights) {
+  recipes::step(
+    subclass = "center",
+    terms = terms,
+    role = role,
+    trained = trained,
+    means = means,
+    na_rm = na_rm,
+    skip = skip,
+    id = id,
+    case_weights = case_weights
+  )
+}
+```
+
+### Step 3: Create prep() Method
+
+```r
+#' @export
+prep.step_center <- function(x, training, info = NULL, ...) {
+  # 1. Resolve variable selections to actual column names
+  col_names <- recipes::recipes_eval_select(x$terms, training, info)
+
+  # 2. Validate column types (exported function)
+  recipes::check_type(training[, col_names], types = c("double", "integer"))
+
+  # 3. Extract case weights if applicable
+  wts <- recipes::get_case_weights(info, training)
+  were_weights_used <- recipes::are_weights_used(wts, unsupervised = TRUE)
+  if (isFALSE(were_weights_used)) {
+    wts <- NULL
+  }
+
+  # 4. Compute means for each column
+  means <- vapply(
+    training[, col_names],
+    function(col) {
+      if (is.null(wts)) {
+        mean(col, na.rm = x$na_rm)
+      } else {
+        weighted.mean(col, w = as.double(wts), na.rm = x$na_rm)
+      }
+    },
+    numeric(1)
+  )
+
+  # 5. Check for issues
+  inf_cols <- col_names[is.infinite(means)]
+  if (length(inf_cols) > 0) {
+    cli::cli_warn(
+      "Column{?s} {.var {inf_cols}} returned Inf or NaN."
+    )
+  }
+
+  # 6. Return updated step with trained = TRUE
+  step_center_new(
+    terms = x$terms,
+    role = x$role,
+    trained = TRUE,
+    means = means,
+    na_rm = x$na_rm,
+    skip = x$skip,
+    id = x$id,
+    case_weights = were_weights_used
+  )
+}
+```
+
+### Step 4: Create bake() Method
+
+```r
+#' @export
+bake.step_center <- function(object, new_data, ...) {
+  # 1. Get column names from trained step
+  col_names <- names(object$means)
+
+  # 2. Validate required columns exist in new data (exported function)
+  recipes::check_new_data(col_names, object, new_data)
+
+  # 3. Apply transformation
+  for (col_name in col_names) {
+    new_data[[col_name]] <- new_data[[col_name]] - object$means[[col_name]]
+  }
+
+  # 4. Return modified data
+  new_data
+}
+```
+
+### Step 5: Create print() and tidy() Methods
+
+```r
+#' @export
+print.step_center <- function(x, width = max(20, options()$width - 30), ...) {
+  title <- "Centering for "
+
+  # Use exported helper
+  recipes::print_step(
+    x$columns,
+    x$terms,
+    x$trained,
+    title,
+    width,
+    case_weights = x$case_weights
+  )
+
+  invisible(x)
+}
+
+#' @rdname tidy.recipe
+#' @export
+tidy.step_center <- function(x, ...) {
+  if (recipes::is_trained(x)) {
+    res <- tibble::tibble(
+      terms = names(x$means),
+      value = unname(x$means)
+    )
+  } else {
+    term_names <- recipes::sel2char(x$terms)
+    res <- tibble::tibble(
+      terms = term_names,
+      value = rlang::na_dbl
+    )
+  }
+  res$id <- x$id
+  res
+}
+```
+
+### Step 6: Test Your Step
+
+```r
+# tests/testthat/test-step_center.R
+
+test_that("centering works correctly", {
+  rec <- recipes::recipe(mpg ~ ., data = mtcars) |>
+    step_center(disp, hp)
+
+  prepped <- recipes::prep(rec, training = mtcars)
+  results <- recipes::bake(prepped, mtcars)
+
+  # Check means are approximately zero
+  expect_equal(mean(results$disp), 0, tolerance = 1e-7)
+  expect_equal(mean(results$hp), 0, tolerance = 1e-7)
+})
+
+test_that("centering handles NA correctly", {
+  df <- mtcars
+  df$disp[1:3] <- NA
+
+  rec <- recipes::recipe(mpg ~ ., data = df) |>
+    step_center(disp, na_rm = TRUE)
+
+  prepped <- recipes::prep(rec, training = df)
+  results <- recipes::bake(prepped, df)
+
+  # NA values should remain NA
+  expect_true(all(is.na(results$disp[1:3])))
+  expect_false(any(is.na(results$disp[4:nrow(df)])))
+})
+
+test_that("centering validates input types", {
+  df <- data.frame(
+    x = 1:5,
+    y = letters[1:5]
+  )
+
+  rec <- recipes::recipe(~ ., data = df) |>
+    step_center(y)  # Character column
+
+  expect_error(recipes::prep(rec, training = df))
+})
+```
+
+See [Testing Patterns (Extension)](package-testing-patterns.md) for
+comprehensive testing guide.
+
+--------------------------------------------------------------------------------
+
+## Complete Examples
+
+### Create-New-Columns Step
+
+For steps that create new columns (like dummy variables):
+
+```r
+step_dummy_simple <- function(
+  recipe,
+  ...,
+  role = "predictor",
+  trained = FALSE,
+  levels = NULL,
+  keep_original_cols = FALSE,
+  skip = FALSE,
+  id = recipes::rand_id("dummy_simple")
+) {
+  recipes::add_step(
+    recipe,
+    step_dummy_simple_new(
+      terms = rlang::enquos(...),
+      role = role,
+      trained = trained,
+      levels = levels,
+      keep_original_cols = keep_original_cols,
+      skip = skip,
+      id = id
+    )
+  )
+}
+
+step_dummy_simple_new <- function(terms, role, trained, levels,
+                                  keep_original_cols, skip, id) {
+  recipes::step(
+    subclass = "dummy_simple",
+    terms = terms,
+    role = role,
+    trained = trained,
+    levels = levels,
+    keep_original_cols = keep_original_cols,
+    skip = skip,
+    id = id
+  )
+}
+
+#' @export
+prep.step_dummy_simple <- function(x, training, info = NULL, ...) {
+  col_names <- recipes::recipes_eval_select(x$terms, training, info)
+
+  # Get factor levels
+  levels <- lapply(training[, col_names], levels)
+
+  step_dummy_simple_new(
+    terms = x$terms,
+    role = x$role,
+    trained = TRUE,
+    levels = levels,
+    keep_original_cols = x$keep_original_cols,
+    skip = x$skip,
+    id = x$id
+  )
+}
+
+#' @export
+bake.step_dummy_simple <- function(object, new_data, ...) {
+  col_names <- names(object$levels)
+  recipes::check_new_data(col_names, object, new_data)
+
+  # Create dummy variables
+  for (col_name in col_names) {
+    col_levels <- object$levels[[col_name]]
+
+    # Create dummy columns (excluding first level)
+    for (i in seq_along(col_levels)[-1]) {
+      new_col_name <- paste0(col_name, "_", col_levels[i])
+      new_data[[new_col_name]] <- as.integer(new_data[[col_name]] == col_levels[i])
+    }
+  }
+
+  # Handle keep_original_cols (exported helper)
+  new_data <- recipes::remove_original_cols(new_data, object, col_names)
+
+  new_data
+}
+```
+
+--------------------------------------------------------------------------------
+
+## Common Patterns
+
+### Handling Case Weights
+
+```r
+# Extract weights
+wts <- recipes::get_case_weights(info, training)
+were_weights_used <- recipes::are_weights_used(wts, unsupervised = TRUE)
+
+if (isFALSE(were_weights_used)) {
+  wts <- NULL
+}
+
+# Use in calculations
+if (is.null(wts)) {
+  mean(x)
+} else {
+  weighted.mean(x, w = as.double(wts))
+}
+```
+
+### Variable Selection
+
+Always use `recipes_eval_select()`:
+
+```r
+# Resolves all selectors: all_numeric(), all_predictors(), manual selection
+col_names <- recipes::recipes_eval_select(x$terms, training, info)
+```
+
+### Type Validation
+
+```r
+# Validate column types
+recipes::check_type(
+  training[, col_names],
+  types = c("double", "integer")
+)
+```
+
+### Checking New Data
+
+```r
+# In bake(), verify columns exist
+recipes::check_new_data(col_names, object, new_data)
+```
+
+--------------------------------------------------------------------------------
+
+## Development Workflow
+
+**Fast iteration cycle:** 1. `devtools::document()` - Generate documentation 2.
+`devtools::load_all()` - Load your package 3. `devtools::test()` - Run tests 4.
+`devtools::check()` - Full R CMD check
+
+For detailed troubleshooting, see [Development
+Workflow](package-development-workflow.md).
+
+--------------------------------------------------------------------------------
+
+## Package Integration
+
+### Package-Level Documentation
+
+Create `R/{packagename}-package.R`:
+
+```r
+#' @keywords internal
+"_PACKAGE"
+
+#' @importFrom rlang .data := !! enquo enquos
+#' @importFrom recipes add_step step recipes_eval_select
+NULL
+```
+
+--------------------------------------------------------------------------------
+
+## Documentation
+
+**INSTRUCTIONS FOR CLAUDE:**
+
+Create ONLY these files by default: 1. **R/step\_*.R **- Complete implementation
+2.** tests/testthat/test-*.R** - Test suite 3. **README.md** - Overview with
+basic usage example (200-300 lines)
+
+Do NOT create unless user explicitly requests:
+
+- ❌ IMPLEMENTATION_SUMMARY.md
+
+- ❌ QUICKSTART.md
+
+- ❌ example_usage.R
+
+- ❌ Additional documentation files
+
+If user wants more documentation, they will ask (e.g., "add comprehensive
+documentation").
+
+--------------------------------------------------------------------------------
+
+## Testing
+
+**INSTRUCTIONS FOR CLAUDE:** Create tests based on features present.
+
+### Essential Tests (ALL steps) - 8-10 tests minimum
+
+**Core functionality (3-4 tests):**
+
+- Basic correctness (transformation works)
+
+- Multiple columns (if applicable)
+
+- Single column (if applicable)
+
+**Variable selection (1-2 tests):**
+
+- Works with recipes selectors (all_numeric(), all_predictors())
+
+- Manual column selection
+
+**NA handling (1 test):**
+
+- Verify NA behavior (preserve, remove, or error)
+
+**Infrastructure (2-3 tests):**
+
+- print() method works
+
+- tidy() method works (before and after prep)
+
+- Integration in recipe pipeline
+
+### Feature-Specific Tests (Add ONLY if applicable)
+
+**If step computes statistics (+2 tests):**
+
+- Case weights: frequency weights
+
+- Case weights: importance weights
+
+**If skip parameter present (+1 test):**
+
+- skip = TRUE and FALSE behavior
+
+**If keep_original_cols parameter (+1 test):**
+
+- keep_original_cols = TRUE and FALSE
+
+**If multiple custom parameters (+2 tests):**
+
+- Parameter combinations
+
+- Parameter validation
+
+**If complex statistical operations (+2-3 tests):**
+
+- Edge cases (zero variance, all same values)
+
+- Boundary conditions
+
+### Target Test Counts
+
+- **Per-row operations:** 8-12 tests
+
+- **Statistical operations:** 12-18 tests
+
+- **Complex calculations:** 18-25 tests
+
+See [Testing Patterns (Extension)](package-testing-patterns.md) for
+comprehensive guide.
+
+--------------------------------------------------------------------------------
+
+## Best Practices
+
+See [Best Practices (Extension)](package-best-practices.md) for complete guide.
+
+**Key principles:**
+
+- Use base pipe `|>` not `%>%`
+
+- Prefer for-loops over `purrr::map()`
+
+- Use `cli::cli_abort()` for error messages
+
+- Validate early (in prep), trust data in bake
+
+- Use recipes helpers instead of reimplementing
+
+--------------------------------------------------------------------------------
+
+## Troubleshooting
+
+See [Troubleshooting (Extension)](package-troubleshooting.md) for complete
+guide.
+
+**Common issues:**
+
+- Column selection not working → Check `recipes_eval_select()` usage
+
+- Type errors in bake() → Add validation in prep()
+
+- Case weights ignored → Check conversion of hardhat weights
+
+- "Object not found" → Use `devtools::load_all()` before testing
+
+--------------------------------------------------------------------------------
+
+## Reference Documentation
+
+### Step Types
+
+- [Step Architecture](step-architecture.md) - Three-function pattern
+
+- [Modify-in-Place Steps](modify-in-place-steps.md)
+
+- [Create-New-Columns Steps](create-new-columns-steps.md)
+
+- [Row-Operation Steps](row-operation-steps.md)
+
+### Core Concepts
+
+- [Helper Functions](helper-functions.md)
+
+- [Optional Methods](optional-methods.md)
+
+### Shared References
+
+- [Extension Prerequisites](package-extension-prerequisites.md)
+
+- [Development Workflow](package-development-workflow.md)
+
+- [Testing Patterns](package-testing-patterns.md)
+
+- [Roxygen Documentation](package-roxygen-documentation.md) (optional - read
+  only if you need documentation templates)
+
+- [Best Practices](package-best-practices.md)
+
+- [Troubleshooting](package-troubleshooting.md)
+
+--------------------------------------------------------------------------------
+
+## Next Steps
+
+1. **Complete extension prerequisites** following [Extension
+   Prerequisites](package-extension-prerequisites.md)
+2. **Choose your step type** from [Step Architecture](step-architecture.md)
+3. **Implement your step** following the guide above
+4. **Test thoroughly** using [Testing Patterns](package-testing-patterns.md)
+5. **Run `devtools::check()`** to ensure CRAN compliance
+6. **Publish** to CRAN or share with your team
+
+--------------------------------------------------------------------------------
+
+## Getting Help
+
+- Check [Troubleshooting Guide](package-troubleshooting.md)
+
+- Review [Step Architecture](step-architecture.md)
+
+- Study the main [recipes SKILL.md](../SKILL.md) for more details
+
+- Search GitHub issues: https://github.com/tidymodels/recipes/issues

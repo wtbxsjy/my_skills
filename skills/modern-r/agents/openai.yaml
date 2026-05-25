@@ -1,0 +1,4 @@
+interface:
+  display_name: "Modern R"
+  short_description: "Modern R and tidyverse patterns"
+  default_prompt: "Use $modern-r to apply current tidyverse, rlang, and R style best practices."

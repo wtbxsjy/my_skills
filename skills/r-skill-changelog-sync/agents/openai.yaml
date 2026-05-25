@@ -1,0 +1,4 @@
+interface:
+  display_name: "R Skill Sync"
+  short_description: "Sync R skills from package changelogs"
+  default_prompt: "Use $r-skill-changelog-sync to refresh an installed R skill from the latest CRAN and pkgdown changelog sources."
