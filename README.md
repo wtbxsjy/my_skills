@@ -1,117 +1,268 @@
-# My Claude Code Skills
+<h1 align="center">My Claude Code Skills</h1>
 
-Claude Code 环境配置、Skills、Plugins、Settings 和 Hooks 的统一管理仓库。
+<p align="center">
+  Claude Code 环境 Skills / Plugins / Settings / Hooks 统一管理仓库 · 全部 skill 可一键从上游同步更新
+</p>
+
+<p align="center">
+  <a href="https://awesome.re"><img src="https://awesome.re/badge.svg" alt="Awesome"></a>
+  <a href="https://makeapullrequest.com"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome"></a>
+  <img src="https://img.shields.io/github/stars/wtbxsjy/my_skills?style=flat-square&label=Stars" alt="Stars">
+  <img src="https://img.shields.io/github/license/wtbxsjy/my_skills?style=flat-square" alt="License">
+</p>
+
+---
+
+## Contents
+
+- [快速开始](#快速开始)
+- [Skill Library](#skill-library)
+  - [R / Tidyverse / Bioconductor](#r-tidyverse-bioconductor)
+  - [Quarto / 发布与写作](#quarto-发布与写作)
+  - [数据科学 / 机器学习 / 数据查询](#数据科学-机器学习-数据查询)
+  - [生物医药 / 文献数据库](#生物医药-文献数据库)
+  - [开发 / 工程 / 工作流](#开发-工程-工作流)
+  - [前端 / 设计](#前端-设计)
+  - [图表 / 可视化](#图表-可视化)
+  - [文档 / 办公](#文档-办公)
+  - [知识管理 / Obsidian](#知识管理-obsidian)
+  - [Meta / 效率工具](#meta-效率工具)
+  - [插件附带 Skills](#插件附带-skills)
+  - [自定义 Skills（无公开源）](#自定义-skills无公开源)
+- [Skill 来源与更新](#skill-来源与更新)
+- [多环境同步策略](#多环境同步策略)
+- [Contributing](#contributing)
+
+---
 
 ## 快速开始
 
-在新机器上同步环境，运行：
+在新机器上同步环境：
 
-**Windows (PowerShell):**
-```powershell
-git clone https://github.com/wtbxsjy/my_skills.git
-cd my_skills
-.\setup.ps1
-```
-
-**Linux / macOS / Git Bash:**
 ```bash
 git clone https://github.com/wtbxsjy/my_skills.git
 cd my_skills
-bash setup.sh
+bash setup.sh        # Linux / macOS（Windows 用 setup.ps1）
 ```
 
-安装后编辑 `~/.claude/settings.json` 填入你的 API keys。
-
-## 仓库结构
-
-```
-my_skills/
-├── setup.ps1              # Windows 一键安装脚本
-├── setup.sh               # Linux/macOS 一键安装脚本
-├── config/
-│   ├── settings.template.json  # Claude Code 配置模板（不含密钥）
-│   ├── cc-switch-settings.json # .cc-switch 配置
-│   └── hooks/                  # 各插件的 hooks 配置
-│       ├── hookify/
-│       ├── security-guidance/
-│       ├── ralph-loop/
-│       ├── explanatory-output-style/
-│       └── learning-output-style/
-├── skills/                     # 用户 Skills（来自 .cc-switch 和 .claude）
-├── plugin-skills/              # 插件提供的 Skills
-├── SOURCES.md                  # 每个 skill 的源 GitHub 仓库索引
-├── SOURCES.tsv                 # 源仓库映射表（update-skills.sh 读取）
-└── update-skills.sh            # 一键从上游同步/更新全部 skills
-```
-
-## 已安装的 Plugins
-
-| Plugin | 用途 |
-|--------|------|
-| `code-review` | 代码审查 |
-| `skill-creator` | 创建/管理 Skills |
-| `github` | GitHub 集成 |
-| `playwright` | 浏览器自动化 |
-| `commit-commands` | Git commit 快捷命令 |
-| `claude-code-setup` | Claude Code 自动化配置 |
-| `clangd-lsp` | C/C++ LSP 支持 |
-
-## Skill 分类
+## Skill Library
 
 ### R / Tidyverse / Bioconductor
-`add-dials-parameter`, `add-parsnip-engine`, `add-parsnip-model`, `add-recipe-step`, `add-yardstick-metric`, `tidyverse-patterns`, `modern-r`, `r-style-guide`, `rlang-patterns`, `r-bayes`, `r-cli-app`, `r-oop`, `r-package-development`, `r-performance`, `testing-r-packages`, `r-skill-changelog-sync`, `shiny-bslib`, `shiny-bslib-theming`, `cran-extrachecks`, `lifecycle`, `mirai`, `cli`, `attach-db`, `brand-yml`
 
-### Quarto / Publishing
-`quarto-authoring`, `quarto-alt-text`, `alt-text`
+| Skill | 描述 | 来源 |
+|---|---|---|
+| [**add-dials-parameter**](https://github.com/tidymodels/skills/tree/main/developers/add-dials-parameter) | Guide for creating new dials parameters for hyperparameter tuning. | tidymodels/skills |
+| [**add-parsnip-engine**](https://github.com/tidymodels/skills/tree/main/developers/add-parsnip-engine) | Add new computational engines to existing parsnip models. Use when | tidymodels/skills |
+| [**add-parsnip-model**](https://github.com/tidymodels/skills/tree/main/developers/add-parsnip-model) | Create entirely new model specifications for the parsnip package. | tidymodels/skills |
+| [**add-recipe-step**](https://github.com/tidymodels/skills/tree/main/developers/add-recipe-step) | Create a new preprocessing step for the recipes package following | tidymodels/skills |
+| [**add-yardstick-metric**](https://github.com/tidymodels/skills/tree/main/developers/add-yardstick-metric) | Guide for creating new yardstick metrics. Use when a developer | tidymodels/skills |
+| [**cli**](https://github.com/posit-dev/skills/tree/main/r-lib/cli) | Comprehensive R package for command-line interface styling, semantic messaging, and user communication.... | posit-dev/skills |
+| [**cran-extrachecks**](https://github.com/posit-dev/skills/tree/main/r-lib/cran-extrachecks) | Prepare R packages for CRAN submission by checking for common ad-hoc requirements not caught by devtools::check().... | posit-dev/skills |
+| [**create-release-checklist**](https://github.com/posit-dev/skills/tree/main/open-source/create-release-checklist) | Create a release checklist and GitHub issue for an R package. Use when the user asks to "create a release checklist" or "start a release" for an R... | posit-dev/skills |
+| [**lifecycle**](https://github.com/posit-dev/skills/tree/main/r-lib/lifecycle) | Guidance for managing R package lifecycle according to tidyverse principles using the lifecycle package.... | posit-dev/skills |
+| [**mirai**](https://github.com/posit-dev/skills/tree/main/r-lib/mirai) | Help users write correct R code for async, parallel, and distributed computing using mirai.... | posit-dev/skills |
+| [**r-bayes**](https://github.com/ab604/claude-code-r-skills/tree/main/.claude/skills/r-bayes) | Patterns for Bayesian inference in R using brms, including multilevel models, DAG validation, and marginal effects.... | ab604/claude-code-r-skills |
+| [**r-cli-app**](https://github.com/posit-dev/skills/tree/main/r-lib/r-cli-app) | Build command-line apps in R using the Rapp package. Use when creating a CLI tool in R, adding argument parsing to an R script,... | posit-dev/skills |
+| [**r-oop**](https://github.com/ab604/claude-code-r-skills/tree/main/.claude/skills/r-oop) | R object-oriented programming guide for S7, S3, S4, and vctrs. Use when designing R classes or choosing an OOP system. | ab604/claude-code-r-skills |
+| [**r-package-development**](https://github.com/posit-dev/skills/tree/main/r-lib/r-package-development) | R package development with devtools, testthat, and roxygen2. Use when the user is working on an R package, running tests, writing documentation,... | posit-dev/skills |
+| [**r-performance**](https://github.com/ab604/claude-code-r-skills/tree/main/.claude/skills/r-performance) | R performance best practices including profiling, benchmarking, vctrs, and optimization strategies. Use when optimizing R code. | ab604/claude-code-r-skills |
+| [**r-style-guide**](https://github.com/ab604/claude-code-r-skills/tree/main/.claude/skills/r-style-guide) | R style guide covering naming conventions, spacing, layout, and function design best practices. Use when writing R code. | ab604/claude-code-r-skills |
+| [**release-post**](https://github.com/posit-dev/skills/tree/main/open-source/release-post) | Create professional package release blog posts following Tidyverse or Shiny blog conventions.... | posit-dev/skills |
+| [**rlang-patterns**](https://github.com/ab604/claude-code-r-skills/tree/main/.claude/skills/rlang-patterns) | rlang metaprogramming patterns for data-masking, injection operators, and dynamic dots. Use when writing functions that use tidy evaluation. | ab604/claude-code-r-skills |
+| [**shiny-bslib**](https://github.com/posit-dev/skills/tree/main/shiny/shiny-bslib) | Build modern Shiny dashboards and applications using bslib (Bootstrap 5). Use when creating new Shiny apps, modernizing legacy apps (fluidPage,... | posit-dev/skills |
+| [**shiny-bslib-theming**](https://github.com/posit-dev/skills/tree/main/shiny/shiny-bslib-theming) | Advanced theming for Shiny apps using bslib and Bootstrap 5. Use when customizing app appearance with bs_theme(), Bootswatch themes, custom colors,... | posit-dev/skills |
+| [**tdd-workflow**](https://github.com/ab604/claude-code-r-skills/tree/main/.claude/skills/tdd-workflow) | Test-driven development workflow for R using testthat. Use when writing new features, fixing bugs, or refactoring code.... | ab604/claude-code-r-skills |
+| [**testing-r-packages**](https://github.com/posit-dev/skills/tree/main/r-lib/testing-r-packages) | Best practices for writing R package tests using testthat version 3+. Use when writing, organizing, or improving tests for R packages.... | posit-dev/skills |
+| [**tidyverse-patterns**](https://github.com/ab604/claude-code-r-skills/tree/main/.claude/skills/tidyverse-patterns) | Modern tidyverse patterns for R including pipes, joins, grouping, purrr, and stringr. Use when writing tidyverse R code. | ab604/claude-code-r-skills |
 
-### 数据科学 / 机器学习
-`tabular-data-ml`, `single-cell-rna-qc`, `scvi-tools`, `duckdb-docs`, `ggsql`, `install-duckdb`
+### Quarto / 发布与写作
 
-### 工作流 / DevOps
-`nextflow-development`, `scientific-problem-selection`, `instrument-data-to-allotrope`
+| Skill | 描述 | 来源 |
+|---|---|---|
+| [**alt-text**](https://github.com/posit-dev/skills/tree/main/alt-text) | Generate and improve accessible alt text for data visualizations and images in R packages and Quarto documents. Use when the user wants to add,... | posit-dev/skills |
+| [**brand-yml**](https://github.com/posit-dev/skills/tree/main/brand-yml) | Create and use brand.yml files for consistent branding across Shiny apps and Quarto documents. Covers: (1) Creating new _brand.yml files,... | posit-dev/skills |
+| [**quarto-alt-text**](https://github.com/ai-integr8tor/posit-dev-skills/tree/add-py-shiny-dashboard-skills/quarto/quarto-alt-text) | Generate accessible alt text for data visualizations in Quarto documents. Use when the user wants to add, improve,... | ai-integr8tor/posit-dev-skills |
+| [**quarto-authoring**](https://github.com/posit-dev/skills/tree/main/quarto/quarto-authoring) | Use when the user is explicitly working with Quarto, .qmd files, _quarto.yml, Quarto projects, or Quarto features such as callouts,... | posit-dev/skills |
+| [**quarto-talks**](https://github.com/alfredo-hs/quarto-talks) | Turn source material into a restrained Quarto RevealJS talk using the quarto-talks format. Use for papers, manuscripts, documents, figures, code,... | alfredo-hs/quarto-talks |
 
-### 开发
-`frontend-dev`, `fullstack-dev`, `cpp-pro`, `tdd-workflow`, `pr-create`, `pr-threads-address`, `pr-threads-resolve`, `create-release-checklist`, `critical-code-reviewer`, `describe-design`, `karpathy-guidelines`
+### 数据科学 / 机器学习 / 数据查询
+
+| Skill | 描述 | 来源 |
+|---|---|---|
+| [**attach-db**](https://github.com/duckdb/duckdb-skills/tree/main/skills/attach-db) | Attach a DuckDB database file for use with /duckdb-skills:query. Explores the schema (tables, columns,... | duckdb/duckdb-skills |
+| [**duckdb-docs**](https://github.com/duckdb/duckdb-skills/tree/main/skills/duckdb-docs) | Search DuckDB and DuckLake documentation and blog posts. Returns relevant doc chunks for a question or keyword using full-text search against a loc... | duckdb/duckdb-skills |
+| [**ggsql**](https://github.com/posit-dev/skills/tree/main/ggsql/ggsql) | Write ggsql queries — a grammar of graphics for SQL. Use when the user wants to create, modify, or understand a ggsql visualization query. | posit-dev/skills |
+| [**install-duckdb**](https://github.com/duckdb/duckdb-skills/tree/main/skills/install-duckdb) | Install or update DuckDB extensions. Each argument is either a plain extension name (installs from core) or name@repo (e.g. magic@community).... | duckdb/duckdb-skills |
+| [**query**](https://github.com/duckdb/duckdb-skills/tree/main/skills/query) | Run SQL queries against the attached DuckDB database or ad-hoc against files. Accepts raw SQL or natural language questions.... | duckdb/duckdb-skills |
+| [**read-file**](https://github.com/duckdb/duckdb-skills/tree/main/skills/read-file) | Read any data file (CSV, JSON, Parquet, Avro, Excel, spatial, SQLite) or remote URL (S3, HTTPS). Use when user references a data file,... | duckdb/duckdb-skills |
+| [**read-memories**](https://github.com/duckdb/duckdb-skills/tree/main/skills/read-memories) | Search past Claude Code session logs to recall prior decisions, patterns, or unresolved work. Use when user says "do you remember",... | duckdb/duckdb-skills |
+| [**scvi-tools**](https://github.com/anthropics/knowledge-work-plugins/tree/main/bio-research/skills/scvi-tools) | Deep learning for single-cell analysis using scvi-tools. This skill should be used when users need (1) data integration and batch correction with s... | anthropics/knowledge-work-plugins |
+| [**single-cell-rna-qc**](https://github.com/anthropics/knowledge-work-plugins/tree/main/bio-research/skills/single-cell-rna-qc) | Performs quality control on single-cell RNA-seq data (.h5ad or .h5 files) using scverse best practices with MAD-based filtering and comprehensive v... | anthropics/knowledge-work-plugins |
+| [**tabular-data-ml**](https://github.com/tidymodels/skills/tree/main/users/tabular-data-ml) | Build machine learning models using tidymodels for tabular data | tidymodels/skills |
+
+### 生物医药 / 文献数据库
+
+| Skill | 描述 | 来源 |
+|---|---|---|
+| [**alphafold-database-fetch-and-analyze**](https://github.com/google-deepmind/science-skills/tree/main/skills/alphafold_database_fetch_and_analyze) | Retrieve and analyze AlphaFold predicted structures for a protein.... | google-deepmind/science-skills |
+| [**alphagenome-single-variant-analysis**](https://github.com/google-deepmind/science-skills/tree/main/skills/alphagenome_single_variant_analysis) | Analyzes genetic variant effects on gene expression (RNA-seq), chromatin accessibility (DNASE), histone marks (ChIP),... | google-deepmind/science-skills |
+| [**chembl-database**](https://github.com/google-deepmind/science-skills/tree/main/skills/chembl_database) | Query the ChEMBL database for bioactive molecules, drug targets, bioactivity data, approved drugs, and chemical structures.... | google-deepmind/science-skills |
+| [**clinical-trials-database**](https://github.com/google-deepmind/science-skills/tree/main/skills/clinical_trials_database) | Query ClinicalTrials.gov via APIv2. Use when you want to search for trials by condition, drug, location, status,... | google-deepmind/science-skills |
+| [**clinvar-database**](https://github.com/google-deepmind/science-skills/tree/main/skills/clinvar_database) | Use when needing clinical significance, pathogenicity classifications (e.g., Pathogenic, Benign, VUS), clinical evidence rationales,... | google-deepmind/science-skills |
+| [**credentials**](https://github.com/google-deepmind/science-skills/tree/main/skills/credentials) | Instructions for handling API keys and credentials safely, verifying their presence,... | google-deepmind/science-skills |
+| [**dbsnp-database**](https://github.com/google-deepmind/science-skills/tree/main/skills/dbsnp_database) | Use when you want to look up, map, and search for short genetic variants (SNPs, indels) in NCBI's dbSNP database. Resolves between rsIDs,... | google-deepmind/science-skills |
+| [**embl-ebi-ols**](https://github.com/google-deepmind/science-skills/tree/main/skills/embl_ebi_ols) | Query and search the EMBL-EBI Ontology Lookup Service (OLS) for biomedical ontology terms, definitions,... | google-deepmind/science-skills |
+| [**encode-ccres-database**](https://github.com/google-deepmind/science-skills/tree/main/skills/encode_ccres_database) | Query the ENCODE Registry of cis-Regulatory Elements (cCREs) via the SCREEN GraphQL API,... | google-deepmind/science-skills |
+| [**ensembl-database**](https://github.com/google-deepmind/science-skills/tree/main/skills/ensembl_database) | Query the Ensembl database to resolve gene, transcript, and protein IDs, fetch genomic or protein sequences, retrieve gene structures (exons),... | google-deepmind/science-skills |
+| [**foldseek-structural-search**](https://github.com/google-deepmind/science-skills/tree/main/skills/foldseek_structural_search) | Performs 3D structural searches of proteins against various databases (PDB, AlphaFold, CATH, MGnify, etc.) using the Foldseek API.... | google-deepmind/science-skills |
+| [**gnomad-database**](https://github.com/google-deepmind/science-skills/tree/main/skills/gnomad_database) | Query the Genome Aggregation Database (gnomAD). Use when determining the rarity or allele frequency of specific genetic variants,... | google-deepmind/science-skills |
+| [**gtex-database**](https://github.com/google-deepmind/science-skills/tree/main/skills/gtex_database) | Use when you want to retrieve quantitative RNA expression data and variant eQTL information from the GTEx (Genotype-Tissue Expression) Project acro... | google-deepmind/science-skills |
+| [**human-protein-atlas-database**](https://github.com/google-deepmind/science-skills/tree/main/skills/human_protein_atlas_database) | Use when you want to retrieve semi-quantitative protein expression and spatial localisation data from the Human Protein Atlas (HPA). | google-deepmind/science-skills |
+| [**interpro-database**](https://github.com/google-deepmind/science-skills/tree/main/skills/interpro_database) | Identify domains, families, and sites in proteins; find all proteins in a family or sharing a domain; explore species distribution for a domain; an... | google-deepmind/science-skills |
+| [**jaspar-database**](https://github.com/google-deepmind/science-skills/tree/main/skills/jaspar_database) | Query the JASPAR database for Transcription Factor (TF) binding profiles.... | google-deepmind/science-skills |
+| [**literature-search-arxiv**](https://github.com/google-deepmind/science-skills/tree/main/skills/literature_search_arxiv) | Search for scientific papers, preprints, and publications on arXiv. Extract metadata, abstracts,... | google-deepmind/science-skills |
+| [**literature-search-biorxiv**](https://github.com/google-deepmind/science-skills/tree/main/skills/literature_search_biorxiv) | Browse, filter, and download life sciences, biology, and medical preprints from bioRxiv and medRxiv. Supports fetching paper metadata by DOI,... | google-deepmind/science-skills |
+| [**literature-search-europepmc**](https://github.com/google-deepmind/science-skills/tree/main/skills/literature_search_europepmc) | Search Europe PMC for scientific literature and download open-access full texts and PDFs. Retrieve full-text XML/plain text by PMCID,... | google-deepmind/science-skills |
+| [**literature-search-openalex**](https://github.com/google-deepmind/science-skills/tree/main/skills/literature_search_openalex) | Query the OpenAlex scholarly database for research papers, authors, institutions, topics, sources, publishers, funders, geo-locations,... | google-deepmind/science-skills |
+| [**ncbi-sequence-fetch**](https://github.com/google-deepmind/science-skills/tree/main/skills/ncbi_sequence_fetch) | Retrieve protein and nucleotide sequences from NCBI databases using E-utilities. Supports direct accession lookup, CDS translation,... | google-deepmind/science-skills |
+| [**openfda-database**](https://github.com/google-deepmind/science-skills/tree/main/skills/openfda_database) | Query, search, and download data from the openFDA API for drugs, devices, foods, tobacco, cosmetics, animal and veterinary products, substances,... | google-deepmind/science-skills |
+| [**opentargets-database**](https://github.com/google-deepmind/science-skills/tree/main/skills/opentargets_database) | Query Open Targets Platform for target-disease associations, drug target discovery, tractability/safety data, genetics/omics evidence, known drugs,... | google-deepmind/science-skills |
+| [**pdb-database**](https://github.com/google-deepmind/science-skills/tree/main/skills/pdb_database) | Use when you want to search for or download experimentally-determined 3D structures for biomolecules (proteins, nucleic acids, bound ligands).... | google-deepmind/science-skills |
+| [**predictingthepast**](https://github.com/google-deepmind/science-skills/tree/main/skills/predictingthepast) | Ancient text restoration, attribution, dating, contextualization, and embedding via Aeneas (Latin) / Ithaca (Ancient Greek).... | google-deepmind/science-skills |
+| [**protein-sequence-msa**](https://github.com/google-deepmind/science-skills/tree/main/skills/protein_sequence_msa) | Performs multiple sequence alignment of proteins with EBI Clustal Omega. Use when you need to align multiple sequences to assess similarity,... | google-deepmind/science-skills |
+| [**protein-sequence-similarity-search**](https://github.com/google-deepmind/science-skills/tree/main/skills/protein_sequence_similarity_search) | Searches for homologous protein sequences using MMseqs2 (fast, default) or BLAST (comprehensive, fallback).... | google-deepmind/science-skills |
+| [**pubchem-database**](https://github.com/google-deepmind/science-skills/tree/main/skills/pubchem_database) | Query PubChem, search by name/CID/SMILES, retrieve properties, similarity/substructure searches, bioactivity, for cheminformatics.... | google-deepmind/science-skills |
+| [**pubmed-database**](https://github.com/google-deepmind/science-skills/tree/main/skills/pubmed_database) | Search PubMed for scientific literature, including published clinical trials. Fetch abstracts and full text.... | google-deepmind/science-skills |
+| [**pymol**](https://github.com/google-deepmind/science-skills/tree/main/skills/pymol) | Visualize, analyze, and render protein and molecular structures using PyMOL. Use when the user wants to create images of protein structures,... | google-deepmind/science-skills |
+| [**quickgo-database**](https://github.com/google-deepmind/science-skills/tree/main/skills/quickgo_database) | Query the QuickGO and Evidence & Conclusion Ontology (ECO) REST API. Use this when you need to map genes to biological processes,... | google-deepmind/science-skills |
+| [**reactome-database**](https://github.com/google-deepmind/science-skills/tree/main/skills/reactome_database) | Query the Reactome database (Analysis and Content Services). Use when the user asks about pathway analysis, gene list enrichment,... | google-deepmind/science-skills |
+| [**string-database**](https://github.com/google-deepmind/science-skills/tree/main/skills/string_database) | Query the STRING database for protein-protein interactions (PPIs), functional enrichment, and homology.... | google-deepmind/science-skills |
+| [**ucsc-conservation-and-tfbs**](https://github.com/google-deepmind/science-skills/tree/main/skills/ucsc_conservation_and_tfbs) | Fetch Evolutionary Conservation scores (phyloP, phastCons) and Transcription Factor Binding Sites (TFBS) from the UCSC Genome Browser.... | google-deepmind/science-skills |
+| [**unibind-database**](https://github.com/google-deepmind/science-skills/tree/main/skills/unibind_database) | Queries the UniBind database for experimentally validated transcription factor (TF) binding sites.... | google-deepmind/science-skills |
+| [**uniprot-database**](https://github.com/google-deepmind/science-skills/tree/main/skills/uniprot_database) | Access protein metadata, function, taxonomy, and sequences across UniProtKB, UniParc, and UniRef. Use when searching for proteins,... | google-deepmind/science-skills |
+| [**uv**](https://github.com/google-deepmind/science-skills/tree/main/skills/uv) | Checks whether the uv Python package manager is installed and installs it if missing. Ensures uv is on PATH.... | google-deepmind/science-skills |
+| [**workflow-skill-creator**](https://github.com/google-deepmind/science-skills/tree/main/skills/workflow_skill_creator) | Distills a completed user workflow or interaction into a reusable agent skill. Use when the user asks to turn their workflow, interaction,... | google-deepmind/science-skills |
+
+### 开发 / 工程 / 工作流
+
+| Skill | 描述 | 来源 |
+|---|---|---|
+| [**claude-automation-recommender**](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-code-setup/skills/claude-automation-recommender) | Analyze a codebase and recommend Claude Code automations (hooks, subagents, skills, plugins, MCP servers).... | anthropics/claude-plugins-official |
+| [**claude-md-improver**](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-md-management/skills/claude-md-improver) | Audit and improve CLAUDE.md files in repositories. Use when user asks to check, audit, update, improve, or fix CLAUDE.md files.... | anthropics/claude-plugins-official |
+| [**cpp-pro**](https://github.com/Jeffallan/claude-skills/tree/main/skills/cpp-pro) | Writes, optimizes, and debugs C++ applications using modern C++20/23 features, template metaprogramming, and high-performance systems techniques.... | Jeffallan/claude-skills |
+| [**critical-code-reviewer**](https://github.com/posit-dev/skills/tree/main/posit-dev/critical-code-reviewer) | Rigorously review code or pull requests for correctness, security, accessibility, maintainability, tests, and edge cases.... | posit-dev/skills |
+| [**describe-design**](https://github.com/posit-dev/skills/tree/main/posit-dev/describe-design) | Research a codebase and create architectural documentation describing how features or systems work.... | posit-dev/skills |
+| [**implement**](https://github.com/posit-dev/skills/tree/main/posit-dev/implement) | Orchestrates implementation of a plan file by delegating work to subagents in parallel. Verifies git branch state, tracks progress,... | posit-dev/skills |
+| [**instrument-data-to-allotrope**](https://github.com/anthropics/knowledge-work-plugins/tree/main/bio-research/skills/instrument-data-to-allotrope) | Convert laboratory instrument output files (PDF, CSV, Excel, TXT) to Allotrope Simple Model (ASM) JSON format or flattened 2D CSV.... | anthropics/knowledge-work-plugins |
+| [**karpathy-guidelines**](https://github.com/BurukalaManiReethika/Karpathy-Inspired-Claude-Code-Guidelines/tree/main/skills/karpathy-guidelines) | Six principles for better Claude Code behavior — think before coding, keep it simple, make surgical changes, define success criteria,... | BurukalaManiReethika/Karpathy-Inspired-Claude-Code-Guidelines |
+| [**nextflow-development**](https://github.com/anthropics/knowledge-work-plugins/tree/main/bio-research/skills/nextflow-development) | Run nf-core bioinformatics pipelines (rnaseq, sarek, atacseq) on sequencing data. Use when analyzing RNA-seq, WGS/WES,... | anthropics/knowledge-work-plugins |
+| [**playwright-cli**](https://github.com/microsoft/playwright-cli/tree/main/skills/playwright-cli) | Automate browser interactions, test web pages and work with Playwright tests. | microsoft/playwright-cli |
+| [**pr-create**](https://github.com/posit-dev/skills/tree/main/github/pr-create) | Creates a pull request from current changes, monitors GitHub CI, and debugs any failures until CI passes. Activate when the user says "create pr",... | posit-dev/skills |
+| [**pr-threads-address**](https://github.com/posit-dev/skills/tree/main/github/pr-threads-address) | Address PR review feedback by systematically working through every unresolved PR review thread on the current branch's PR - analyze each comment,... | posit-dev/skills |
+| [**pr-threads-resolve**](https://github.com/posit-dev/skills/tree/main/github/pr-threads-resolve) | Bulk resolve unresolved PR review threads on the current branch’s PR — typically after threads have been addressed manually or via /pr-threads-address | posit-dev/skills |
+| [**rust-skills**](https://github.com/leonardomso/rust-skills) | Comprehensive Rust coding guidelines with 265 rules across 26 categories. Use when writing, reviewing, or refactoring Rust code. Covers ownership,... | leonardomso/rust-skills |
+| [**scientific-problem-selection**](https://github.com/anthropics/knowledge-work-plugins/tree/main/bio-research/skills/scientific-problem-selection) | This skill should be used when scientists need help with research problem selection, project ideation, troubleshooting stuck projects,... | anthropics/knowledge-work-plugins |
+| [**session-report**](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/session-report/skills/session-report) | Generate an explorable HTML report of Claude Code session usage (tokens, cache, subagents, skills,... | anthropics/claude-plugins-official |
+| [**start**](https://github.com/anthropics/knowledge-work-plugins/tree/main/bio-research/skills/start) | Set up your bio-research environment and explore available tools. Use when first getting oriented with the plugin, checking which literature,... | anthropics/knowledge-work-plugins |
+| [**working-on**](https://github.com/posit-dev/skills/tree/main/posit-dev/working-on) | Set a tracking document as the source of truth for the current feature or task. Use when starting work on a feature, bug fix,... | posit-dev/skills |
+
+### 前端 / 设计
+
+| Skill | 描述 | 来源 |
+|---|---|---|
+| [**brandkit**](https://github.com/nexu-io/open-design/tree/main/skills/brandkit) | Premium brand-kit image generation skill for creating high-end brand-guidelines boards, logo systems, identity decks,... | nexu-io/open-design |
+| [**brutalist-skill**](https://github.com/nexu-io/open-design/tree/main/skills/brutalist-skill) | Raw mechanical interfaces fusing Swiss typographic print with military terminal aesthetics. Rigid grids, extreme type scale contrast,... | nexu-io/open-design |
+| [**frontend-design**](https://github.com/anthropics/skills/tree/main/skills/frontend-design) | Guidance for distinctive, intentional visual design when building new UI or reshaping an existing one. Helps with aesthetic direction, typography,... | anthropics/skills |
+| [**frontend-dev**](https://github.com/minimax-ai/skills/tree/main/skills/frontend-dev) | Full-stack frontend development combining premium UI design, cinematic animations, AI-generated media assets, persuasive copywriting,... | minimax-ai/skills |
+| [**frontend-slides**](https://github.com/zarazhangrui/frontend-slides) | Create stunning, animation-rich HTML presentations from scratch or by converting PowerPoint files. Use when the user wants to build a presentation,... | zarazhangrui/frontend-slides |
+| [**fullstack-dev**](https://github.com/minimax-ai/skills/tree/main/skills/fullstack-dev) | Full-stack backend architecture and frontend-backend integration guide. TRIGGER when: building a full-stack app, creating REST API with frontend,... | minimax-ai/skills |
+| [**gpt-tasteskill**](https://github.com/nexu-io/open-design/tree/main/skills/gpt-tasteskill) | Elite UX/UI & Advanced GSAP Motion Engineer. Enforces Python-driven true randomization for layout variance, strict AIDA page structure,... | nexu-io/open-design |
+| [**guizang-ppt-skill**](https://github.com/op7418/guizang-ppt-skill) | 生成横向翻页网页 PPT（单 HTML 文件），含 WebGL 背景、演讲者视图、观众屏同步、讲稿备注、章节幕封、数据大字报、图片网格等模板。... | op7418/guizang-ppt-skill |
+| [**image-to-code-skill**](https://github.com/nexu-io/open-design/tree/main/skills/image-to-code-skill) | Elite website image-to-code skill for Codex. For visually important web tasks, it must first generate the design image(s) itself,... | nexu-io/open-design |
+| [**imagegen-frontend-mobile**](https://github.com/nexu-io/open-design/tree/main/skills/imagegen-frontend-mobile) | Elite mobile app image-generation skill for creating premium, app-native screen concepts and flows. Designed for iOS, Android,... | nexu-io/open-design |
+| [**imagegen-frontend-web**](https://github.com/nexu-io/open-design/tree/main/skills/imagegen-frontend-web) | Elite frontend image-direction skill for generating premium, conversion-aware website design references.... | nexu-io/open-design |
+| [**minimalist-skill**](https://github.com/nexu-io/open-design/tree/main/skills/minimalist-skill) | Clean editorial-style interfaces. Warm monochrome palette, typographic contrast, flat bento grids, muted pastels. No gradients, no heavy shadows. | nexu-io/open-design |
+| [**output-skill**](https://github.com/nexu-io/open-design/tree/main/skills/output-skill) | Overrides default LLM truncation behavior. Enforces complete code generation, bans placeholder patterns, and handles token-limit splits cleanly.... | nexu-io/open-design |
+| [**redesign-skill**](https://github.com/nexu-io/open-design/tree/main/skills/redesign-skill) | Upgrades existing websites and apps to premium quality. Audits current design, identifies generic AI patterns,... | nexu-io/open-design |
+| [**soft-skill**](https://github.com/nexu-io/open-design/tree/main/skills/soft-skill) | Teaches the AI to design like a high-end agency. Defines the exact fonts, spacing, shadows, card structures,... | nexu-io/open-design |
+| [**stitch-skill**](https://github.com/nexu-io/open-design/tree/main/skills/stitch-skill) | Semantic Design System Skill for Google Stitch. Generates agent-friendly DESIGN.md files that enforce premium,... | nexu-io/open-design |
+| [**taste-skill**](https://github.com/nexu-io/open-design/tree/main/skills/taste-skill) | Anti-slop frontend skill for landing pages, portfolios, and redesigns. The agent reads the brief, infers the right design direction,... | nexu-io/open-design |
+| [**taste-skill-v1**](https://github.com/nexu-io/open-design/tree/main/skills/taste-skill-v1) | The original v1 taste-skill, preserved for projects depending on its exact behavior.... | nexu-io/open-design |
 
 ### 图表 / 可视化
-`fireworks-tech-graph`, `architecture-diagram-generator`, `excalidraw-diagram-generator`
+
+| Skill | 描述 | 来源 |
+|---|---|---|
+| [**architecture-diagram-generator**](https://github.com/Cocoon-AI/architecture-diagram-generator/tree/main/architecture-diagram) | Create polished dark-themed architecture diagrams as self-contained HTML+SVG files. Use when the user asks for system, infrastructure, cloud,... | Cocoon-AI/architecture-diagram-generator |
+| [**excalidraw-diagram-generator**](https://github.com/github/awesome-copilot/tree/main/skills/excalidraw-diagram-generator) | Generate Excalidraw diagrams from natural language descriptions. Use when asked to "create a diagram", "make a flowchart", "visualize a process",... | github/awesome-copilot |
+| [**fireworks-tech-graph**](https://github.com/yizhiyanhua-ai/fireworks-tech-graph) | Create technical diagrams such as software architecture, data flow, flowcharts, sequence diagrams, C4 reviews, cloud deployments, event streams,... | yizhiyanhua-ai/fireworks-tech-graph |
 
 ### 文档 / 办公
-`pptx-generator`, `minimax-docx`, `minimax-pdf`, `minimax-xlsx`
 
-### 效率工具
-`start`, `implement`, `working-on`, `release-post`, `query`, `read-file`, `read-memories`, `gif-sticker-maker`
+| Skill | 描述 | 来源 |
+|---|---|---|
+| [**gif-sticker-maker**](https://github.com/minimax-ai/skills/tree/main/skills/gif-sticker-maker) | Convert photos (people, pets, objects, logos) into 4 animated GIF stickers with captions. Use when: user wants to create cartoon stickers,... | minimax-ai/skills |
+| [**minimax-docx**](https://github.com/minimax-ai/skills/tree/main/skills/minimax-docx) | Professional DOCX document creation, editing, and formatting using OpenXML SDK (.NET). Three pipelines: (A) create new documents from scratch,... | minimax-ai/skills |
+| [**minimax-pdf**](https://github.com/minimax-ai/skills/tree/main/skills/minimax-pdf) | Use this skill when visual quality and design identity matter for a PDF. CREATE (generate from scratch): "make a PDF", "generate a report",... | minimax-ai/skills |
+| [**minimax-xlsx**](https://github.com/minimax-ai/skills/tree/main/skills/minimax-xlsx) | Open, create, read, analyze, edit, or validate Excel/spreadsheet files (.xlsx, .xlsm, .csv, .tsv). Use when the user asks to create, build, modify,... | minimax-ai/skills |
+| [**ppt-master**](https://github.com/hugohe3/ppt-master/tree/main/skills/ppt-master) | AI-driven presentation workflow for generating editable PPTX decks and slides, reconstructing page visuals,... | hugohe3/ppt-master |
+| [**pptx-generator**](https://github.com/minimax-ai/skills/tree/main/skills/pptx-generator) | Generate, edit, and read PowerPoint presentations. Create from scratch with PptxGenJS (cover, TOC, content, section divider, summary slides),... | minimax-ai/skills |
+
+### 知识管理 / Obsidian
+
+| Skill | 描述 | 来源 |
+|---|---|---|
+| [**defuddle**](https://github.com/mdwoicke/obsidian-skills/tree/main/skills/defuddle) | Extract clean markdown content from web pages using Defuddle CLI, removing clutter and navigation to save tokens.... | mdwoicke/obsidian-skills |
+| [**ima-skill**](https://github.com/daymade/claude-code-skills/tree/main/ima-copilot) | Installs, troubleshoots, and personalizes the official Tencent IMA skill (a wrapper layer that orchestrates upstream ima-skill,... | daymade/claude-code-skills |
+| [**json-canvas**](https://github.com/mdwoicke/obsidian-skills/tree/main/skills/json-canvas) | Create and edit JSON Canvas files (.canvas) with nodes, edges, groups, and connections. Use when working with .canvas files,... | mdwoicke/obsidian-skills |
+| [**obsidian-bases**](https://github.com/mdwoicke/obsidian-skills/tree/main/skills/obsidian-bases) | Create and edit Obsidian Bases (.base files) with views, filters, formulas, and summaries. Use when working with .base files,... | mdwoicke/obsidian-skills |
+| [**obsidian-cli**](https://github.com/mdwoicke/obsidian-skills/tree/main/skills/obsidian-cli) | Interact with Obsidian vaults using the Obsidian CLI to read, create, search, and manage notes, tasks, properties, and more.... | mdwoicke/obsidian-skills |
+| [**obsidian-markdown**](https://github.com/mdwoicke/obsidian-skills/tree/main/skills/obsidian-markdown) | Create and edit Obsidian Flavored Markdown with wikilinks, embeds, callouts, properties, and other Obsidian-specific syntax.... | mdwoicke/obsidian-skills |
+
+### Meta / 效率工具
+
+| Skill | 描述 | 来源 |
+|---|---|---|
+| [**skill-creator**](https://github.com/anthropics/skills/tree/main/skills/skill-creator) | Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit,... | anthropics/skills |
+| [**writing-rules**](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/hookify/skills/writing-rules) | This skill should be used when the user asks to "create a hookify rule", "write a hook rule", "configure hookify", "add a hookify rule",... | anthropics/claude-plugins-official |
+
+### 插件附带 Skills
+
+| Skill | 描述 | 来源 |
+|---|---|---|
+| [**claude-automation-recommender**](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-code-setup/skills/claude-automation-recommender) | Analyze a codebase and recommend Claude Code automations (hooks, subagents, skills, plugins, MCP servers).... | anthropics/claude-plugins-official |
+| [**claude-md-improver**](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-md-management/skills/claude-md-improver) | Audit and improve CLAUDE.md files in repositories. Use when user asks to check, audit, update, improve, or fix CLAUDE.md files.... | anthropics/claude-plugins-official |
+| [**frontend-design**](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/frontend-design/skills/frontend-design) | Guidance for distinctive, intentional visual design when building new UI or reshaping an existing one. Helps with aesthetic direction, typography,... | anthropics/claude-plugins-official |
+| [**writing-rules**](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/hookify/skills/writing-rules) | This skill should be used when the user asks to "create a hookify rule", "write a hook rule", "configure hookify", "add a hookify rule",... | anthropics/claude-plugins-official |
+| [**session-report**](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/session-report/skills/session-report) | Generate an explorable HTML report of Claude Code session usage (tokens, cache, subagents, skills,... | anthropics/claude-plugins-official |
+| [**skill-creator**](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/skill-creator/skills/skill-creator) | Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit,... | anthropics/claude-plugins-official |
+
+### 自定义 Skills（无公开源）
+
+| Skill | 描述 | 来源 |
+|---|---|---|
+| [**modern-r**](./skills/modern-r) | Modernize and review existing R code using current idioms and migration priorities across tidyverse, tidy evaluation, style, and performance.... | 自定义 |
+| [**r-skill-changelog-sync**](./skills/r-skill-changelog-sync) | Sync installed Codex R skills with current upstream package changes by checking official changelog sources such as CRAN package pages,... | 自定义 |
+
+## Skill 来源与更新
+
+每个 skill 都对应一个上游 GitHub 仓库（完整映射见 [SOURCES.md](./SOURCES.md) / [SOURCES.tsv](./SOURCES.tsv)）。上游发布新版本后：
+
+```bash
+bash update-skills.sh              # 同步全部 skills/ 与 plugin-skills/
+bash update-skills.sh taste-skill  # 只同步某一个 skill
+git add -A && git commit -m "Update skills" && git push
+```
 
 ## 多环境同步策略
 
-1. **Skills**: 通过 Git 管理，`.cc-switch` 在新机器上做符号链接激活
-2. **Plugins**: `setup.ps1`/`setup.sh` 自动安装
-3. **Settings**: 使用 `settings.template.json` 作为模板，本地密钥保存在 `settings.local.json`（不提交）
-4. **Hooks**: 通过 plugin 管理，配置文件备份在 `config/hooks/`
+1. **Skills**：通过 Git 管理，`.cc-switch` 在新机器上做符号链接激活
+2. **Plugins**：`setup.ps1` / `setup.sh` 自动安装
+3. **Settings**：`settings.template.json` 作为模板，本地密钥保存在 `settings.local.json`（不提交）
+4. **Hooks**：通过 plugin 管理，配置文件备份在 `config/hooks/`
 
-## Skill 来源与自动更新
+## Contributing
 
-每个 skill 都对应一个上游 GitHub 仓库（映射见 [SOURCES.md](./SOURCES.md) / [SOURCES.tsv](./SOURCES.tsv)）。上游发布新版本后，运行：
-
-```bash
-bash update-skills.sh            # 同步全部 skills/ 与 plugin-skills/
-bash update-skills.sh taste-skill # 只同步某一个 skill
-```
-
-脚本会按 `SOURCES.tsv` 从各源仓库（posit-dev/skills、tidymodels/skills、google-deepmind/science-skills、anthropics/skills、duckdb/duckdb-skills、minimax-ai/skills、nexu-io/open-design 等）拉取最新内容并镜像到本仓库。
-
-> 注意：`skills/modern-r` 与 `skills/r-skill-changelog-sync` 为自定义 skill，无公开源，不会参与自动更新。
-
-## 更新流程
-
-```bash
-# 更新完 skill 后提交
-bash update-skills.sh
-git add skills/ plugin-skills/ SOURCES.md SOURCES.tsv update-skills.sh
-git commit -m "Update skills from upstream sources"
-git push
-
-# 另一台机器拉取
-git pull
-ln -s ~/.cc-switch/skills/new-skill ~/.claude/skills/new-skill
-```
+- 添加新 skill：放入 `skills/<name>/`，并在 `SOURCES.tsv` 中登记上游仓库后提交
+- 同步上游更新：运行 `bash update-skills.sh` 后提交
+- 自定义 skill（无公开源）：保留在仓库中，并在 `SOURCES.tsv` 中标注 `CUSTOM`
