@@ -4,7 +4,7 @@
 
 - 映射数据文件：[SOURCES.tsv](./SOURCES.tsv)（供 `update-skills.sh` 读取）
 - 一键更新脚本：[update-skills.sh](./update-skills.sh)
-- 用法：`bash update-skills.sh` 全量同步；`bash update-skills.sh taste-skill` 只同步某个 skill
+- 用法：`bash update-skills.sh` 全量同步；`bash update-skills.sh <skill名>` 只同步某个 skill
 
 ## 源仓库汇总
 
@@ -263,9 +263,60 @@
 |---|---|---|---|
 | `skills/quarto-talks` | `main` | `.` |  |
 
+### https://github.com/vercel-labs/skills
+
+| 本仓库目录 | 上游分支 | 上游路径 | 备注 |
+|---|---|---|---|
+| `skills/find-skills` | `main` | `skills/find-skills` | skills.sh 官方（npx skills） |
+
+### https://github.com/getkrafter/resume-toolkit
+
+| 本仓库目录 | 上游分支 | 上游路径 | 备注 |
+|---|---|---|---|
+| `skills/score` | `master` | `skills/score` | Krafter resume-toolkit |
+
+### https://github.com/ailabs-393/ai-labs-claude-skills
+
+| 本仓库目录 | 上游分支 | 上游路径 | 备注 |
+|---|---|---|---|
+| `skills/travel-planner` | `main` | `packages/skills/travel-planner` |  |
+
+### CUSTOM
+
+| 本仓库目录 | 上游分支 | 上游路径 | 备注 |
+|---|---|---|---|
+| `skills/kb-ops` | `CUSTOM` | `CUSTOM` | 本地知识库运维（自定义，无公开源） |
+
+### https://github.com/lijigang/ljg-skills
+
+| 本仓库目录 | 上游分支 | 上游路径 | 备注 |
+|---|---|---|---|
+| `skills/ljg-blind` | `master` | `skills/ljg-blind` |  |
+| `skills/ljg-book` | `master` | `skills/ljg-book` |  |
+| `skills/ljg-card` | `master` | `skills/ljg-card` |  |
+| `skills/ljg-classic` | `master` | `skills/ljg-classic` |  |
+| `skills/ljg-constraint` | `master` | `skills/ljg-constraint` |  |
+| `skills/ljg-invest` | `master` | `skills/ljg-invest` |  |
+| `skills/ljg-is` | `master` | `skills/ljg-is` |  |
+| `skills/ljg-learn` | `master` | `skills/ljg-learn` |  |
+| `skills/ljg-paper` | `master` | `skills/ljg-paper` |  |
+| `skills/ljg-plain` | `master` | `skills/ljg-plain` |  |
+| `skills/ljg-present` | `master` | `skills/ljg-present` |  |
+| `skills/ljg-push` | `master` | `skills/ljg-push` |  |
+| `skills/ljg-qa` | `master` | `skills/ljg-qa` |  |
+| `skills/ljg-rank` | `master` | `skills/ljg-rank` |  |
+| `skills/ljg-read` | `master` | `skills/ljg-read` |  |
+| `skills/ljg-relationship` | `master` | `skills/ljg-relationship` |  |
+| `skills/ljg-roundtable` | `master` | `skills/ljg-roundtable` |  |
+| `skills/ljg-structure` | `master` | `skills/ljg-structure` |  |
+| `skills/ljg-think` | `master` | `skills/ljg-think` |  |
+| `skills/ljg-word` | `master` | `skills/ljg-word` |  |
+| `skills/ljg-writes` | `master` | `skills/ljg-writes` |  |
+
 ## 自定义 Skill（无公开源，不参与自动更新）
 
 | Skill | 说明 |
 |---|---|
 | `skills/modern-r` | 自定义：R 代码现代化改造指南 |
 | `skills/r-skill-changelog-sync` | 自定义：R 包 changelog 同步检查 |
+| `skills/kb-ops` | 自定义：本地知识库运维（kb-template 脚手架） |

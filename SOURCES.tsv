@@ -136,3 +136,28 @@ plugin-skills/frontend-design/frontend-design|https://github.com/anthropics/clau
 plugin-skills/hookify/writing-rules|https://github.com/anthropics/claude-plugins-official.git|main|plugins/hookify/skills/writing-rules|
 plugin-skills/session-report/session-report|https://github.com/anthropics/claude-plugins-official.git|main|plugins/session-report/skills/session-report|
 plugin-skills/skill-creator/skill-creator|https://github.com/anthropics/claude-plugins-official.git|main|plugins/skill-creator/skills/skill-creator|
+skills/find-skills|https://github.com/vercel-labs/skills.git|main|skills/find-skills|skills.sh 官方（npx skills）
+skills/score|https://github.com/getkrafter/resume-toolkit.git|master|skills/score|Krafter resume-toolkit
+skills/travel-planner|https://github.com/ailabs-393/ai-labs-claude-skills.git|main|packages/skills/travel-planner
+skills/kb-ops|CUSTOM|CUSTOM|CUSTOM|本地知识库运维（自定义，无公开源）
+skills/ljg-blind|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-blind
+skills/ljg-book|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-book
+skills/ljg-card|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-card
+skills/ljg-classic|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-classic
+skills/ljg-constraint|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-constraint
+skills/ljg-invest|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-invest
+skills/ljg-is|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-is
+skills/ljg-learn|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-learn
+skills/ljg-paper|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-paper
+skills/ljg-plain|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-plain
+skills/ljg-present|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-present
+skills/ljg-push|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-push
+skills/ljg-qa|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-qa
+skills/ljg-rank|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-rank
+skills/ljg-read|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-read
+skills/ljg-relationship|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-relationship
+skills/ljg-roundtable|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-roundtable
+skills/ljg-structure|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-structure
+skills/ljg-think|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-think
+skills/ljg-word|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-word
+skills/ljg-writes|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-writes

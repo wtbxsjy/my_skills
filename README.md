@@ -26,6 +26,7 @@
   - [图表 / 可视化](#图表-可视化)
   - [文档 / 办公](#文档-办公)
   - [知识管理 / Obsidian](#知识管理-obsidian)
+  - [个人技能集（ljg-*）](#个人技能集ljg-)
   - [Meta / 效率工具](#meta-效率工具)
   - [插件附带 Skills](#插件附带-skills)
   - [自定义 Skills（无公开源）](#自定义-skills无公开源)
@@ -215,15 +216,45 @@ bash setup.sh        # Linux / macOS（Windows 用 setup.ps1）
 | [**defuddle**](https://github.com/mdwoicke/obsidian-skills/tree/main/skills/defuddle) | Extract clean markdown content from web pages using Defuddle CLI, removing clutter and navigation to save tokens.... | mdwoicke/obsidian-skills |
 | [**ima-skill**](https://github.com/daymade/claude-code-skills/tree/main/ima-copilot) | Installs, troubleshoots, and personalizes the official Tencent IMA skill (a wrapper layer that orchestrates upstream ima-skill,... | daymade/claude-code-skills |
 | [**json-canvas**](https://github.com/mdwoicke/obsidian-skills/tree/main/skills/json-canvas) | Create and edit JSON Canvas files (.canvas) with nodes, edges, groups, and connections. Use when working with .canvas files,... | mdwoicke/obsidian-skills |
+| [**kb-ops**](./skills/kb-ops) | 本地知识库运维。当用户要新建知识库、采集资料入库（论文/Zotero/网页/笔记/RSS）、把 raw 记录编译成 wiki 页、校验库契约、看库状态、或排查知识库脚本报错时，使用此 skill。... | 自定义 |
 | [**obsidian-bases**](https://github.com/mdwoicke/obsidian-skills/tree/main/skills/obsidian-bases) | Create and edit Obsidian Bases (.base files) with views, filters, formulas, and summaries. Use when working with .base files,... | mdwoicke/obsidian-skills |
 | [**obsidian-cli**](https://github.com/mdwoicke/obsidian-skills/tree/main/skills/obsidian-cli) | Interact with Obsidian vaults using the Obsidian CLI to read, create, search, and manage notes, tasks, properties, and more.... | mdwoicke/obsidian-skills |
 | [**obsidian-markdown**](https://github.com/mdwoicke/obsidian-skills/tree/main/skills/obsidian-markdown) | Create and edit Obsidian Flavored Markdown with wikilinks, embeds, callouts, properties, and other Obsidian-specific syntax.... | mdwoicke/obsidian-skills |
+
+### 个人技能集（ljg-*）
+
+| Skill | 描述 | 来源 |
+|---|---|---|
+| [**ljg-blind**](https://github.com/lijigang/ljg-skills/tree/master/skills/ljg-blind) | 盲区扫描——读昨天你与 AI 的全部对话，照出暴露的思维盲区（不是不懂的知识，是让某类真相一直看不见的思维习惯），再从微信读书挑一本书的一章精准补上，落成一篇完整分析笔记。Use when user says '扫盲区', '盲区', '照盲区', '看看我的思维盲区',... | lijigang/ljg-skills |
+| [**ljg-book**](https://github.com/lijigang/ljg-skills/tree/master/skills/ljg-book) | Book reader for non-specialists. Turns a whole book into a reader-runnable explanation: begin with one ordinary question, keep one object, choice,... | lijigang/ljg-skills |
+| [**ljg-card**](https://github.com/lijigang/ljg-skills/tree/master/skills/ljg-card) | Content caster (铸). Transforms text into PNG visuals through generated raster imagery plus precise HTML typography.... | lijigang/ljg-skills |
+| [**ljg-classic**](https://github.com/lijigang/ljg-skills/tree/master/skills/ljg-classic) | 古文逐字注解、组合排版、章节意旨图与全章解读生成器。把原文、字词注、句义注、无字顶部配图和章节解读排成一张可读的长 PNG。USE WHEN 用户调用 ljg-classic OR 要求给文言文、古诗文、经史子集做逐字注解、彩色夹注、章节解读、古文讲义图、章节配图。... | lijigang/ljg-skills |
+| [**ljg-constraint**](https://github.com/lijigang/ljg-skills/tree/master/skills/ljg-constraint) | 给一个领域、专业、角色、产品或争论找出真正框住它的几条约束，判明它们属于世界/规则/解释（硬/软/自设），看这组约束如何定义身份、补全问题、框出解空间并解释实际行为；尤其用于区分目标相同但约束不同导致的方案分歧，识别被误当硬事实的旧解释。USE WHEN 用户说 '约束', '找约束',... | lijigang/ljg-skills |
+| [**ljg-invest**](https://github.com/lijigang/ljg-skills/tree/master/skills/ljg-invest) | 投资分析。给一个项目（公司名、BP、创始人对话记录），写一份深度投资分析报告。不走传统投资分析的路——核心判断只有一个：这个项目是不是一台「秩序创造机器」。Use when user says '投资报告', '投资分析', '分析这个项目', '写投资报告',... | lijigang/ljg-skills |
+| [**ljg-is**](https://github.com/lijigang/ljg-skills/tree/master/skills/ljg-is) | 用于发现一个目标真正完成的最小变化：把身份、边界、质量、优化量和实现放进括号，只保留极短的「谁或什么从 A 到 B」核心，再将它压成可解释变量的最小结构式，用跨域迁移检验是否真正去语境化，并保存为经校验的 Org 笔记。USE WHEN 用户说 '/ljg-is', 'X 的本质是什么',... | lijigang/ljg-skills |
+| [**ljg-learn**](https://github.com/lijigang/ljg-skills/tree/master/skills/ljg-learn) | Deep concept anatomist that deconstructs any concept through 8 exploration dimensions (history, dialectics, phenomenology, linguistics,... | lijigang/ljg-skills |
+| [**ljg-paper**](https://github.com/lijigang/ljg-skills/tree/master/skills/ljg-paper) | Paper reader for non-academics. Runs one concrete case until evidence exposes a gap, then shows how the paper changes the frame, operation,... | lijigang/ljg-skills |
+| [**ljg-plain**](https://github.com/lijigang/ljg-skills/tree/master/skills/ljg-plain) | Cognitive atom: Plain (白). Rewrites any content so a smart 12-year-old groks it. Structure-free — form follows content. Use when user says '白话说',... | lijigang/ljg-skills |
+| [**ljg-present**](https://github.com/lijigang/ljg-skills/tree/master/skills/ljg-present) | 极简演讲铸造器（Outline-Faithful）。把 orgmode/markdown outline 1:1 铸成单文件离线 HTML；以一页一语义动作、六种固定构图角色、留白预算和投影大字门槛控制密度，支持 black/red/yellow、hacker、hacker-dark、表格、A... | lijigang/ljg-skills |
+| [**ljg-push**](https://github.com/lijigang/ljg-skills/tree/master/skills/ljg-push) | 把 ~/.agents/skills/ljg-* 里所有更新过的 skills 同步到 github repo (ljg-skills)，先推 master 分支（org-mode 输出风格），再切 md 分支（markdown 输出风格）做基础 markdown 化后推。... | lijigang/ljg-skills |
+| [**ljg-qa**](https://github.com/lijigang/ljg-skills/tree/master/skills/ljg-qa) | 信息提问机。给一篇文章/论文/书，把核心观点抽成 Q-A 对——Question 切要害，不教科书；Answer 简洁清晰，有形式化收口，逻辑链完整。读者顺 Q 链走过，每个 A 砸下一枚钉子，复现作者整套推理。Use when user says '问答', 'Q&A', 'QA',... | lijigang/ljg-skills |
+| [**ljg-rank**](https://github.com/lijigang/ljg-skills/tree/master/skills/ljg-rank) | 给一个领域，找出背后真正撑着它的几根独立的力。十几个现象砍到不可再少的生成器——砍完能把现象一个个生回来，才算数。Use when user says '降秩', '找秩', '秩是什么', '这个领域靠什么撑着', '背后是什么',... | lijigang/ljg-skills |
+| [**ljg-read**](https://github.com/lijigang/ljg-skills/tree/master/skills/ljg-read) | Reading companion agent. Accompanies user through any text (books, articles, essays, papers, news) with translation, structural annotation,... | lijigang/ljg-skills |
+| [**ljg-relationship**](https://github.com/lijigang/ljg-skills/tree/master/skills/ljg-relationship) | Relationship analyst combining structural diagnostics (5-layer framework) with psychoanalytic depth (transference, unconscious patterns,... | lijigang/ljg-skills |
+| [**ljg-roundtable**](https://github.com/lijigang/ljg-skills/tree/master/skills/ljg-roundtable) | 一个议题，一场圆桌：主持人请来 3-5 位真实人物，定义开场，逐轮交锋， 每轮收一张 ASCII 结构图，用户用指令控节奏（可/止/深入此节/引入新人物）， 散场后全文存入 org 笔记。Use when user says "圆桌讨论", "圆桌", "roundtable", "辩论",... | lijigang/ljg-skills |
+| [**ljg-structure**](https://github.com/lijigang/ljg-skills/tree/master/skills/ljg-structure) | 找出一段信息中母题级别的结构，把抽象关系展开回具体可见的现象，再用风洞检验关键因果与边界。USE WHEN user says '找结构', '母题是什么', '结构风洞', '背后的结构', '不要只做AB测试',... | lijigang/ljg-skills |
+| [**ljg-think**](https://github.com/lijigang/ljg-skills/tree/master/skills/ljg-think) | 追本之箭——纵向深钻思维工具。给一个观点、现象或问题，像箭一样一路向下钻到不可再分的本质。Use when user says '想透', '追本', '本质是什么', '为什么会这样', '深挖', '钻到底', 'think deep', 'drill down',... | lijigang/ljg-skills |
+| [**ljg-word**](https://github.com/lijigang/ljg-skills/tree/master/skills/ljg-word) | Deep-dive English word mastery tool. Deconstructs a single English word into core semantics and epiphany.... | lijigang/ljg-skills |
+| [**ljg-writes**](https://github.com/lijigang/ljg-skills/tree/master/skills/ljg-writes) | 写作引擎。把一个观点写成可理解、可迁移、经得住反例的 1000-1500 字中文文章。USE WHEN 写文章 OR 优化思想内容 OR 展开观点 OR 改写成逻辑递进的中文。NOT FOR 普通摘要、事实查询或结构风洞（用 ljg-structure）。 | lijigang/ljg-skills |
 
 ### Meta / 效率工具
 
 | Skill | 描述 | 来源 |
 |---|---|---|
+| [**find-skills**](https://github.com/vercel-labs/skills/tree/main/skills/find-skills) | Helps users discover and install agent skills when they ask questions like "how do I do X", "find a skill for X", "is there a skill that can...",... | vercel-labs/skills |
+| [**score**](https://github.com/getkrafter/resume-toolkit/tree/master/skills/score) | Score a resume for quality and ATS keyword match. With a JD, also performs gap analysis and keyword tailoring.... | getkrafter/resume-toolkit |
 | [**skill-creator**](https://github.com/anthropics/skills/tree/main/skills/skill-creator) | Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit,... | anthropics/skills |
+| [**travel-planner**](https://github.com/ailabs-393/ai-labs-claude-skills/tree/main/packages/skills/travel-planner) | This skill should be used whenever users need help planning trips, creating travel itineraries, managing travel budgets,... | ailabs-393/ai-labs-claude-skills |
 | [**writing-rules**](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/hookify/skills/writing-rules) | This skill should be used when the user asks to "create a hookify rule", "write a hook rule", "configure hookify", "add a hookify rule",... | anthropics/claude-plugins-official |
 
 ### 插件附带 Skills
