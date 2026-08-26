@@ -1,41 +1,20 @@
 ---
 name: quarto-authoring
-description: >
-  Writing and authoring Quarto documents (.qmd), including code cell options,
-  figure and table captions, cross-references, callout blocks (notes, warnings,
-  tips), citations and bibliography, page layout and columns, Mermaid diagrams,
-  YAML metadata configuration, and Quarto extensions. Also covers converting and
-  migrating R Markdown (.Rmd), bookdown, blogdown, xaringan, and distill projects
-  to Quarto, and creating Quarto websites, books, presentations, and reports.
+description: Use when the user is explicitly working with Quarto, .qmd files, _quarto.yml, Quarto projects, or Quarto features such as callouts, cross-references, citations, Mermaid diagrams, extensions, websites, books, presentations, and reports. Also use for explicit migration from or comparison with R Markdown, bookdown, blogdown, xaringan, distill, or Jupyter notebooks to Quarto. Do not use for general R Markdown or related-format questions unless Quarto or migration to Quarto is explicitly mentioned.
 metadata:
   author: Mickaël Canouil (@mcanouil)
-  version: "1.1"
+  version: "1.4"
 license: MIT
 ---
 
 # Quarto Authoring
 
-> This skill is based on Quarto CLI v1.8.26.
+> This skill is based on Quarto CLI v1.9.36 (2026-03-24).
 
 ## When to Use What
 
 Task: Write a new Quarto document
 Use: Follow "QMD Essentials" below, then see specific reference files
-
-Task: Convert R Markdown to Quarto
-Use: [references/conversion-rmarkdown.md](references/conversion-rmarkdown.md)
-
-Task: Migrate bookdown project
-Use: [references/conversion-bookdown.md](references/conversion-bookdown.md)
-
-Task: Migrate xaringan slides
-Use: [references/conversion-xaringan.md](references/conversion-xaringan.md)
-
-Task: Migrate distill article
-Use: [references/conversion-distill.md](references/conversion-distill.md)
-
-Task: Migrate blogdown site
-Use: [references/conversion-blogdown.md](references/conversion-blogdown.md)
 
 Task: Add cross-references
 Use: [references/cross-references.md](references/cross-references.md)
@@ -78,6 +57,21 @@ Use: [references/extensions.md](references/extensions.md)
 
 Task: Apply markdown linting rules
 Use: [references/markdown-linting.md](references/markdown-linting.md)
+
+Task: Choose or configure a compute engine (knitr, jupyter, julia)
+Use: [references/engines.md](references/engines.md)
+
+### Migration (only when converting an existing project)
+
+Do NOT read these references when writing new Quarto documents.
+Only read the one matching the source format when the user explicitly asks to convert or migrate an existing project.
+
+- R Markdown (.Rmd) to Quarto: [references/conversion-rmarkdown.md](references/conversion-rmarkdown.md)
+- bookdown project: [references/conversion-bookdown.md](references/conversion-bookdown.md)
+- xaringan slides: [references/conversion-xaringan.md](references/conversion-xaringan.md)
+- distill article: [references/conversion-distill.md](references/conversion-distill.md)
+- blogdown site: [references/conversion-blogdown.md](references/conversion-blogdown.md)
+- Jupyter notebook (.ipynb) to/from Quarto: [references/conversion-jupyter.md](references/conversion-jupyter.md)
 
 ## QMD Essentials
 
@@ -124,30 +118,19 @@ Code cells are code blocks that can be executed to produce output.
 
 Quarto uses the language's comment symbol + `|` for cell options. Options use **dashes, not dots** (e.g., `fig-cap` not `fig.cap`).
 
-- R, Python: `#|`
+- R, Python, Julia: `#|`
 - Mermaid: `%%|`
 - Graphviz/DOT: `//|`
 
 ````markdown
-```{r}
+```{language}
 #| label: fig-example
 #| echo: false
 #| fig-cap: "A scatter plot example."
 
-plot(x, y)
+# code that produces a figure
 ```
 ````
-
-Common execution options:
-
-| Option    | Description       | Values                    |
-| --------- | ----------------- | ------------------------- |
-| `eval`    | Evaluate code     | `true`, `false`           |
-| `echo`    | Show code         | `true`, `false`, `fenced` |
-| `output`  | Include output    | `true`, `false`, `asis`   |
-| `warning` | Show warnings     | `true`, `false`           |
-| `error`   | Show errors       | `true`, `false`           |
-| `include` | Include in output | `true`, `false`           |
 
 Set document-level defaults in YAML front matter:
 
@@ -155,6 +138,16 @@ Set document-level defaults in YAML front matter:
 execute:
   echo: false
   warning: false
+```
+
+**Caching — critical engine difference:** Only suggest `#| cache: true` for R code cells (knitr engine).
+Never suggest it for other language cells — it does not work and will be silently ignored.
+The only correct approach is `execute: cache: true` in the top-level YAML front matter when using engines other than `knitr`.
+Python/Jupyter requires `jupyter-cache` (`pip install jupyter-cache`):
+
+```yaml
+execute:
+  cache: true
 ```
 
 Details: [references/code-cells.md](references/code-cells.md)
@@ -169,10 +162,11 @@ Labels must start with a type prefix. Reference with `@`:
 - Equation: `eq-` prefix, e.g., `{#eq-model}` → `@eq-model`
 
 ````markdown
-```{r}
+```{language}
 #| label: fig-plot
 #| fig-cap: "A caption for the plot."
-plot(1)
+
+# code that produces a figure
 ```
 
 See @fig-plot for the results.

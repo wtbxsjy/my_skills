@@ -1,7 +1,31 @@
 ---
 name: industrial-brutalist-ui
-description: Raw mechanical interfaces fusing Swiss typographic print with military terminal aesthetics. Rigid grids, extreme type scale contrast, utilitarian color, analog degradation effects. For data-heavy dashboards, portfolios, or editorial sites that need to feel like declassified blueprints.
+description: |
+  Raw mechanical interfaces fusing Swiss typographic print with military terminal aesthetics. Rigid grids, extreme type scale contrast, utilitarian color, analog degradation effects. For data-heavy dashboards, portfolios, or editorial sites that need to feel like declassified blueprints.
+triggers:
+  - "industrial brutalist UI"
+  - "tactical telemetry"
+  - "swiss industrial"
+  - "brutalist interface"
+od:
+  mode: prototype
+  surface: web
+  platform: desktop
+  scenario: design
+  category: creative-direction
+  upstream: "https://github.com/Leonxlnx/taste-skill"
+  preview:
+    type: html
+  design_system:
+    requires: true
+  craft:
+    requires:
+      - typography
+      - color
+  example_prompt: |
+    Create an industrial-brutalist interface with rigid grids, tactical telemetry motifs, strong typography, and mechanical precision.
 ---
+
 
 # SKILL: Industrial Brutalism & Tactical Telemetry UI
 

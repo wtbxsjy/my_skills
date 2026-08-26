@@ -1,285 +1,190 @@
 ---
-name: ima-skill
-description: |
-  统一的 IMA OpenAPI 技能，支持笔记管理和知识库操作。
-  当用户提到知识库、资料库、笔记、备忘录、记事，或者想要上传文件、添加网页到知识库、
-  搜索知识库内容、搜索/浏览/创建/编辑笔记时，使用此 skill。
-  即使用户没有明确说"知识库"或"笔记"，只要意图涉及文件上传到知识库、网页收藏、
-  知识搜索、个人文档存取（如"帮我记一下"、"搜一下知识库里有没有XX"），也应触发此 skill。
-homepage: https://ima.qq.com
-metadata:
-  openclaw:
-    emoji: 🔧
-    requires:
-      env:
-        - IMA_OPENAPI_CLIENTID
-        - IMA_OPENAPI_APIKEY
-    primaryEnv: IMA_OPENAPI_CLIENTID
-  security:
-    credentials_usage: |
-      This skill requires user-provisioned IMA OpenAPI credentials (Client ID and API Key)
-      to authenticate with the official IMA API at https://ima.qq.com.
-      Credentials are ONLY sent to the official IMA API endpoint (ima.qq.com) as HTTP headers.
-      The file-upload flow also sends requests to COS endpoints (*.myqcloud.com) using
-      short-lived, scoped temporary credentials returned by the IMA API (create_media);
-      the user's Client ID / API Key are never sent to COS.
-      No credentials are logged, stored in files, or transmitted to any other destination.
-    allowed_domains:
-      - ima.qq.com
-      - '*.myqcloud.com'
+name: ima-copilot
+description: >
+  Installs, troubleshoots, and personalizes the official Tencent IMA skill (a wrapper
+  layer that orchestrates upstream ima-skill, not a replacement). Use when the user
+  mentions IMA, 腾讯 IMA, ima.qq.com, ima-skill, installing or configuring ima-skill,
+  IMA API key / credentials, searching across IMA knowledge bases, 知识库搜索, 笔记搜索,
+  fan-out search with preferred KBs / priority boosting, or wants to diagnose, repair, or
+  personalize an ima-skill install. Also trigger on the missing-YAML-frontmatter bug in
+  ima-skill submodule SKILL.md files and errors like "Skipped loading skill(s) due to
+  invalid SKILL.md".
 ---
 
-# ima-skill
+# IMA Copilot
 
-Unified IMA OpenAPI skill. Currently supports: **notes**, **knowledge-base**.
+One-command installer, troubleshooter, and personalization layer for the official Tencent IMA skill.
 
-## ⛔ MANDATORY RULES — read before ANY operation
+## Overview
 
-1. **UTF-8 encoding (notes writes only):** Before calling `import_doc` or `append_doc`, ALL string fields (`content`, `title`) MUST be validated as legal UTF-8. Non-UTF-8 content causes irreversible garbled text. See [Detailed Rules](#detailed-utf-8-encoding-rules) for platform-specific methods.
-2. **File upload naming:** `title` MUST equal `file_name` (with extension). Never rename, shorten, translate, or modify the original filename.
-3. **Unsupported file types:** Reject immediately with a clear message. Do NOT ask user "do you still want to try?" Video files, Bilibili/YouTube URLs, and `file://` URLs are not supported — tell user to use IMA desktop client.
-4. **File upload integrity:** Keep file content as-is during upload. No encoding conversion for binary files (PDF, images, Excel, etc.).
-5. **PowerShell 5.1 (all modules):** If running in PowerShell, detect version before first API call. PS 5.1 silently converts request Body to GBK — must use UTF-8 byte array mode. See [Detailed Rules](#powershell-51-environment-detection).
+The official Tencent IMA skill (ima-skill) exposes a powerful OpenAPI for notes and knowledge base operations, but its installation flow is designed for a specific proprietary agent and recent releases have shipped submodule files that fail strict SKILL.md loaders. IMA Copilot solves both problems:
 
-## 模块决策表
+1. Installs ima-skill to Claude Code, Codex, and OpenClaw in a single command via the [vercel-labs/skills](https://github.com/vercel-labs/skills) open installer.
+2. Walks the user through API key setup with a live validation call.
+3. Detects known upstream issues and — with explicit user consent — fixes them in place, without ever forking, vendoring, or mirroring any part of the upstream package.
+4. Provides a fan-out search strategy that respects user-configured knowledge base priorities and boosts, with awareness of the 100-result per-KB truncation limit.
 
-| 用户意图                                                                                   | 模块           | 读取                      |
-| ------------------------------------------------------------------------------------------ | -------------- | ------------------------- |
-| 搜索笔记、浏览笔记本、获取笔记内容、创建笔记、追加内容                                     | notes          | `notes/SKILL.md`          |
-| 上传文件、添加网页链接、搜索知识库、浏览知识库内容、获取知识库信息、获取可添加的知识库列表 | knowledge-base | `knowledge-base/SKILL.md` |
-| 查看原文、分析原文、导出原文（需要 media_id）                                              | knowledge-base | `knowledge-base/SKILL.md` |
+## Architectural principles (do not violate)
 
-### ⚠️ 易混淆场景
+This skill is a **wrapper layer** around ima-skill. The wrapper contract is non-negotiable:
 
-| 用户说的                                                 | 实际意图                 | 正确路由                                                    |
-| -------------------------------------------------------- | ------------------------ | ----------------------------------------------------------- |
-| "把这段内容添加到知识库XX里的笔记YY"                     | 往已有**笔记**追加内容   | **notes** — 先搜索笔记获取 `note_id`，再用 `append_doc`     |
-| "把这个写到XX笔记里"、"记到XX笔记"                       | 往已有**笔记**追加内容   | **notes** — `append_doc`                                    |
-| "把这篇笔记添加到知识库"                                 | 将笔记关联到**知识库**   | **knowledge-base** — `add_knowledge` with `media_type=11`   |
-| "上传文件到知识库"                                       | 上传**文件**到知识库     | **knowledge-base** — `create_media` → COS → `add_knowledge` |
-| "新建一篇笔记记录这些内容"                               | **创建**新笔记           | **notes** — `import_doc`                                    |
-| "帮我记一下"、"记录一下"、"保存为笔记"（未指定已有笔记） | 意图不明确，**需要确认** | **notes** — 先询问用户是创建新笔记还是追加到哪篇已有笔记    |
-| "添加到笔记里"（未指定具体哪篇）                         | 意图不明确，**需要确认** | **notes** — 先询问用户是创建新笔记还是追加到哪篇已有笔记    |
+- **Never vendor upstream files.** This skill directory does not contain any copy, fork, or excerpt of ima-skill's own content. When ima-skill ships a new release, users get the new release without any interference from this wrapper.
+- **Repairs happen at runtime, not at ship time.** If an upstream bug needs patching, this skill carries the *instructions* for how to patch, not the patched files. Running a repair is idempotent: rerunning after an upstream update re-detects and re-fixes anything that came back.
+- **Always ask before touching upstream files.** Modifying `~/.claude/skills/ima-skill/**`, `~/.agents/skills/ima-skill/**`, or any other upstream install directory requires explicit user consent via AskUserQuestion. No silent patching.
+- **Teach rather than hide.** When a fix is applied, show the user exactly what changed and where the backup was saved. This is how users learn to maintain their own installs.
 
-### ⚠️ 跨模块任务 — 必须读取两个子模块
+## What this skill does
 
-某些意图跨越 notes 和 knowledge-base 两个模块。**不要只读取一个子模块就开始执行**，必须先读取两个模块的 SKILL.md 再按顺序操作。
+| Capability | Entry point | Detail |
+|---|---|---|
+| 1. Install upstream ima-skill to 3 agents | `scripts/install_ima_skill.sh` | See `references/installation_flow.md` |
+| 2. Configure API credentials (XDG style) | Inline workflow below | See `references/api_key_setup.md` |
+| 3. Diagnose and fix known upstream issues | `scripts/diagnose.sh` + workflow below | See `references/known_issues.md` |
+| 4. Fan-out search with priority boosting | `scripts/search_fanout.py` | See `references/search_best_practices.md` |
 
-| 用户说的                             | 实际流程                                      | 读取顺序                                               |
-| ------------------------------------ | --------------------------------------------- | ------------------------------------------------------ |
-| "把知识库里的XX内容记到笔记"         | KB 搜索/读取 → Notes 创建/追加                | 先读 `knowledge-base/SKILL.md` → 再读 `notes/SKILL.md` |
-| "查看原文"（知识库中的笔记类型媒体） | KB `get_media_info` → Notes `get_doc_content` | 先读 `knowledge-base/SKILL.md` → 再读 `notes/SKILL.md` |
-| "把这篇笔记添加到知识库"             | Notes 搜索获取 note_id → KB `add_knowledge`   | 先读 `notes/SKILL.md` → 再读 `knowledge-base/SKILL.md` |
+## Routing
 
-**规则**：如果用户意图同时涉及「笔记」和「知识库」，或者 API 响应揭示需要另一个模块（如 `media_type=11` 表示笔记类型），必须读取两个子模块再继续。
+When this skill is triggered, classify the user's intent and jump to the corresponding capability:
 
-**核心判断规则**：
+| User says something like… | Go to |
+|---|---|
+| "装 ima"、"install ima-skill"、"把 ima 装一下"、"我想用 ima" | **Capability 1** |
+| "配 ima 的 key"、"configure ima credentials"、"ima API key" | **Capability 2** |
+| "ima 报错"、"SKILL.md warning"、"frontmatter 错误"、"ima 加载失败" | **Capability 3** |
+| "搜 X"、"在 ima 里搜 X"、"跨知识库搜索"、"扇出搜 X" | **Capability 4** |
+| "帮我从头跑一遍 ima" | 1 → 2 → 3 → 4 in sequence |
 
-- 目标是**笔记的内容**（读、写、追加）→ notes 模块
-- 目标是**知识库的条目**（上传文件、添加链接、关联笔记到知识库）→ knowledge-base 模块
-- 目标是**获取知识库条目的原始内容**（查看原文、分析原文、导出原文）→ knowledge-base 模块（若原文是笔记，会跨模块到 notes `get_doc_content`）
-- 用户提到"知识库"只是在**描述笔记的位置**（如"知识库里的那篇笔记"），真正操作对象仍是笔记 → notes 模块
+When in doubt, start with Capability 3 (diagnose) — it surfaces exactly which capabilities are blocked and in what order.
 
-## Credential Check
+## Capability 1: Install upstream ima-skill
 
-!`test -f ~/.config/ima/client_id && test -f ~/.config/ima/api_key && echo "✅ Credentials configured" || echo "⚠️ NO CREDENTIALS — setup required before any API call"`
+The installer downloads the latest official release from `https://app-dl.ima.qq.com/skills/`, stages it in a temp directory, and hands off to `npx skills add <local-path>` to distribute it across Claude Code, Codex, and OpenClaw.
 
-**If ⚠️ NO CREDENTIALS:** Guide the user through setup BEFORE attempting any API call:
-
-1. 打开 https://ima.qq.com/agent-interface 获取 **Client ID** 和 **API Key**
-2. 存储凭证（二选一）：
-
-**方式 A — 配置文件（推荐）：**
+To run it:
 
 ```bash
-mkdir -p ~/.config/ima
-echo "your_client_id" > ~/.config/ima/client_id
-echo "your_api_key" > ~/.config/ima/api_key
+bash scripts/install_ima_skill.sh
 ```
 
-**方式 B — 环境变量：**
+The script auto-detects which of the three target agents are installed on the user's machine. For agents that are not present, it skips silently rather than installing anywhere the user hasn't opted in. For agents that are present, it installs globally (`-g`) in vercel skills' default symlink mode: the first detected agent's directory becomes the canonical copy, and the remaining agents are symlinked to it. This means a repair or an upgrade applied once propagates automatically to every agent — `diagnose.sh` detects this sharing and dedupes its reports so you don't see the same issue multiple times.
+
+For a version override, detection logic, troubleshooting, and the full file-by-file layout produced by the installer, read `references/installation_flow.md`.
+
+## Capability 2: Configure API credentials
+
+Credentials are stored in XDG style, decoupled from any agent's skill directory:
+
+- `~/.config/ima/client_id` (mode `600`)
+- `~/.config/ima/api_key` (mode `600`)
+- `~/.config/ima/` (mode `700`)
+
+Environment variables `IMA_OPENAPI_CLIENTID` and `IMA_OPENAPI_APIKEY` act as fall-back overrides — the wrapper reads the environment first, then the config file.
+
+Step through the setup with the user:
+
+1. Open `https://ima.qq.com/agent-interface` and create a new Client ID and API Key.
+2. Write both values into the XDG config path (or export the environment variables).
+3. Make a single liveness call against `https://ima.qq.com/openapi/wiki/v1/search_knowledge_base` with `{"query": "", "cursor": "", "limit": 1}` to confirm the credentials are accepted — a `code: 0, msg: success` response means ready.
+
+The full script and the exact request/response schema lives in `references/api_key_setup.md`.
+
+## Capability 3: Diagnose and fix known issues
+
+This is the reason this skill exists. The upstream package has real bugs that break loading on certain agents, and the fixes are well-understood but need user consent to apply. The diagnose/repair workflow is the **core contract** of this skill.
+
+### Step 1 — Run the read-only diagnosis
 
 ```bash
-export IMA_OPENAPI_CLIENTID="your_client_id"
-export IMA_OPENAPI_APIKEY="your_api_key"
+bash scripts/diagnose.sh
 ```
 
-Agent 会按优先级依次尝试：环境变量 → 配置文件。缺少凭证时，`node ima_api.cjs ...` 会以程序错误退出（`code: -100`），并在 stderr 输出对应 `msg`。
+`diagnose.sh` **never modifies any file**. It prints a structured report with one line per check:
 
-> **Security note:** Credentials are only sent as HTTP headers to `ima.qq.com` and never to any other domain, file, or log.
-> **Runtime dependencies:** Check `meta.json` → `required_binaries`
+```
+✅ upstream ima-skill installed (claude-code)
+✅ upstream ima-skill installed (codex)
+❌ upstream ima-skill NOT installed (openclaw)
+✅ API credentials valid (search_knowledge_base returned 12 KBs)
+⚠️ ISSUE-001: notes/SKILL.md missing YAML frontmatter (claude-code)
+⚠️ ISSUE-001: knowledge-base/SKILL.md missing YAML frontmatter (claude-code)
+⚠️ ISSUE-001: notes/SKILL.md missing YAML frontmatter (codex)
+⚠️ ISSUE-001: knowledge-base/SKILL.md missing YAML frontmatter (codex)
+```
 
-## API 调用模板
+### Step 2 — Parse the report and ask the user
 
-所有请求统一为 **HTTP POST + JSON Body**，仅发往官方 Base URL `https://ima.qq.com`。
+For each `⚠️` or `❌` line, look up the issue in `references/known_issues.md`. That file is the source of truth for:
 
-`ima_api` 已抽离到脚本：`./ima_api.cjs`
+- What the issue is (symptom, root cause)
+- Which repair strategies exist (`A`, `B`, `skip`)
+- The exact shell commands for each strategy
+- What files each strategy touches
+- Why the upstream maintainer probably hasn't fixed it yet
+
+### Step 3 — Ask for explicit consent before touching upstream files
+
+Use **AskUserQuestion** for every issue that has more than one repair strategy. Frame it plainly — the user may not know what "YAML frontmatter" means. Describe what the bug does to them in user terms ("loader skips two files silently, so note-search and knowledge-base-search don't actually work"), then describe each strategy in terms of the outcome, not the mechanism.
+
+Never offer a single "just fix it" option when multiple strategies exist. The user's pick may legitimately differ based on factors the skill cannot observe — e.g., they might prefer Strategy B (minimal diff) if they plan to manually compare with upstream.
+
+### Step 4 — Execute the chosen strategy
+
+Every repair command in `references/known_issues.md` is written to be:
+
+- **Idempotent** — rerunning after the fix is already applied does nothing harmful and prints a clear "already fixed" message.
+- **Backed up** — the repair copies the original file to `/tmp/ima-copilot-backups/<timestamp>/<relative-path>` before modifying anything, then tells the user the backup location.
+- **Reversible** — the user can restore from the backup with a single `cp` command shown at the end.
+
+### Step 5 — Re-run diagnose to confirm
+
+After the repair, run `diagnose.sh` a second time and show the user the diff. The issue should flip from `⚠️` to `✅`. If it does not, stop and surface the raw before/after to the user instead of silently retrying — unexpected failures here usually mean upstream shipped an unforeseen change.
+
+### An important note about upstream updates
+
+Every repair is **temporary in the sense that ima-skill upgrades replace everything**. This is by design: the skill does not fight upstream for persistent state. When the user upgrades ima-skill via Capability 1, Step 4 of diagnose will again flag the fixed issue, and the user can rerun the repair. This is a feature, not a bug — if upstream eventually fixes the issue, the repair becomes unnecessary and `diagnose.sh` will report ✅ with no prompt.
+
+## Capability 4: Personalized fan-out search
+
+IMA's OpenAPI has three hard constraints that any serious search workflow must account for:
+
+1. **No cross-knowledge-base endpoint.** `search_knowledge` requires a single `knowledge_base_id` per call. Cross-KB search is a client-side fan-out, not an API feature.
+2. **No relevance score in results.** `info_list` items only carry `media_id`, `title`, `parent_folder_id`, and `highlight_content`. Any ranking beyond insertion order must happen on the client.
+3. **Silent 100-result truncation.** `search_knowledge` returns at most 100 hits per KB with no `is_end` or `next_cursor` field in the response. High-frequency queries are silently capped.
+
+`scripts/search_fanout.py` implements the full workaround:
 
 ```bash
-# Example usage (cross-platform, pass credentials via options JSON)
-SKILL_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
-OPTS=$(printf '{"clientId":"%s","apiKey":"%s"}' "$IMA_OPENAPI_CLIENTID" "$IMA_OPENAPI_APIKEY")
-
-# stdout 返回正常响应；stderr 返回结构化错误 {"code":-100|-200,"msg":"..."}
-if ! resp=$(node "$SKILL_DIR/ima_api.cjs" "openapi/list_docs" '{"limit":10}' "$OPTS" 2>/tmp/ima_err); then
-  err_json=$(cat /tmp/ima_err)
-  err_code=$(echo "$err_json" | jq -r '.code // empty' 2>/dev/null)
-  err_msg=$(echo "$err_json" | jq -r '.msg // empty' 2>/dev/null)
-
-  if [ "$err_code" = "-200" ]; then
-    # 有新版本，原请求未发送；stdout 中带有更新上下文 JSON（含 instruction）
-    echo "[update] $err_msg" >&2
-  else
-    # -100 或其他程序错误：msg 已包含可直接展示给用户的说明
-    echo "[error] $err_msg" >&2
-  fi
-  exit 1
-fi
-
-echo "$resp"
+python3 scripts/search_fanout.py "<query>"
 ```
 
-> **错误处理有两层，必须都检查：**
->
-> **第一层 — 脚本执行错误**（进程非 0 退出，错误在 **stderr**）：
->
-> - `-100`：程序错误（缺少凭证、参数非法、网络错误等），`msg` 可直接展示给用户
-> - `-200`：skill 需要更新，原请求未发送，stdout 中有更新上下文 JSON
->
-> **第二层 — 后端业务错误**（进程正常退出，响应在 **stdout**）：
->
-> - stdout 返回 JSON `{"code": 0, "msg": "...", "data": {...}}`
-> - `code=0` 表示成功，从 `data` 提取业务字段
-> - `code≠0` 表示后端业务错误（如参数不合法、权限不足、资源不存在等），**直接将 `msg` 展示给用户**
-> - 常见后端错误码见各子模块的「错误处理」章节
+The script reads `~/.config/ima/copilot.json` for personalization (priority KBs, skip list, strategy), calls `search_knowledge_base` to enumerate KBs, fans out `search_knowledge` calls in parallel, detects truncation by exact-100 length match, and renders results grouped by KB with priority groups at the top.
 
-## SKILL Update
+The personalization file is **per-user** and private. This skill ships only a template — see `config-template/copilot.json.example`. A user with no config file gets a neutral default: fan out all accessible KBs, sort groups by hit count, no boosting.
 
-`ima_api` 已内置更新检查：默认**每天首次 API 调用自动检查一次**，同一天内不会重复检查。
+For the full algorithm, truncation handling strategy, rendering format, and a walkthrough of the evidence-based decision to allow a "subset KB skip" (e.g., a curated KB that is a strict subset of a master KB can be safely skipped to reduce duplicate hits), read `references/search_best_practices.md`.
 
-- `latest_version`：最新版本号，格式为 `MAJOR.MINOR.PATCH`
-- `release_desc`：最新版本发布说明
-- `instruction`：更新指引（prompt 文本）
+## What this skill refuses to do
 
-### 错误返回与后续处理
+- **Never vendor upstream content.** This directory does not contain and will never contain a copy of `ima-skill/SKILL.md`, `ima-skill/notes/**`, `ima-skill/knowledge-base/**`, or any other upstream file. Anyone adding such files to this skill should be rejected.
+- **Never pin an upstream version in SKILL.md.** The installer script carries a default version for fallback purposes, but SKILL.md itself is version-agnostic to survive upstream releases without requiring a skill bump.
+- **Never silently patch upstream files.** Every modification path requires an explicit AskUserQuestion and the user's active choice.
+- **Never hardcode a user's knowledge base names.** The `priority_kbs` and `skip_kbs` fields in `copilot.json` are 100% user-configured. Example values in `config-template/copilot.json.example` are illustrative only.
+- **Never skip the backup step** when executing a repair, no matter how trivial the diff.
 
-> 出错时进程以非 0 退出，并在 **stderr** 输出结构化 JSON：`{"code":-100|-200,"msg":"具体错误描述"}`。
+## File layout
 
-- `-200`（skill 需要更新）
-  - 含义：检测到可用更新，原请求**未发送**
-  - 后续处理：从 `ima_api.cjs` 的 stdout 读取更新上下文 JSON，根据其中 `instruction`（prompt）引导用户完成更新，然后重试原请求
-- `-100`（程序错误，兜底）
-  - 含义：其他所有错误（缺少凭证、参数非法、缺少 apiPath、网络错误等）
-  - 后续处理：直接读取 `msg` 向用户展示；`msg` 已指出具体原因与修复建议
-
-> 更新检查调用本身失败时，会**直接跳过本次检查并继续原请求**，不会抛错。
-
-如需主动触发（忽略"每天一次"限制），可在调用前设置：
-
-```bash
-export IMA_FORCE_UPDATE_CHECK=1
 ```
-
----
-
-## Detailed Rules Reference
-
-> The sections below contain full platform-specific examples for the mandatory rules above. Refer to these when you need implementation details.
-
-### Detailed UTF-8 Encoding Rules
-
-> **此规则为强制性要求，不可跳过。** 非法编码会导致内容在 IMA 中显示为乱码，且无法修复，必须重新写入。
->
-> **适用范围：notes 模块**（`import_doc`、`append_doc` 等文本写入 API）。
->
-> **不适用于 knowledge-base 模块的文件上传**：上传文件时必须保持文件原始内容，不得转码。文件以二进制方式上传，服务端自行处理。
-
-**每次调用 notes 写入类 API（`import_doc`/`append_doc`）之前，必须对 `content`、`title` 等所有字符串字段执行 UTF-8 编码校验/转换。** 无论内容来源如何——用户直接输入、从文件读取、WebFetch 抓取、剪贴板粘贴、外部 API 返回——都不能假设已经是合法 UTF-8，必须显式确认。
-
-#### 强制检查清单（notes 模块写入前）
-
-在构造 notes 写入请求的 body **之前**，完成以下步骤：
-
-1. **来自文件的内容**：先检测文件编码，转为 UTF-8 后再读入变量（注意：这是指读取文件内容作为笔记正文写入，不是上传文件到知识库）
-2. **来自 WebFetch / HTTP 请求的内容**：响应可能为 GBK/Latin-1 等，必须转码
-3. **来自用户输入或变量拼接的内容**：清洗非法 UTF-8 字节（`\xff\xfe` 等）
-4. **标题字段同理**：`title` 也必须为合法 UTF-8
-
-#### 各环境转码方法
-
-**Python（推荐，几乎所有环境都有）：**
-
-```bash
-# 读取文件，自动检测编码并转为 UTF-8
-content=$(python3 -c "
-import sys
-data = open('tmpfile', 'rb').read()
-for enc in ['utf-8', 'gbk', 'gb2312', 'big5', 'latin-1']:
-    try:
-        sys.stdout.write(data.decode(enc))
-        break
-    except (UnicodeDecodeError, LookupError):
-        continue
-" 2>/dev/null)
-
-# 如果内容已在变量中，清洗非法 UTF-8 字节
-content=$(printf '%s' "$content" | python3 -c "import sys; sys.stdout.write(sys.stdin.buffer.read().decode('utf-8','ignore'))")
+ima-copilot/
+├── SKILL.md                         # This file — entry and routing
+├── scripts/
+│   ├── install_ima_skill.sh         # Download → stage → npx skills add to 3 agents
+│   ├── diagnose.sh                  # Read-only health report
+│   └── search_fanout.py             # Fan-out search with priority grouping
+├── references/
+│   ├── installation_flow.md         # Capability 1 deep dive
+│   ├── api_key_setup.md             # Capability 2 deep dive
+│   ├── known_issues.md              # Issue registry — source of truth for repairs
+│   └── search_best_practices.md     # Capability 4 deep dive
+└── config-template/
+    └── copilot.json.example         # Template for ~/.config/ima/copilot.json
 ```
-
-**Node.js：**
-
-```bash
-content=$(node -e "const fs=require('fs');const buf=fs.readFileSync('tmpfile');process.stdout.write(buf.toString('utf8'))")
-# 已知编码（如 GBK）：
-content=$(node -e "const fs=require('fs');process.stdout.write(new TextDecoder('gbk').decode(fs.readFileSync('tmpfile')))")
-```
-
-**Unix (macOS/Linux)：**
-
-```bash
-content=$(iconv -f "$(file -b --mime-encoding tmpfile)" -t UTF-8 tmpfile 2>/dev/null || cat tmpfile)
-```
-
-**Windows PowerShell：**
-
-```powershell
-# 读取非 UTF-8 文件并转码
-$content = [System.IO.File]::ReadAllText('tmpfile', [System.Text.Encoding]::Default)
-[System.IO.File]::WriteAllText('tmpfile.utf8', $content, [System.Text.Encoding]::UTF8)
-```
-
-### PowerShell 5.1 Environment Detection
-
-> **此问题影响所有 API 调用（notes、knowledge-base 等）**
->
-> **此问题极其隐蔽：PowerShell 5.1 下 `Invoke-RestMethod` 会静默将请求 Body 从 UTF-8 转为系统 ANSI 编码（中文 Windows 为 GBK），即使设置了 `Content-Type: charset=utf-8` 也无效。结果是请求看起来发送成功，但服务端收到的内容已经是乱码，且无任何错误提示。**
-
-**当 agent 运行在 PowerShell 环境时，必须在首次 API 调用前检测版本：**
-
-```powershell
-# 检测 PowerShell 版本 — 在任何 API 调用之前执行（notes 和 knowledge-base 都需要）
-if ($PSVersionTable.PSVersion.Major -le 5) {
-    Write-Host "⚠️ 检测到 PowerShell 5.1，将使用 UTF-8 字节数组模式发送请求"
-    $useUtf8Bytes = $true
-} else {
-    Write-Host "✅ PowerShell 7+，默认 UTF-8，无需额外处理"
-    $useUtf8Bytes = $false
-}
-```
-
-**PowerShell 5.1 下必须使用以下方式发送请求**（用 `ConvertTo-Json` 构建 JSON 以避免手动拼接的转义风险，再显式转为 UTF-8 字节数组）：
-
-```powershell
-# PowerShell 5.1 安全请求模板（适用于所有模块的所有 API 调用）
-$body = @{ title = "标题"; content = $content; content_format = 1 } | ConvertTo-Json -Depth 10
-if ($useUtf8Bytes) {
-    # CRITICAL: 必须转为字节数组，否则中文/非ASCII内容会变成乱码
-    $utf8Bytes = [System.Text.Encoding]::UTF8.GetBytes($body)
-    Invoke-RestMethod -Uri $url -Method Post -Body $utf8Bytes -ContentType "application/json; charset=utf-8" -Headers $headers
-} else {
-    # PowerShell 7+ 可直接传字符串
-    Invoke-RestMethod -Uri $url -Method Post -Body $body -ContentType "application/json; charset=utf-8" -Headers $headers
-}
-```
-
-> **总结：** 在 PowerShell 5.1 环境中，**所有** API 调用（无论 notes 还是 knowledge-base）都必须将 Body 显式转为 UTF-8 字节数组。不检测版本直接发请求 = 中文内容必乱码。这是 PowerShell 5.1 的已知设计缺陷，不是 bug 可以被修复。

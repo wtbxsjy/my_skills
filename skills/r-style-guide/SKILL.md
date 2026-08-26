@@ -1,27 +1,11 @@
 ---
 name: r-style-guide
-description: R code style guide for naming, spacing, layout, comments, and local function-writing conventions. Use when the main question is how R code should be formatted or structured for readability and consistency, not when choosing tidyverse APIs or package-development workflow.
+description: R style guide covering naming conventions, spacing, layout, and function design best practices. Use when writing R code.
 ---
 
 # R Style Guide & Function Writing Best Practices
 
 *Consistent naming, spacing, structure, and function design for R code*
-
-## Skill Boundaries
-
-Use this skill when deciding:
-
-- naming conventions
-- spacing, indentation, and line breaks
-- comment style
-- object and file organization
-- function shape and readability
-
-Prefer other skills when the task is more specific than style:
-
-- Use `tidyverse-patterns` for `dplyr`, `purrr`, `stringr`, joins, and tidyeval syntax.
-- Use `modern-r` when doing broad modernization of older code.
-- Use `r-package-development` for package-specific structure, roxygen, tests, `DESCRIPTION`, and release workflow.
 
 ## Function Writing Best Practices
 
@@ -147,24 +131,29 @@ x <- x + 1
 ### File Organization
 
 ```r
-# 1. Define constants
+# 1. Load packages at the top
+library(dplyr)
+library(ggplot2)
+
+# 2. Source any helper files
+source("R/helpers.R")
+
+# 3. Define constants
 MAX_ITERATIONS <- 1000
 DEFAULT_THRESHOLD <- 0.05
 
-# 2. Define functions
+# 4. Define functions
 process_data <- function(data) {
   # ...
 }
 
-# 3. Main script logic (if not a package)
+# 5. Main script logic (if not a package)
 main <- function() {
   data <- read_csv("data/input.csv")
   result <- process_data(data)
   write_csv(result, "data/output.csv")
 }
 ```
-
-For package code, do not put `library()` calls inside package source files. Follow `r-package-development` for package-specific organization.
 
 ## Function Design Guidelines
 
@@ -220,26 +209,45 @@ process <- function(x) {
 
 ### Error Handling
 
+Prefer `cli::cli_abort()` over `stop()` for user-facing errors. Structure messages as a problem statement followed by context bullets.
+
 ```r
-# Good - Informative error messages
-validate_input <- function(x, name = "x") {
+# Good - cli::cli_abort() with structured bullets
+# Bullet types: x = error detail, i = info/hint, ! = warning
+validate_input <- function(x, threshold = 0) {
   if (!is.numeric(x)) {
-    stop("`", name, "` must be numeric, not ", typeof(x), call. = FALSE)
+    cli::cli_abort(c(
+      "{.arg x} must be numeric.",
+      x = "You supplied {.cls {class(x)}}.",
+      i = "Convert with {.fn as.numeric} first."
+    ))
   }
-  if (length(x) == 0) {
-    stop("`", name, "` cannot be empty", call. = FALSE)
+  if (any(x < threshold)) {
+    cli::cli_abort(c(
+      "{.arg x} must be >= {threshold}.",
+      x = "{sum(x < threshold)} value{?s} below threshold.",
+      i = "Set {.arg threshold} to adjust the lower bound."
+    ))
   }
 }
 
-# Good - Use cli for user-friendly messages
-validate_input_cli <- function(x) {
-  if (!is.numeric(x)) {
-    cli::cli_abort(
-      "{.arg x} must be numeric, not {.cls {class(x)}}."
-    )
-  }
-}
+# Good - reference argument names, functions, and classes with inline markup
+cli::cli_abort(c(
+  "{.fn my_func} requires a data frame.",
+  x = "{.arg data} is {.cls {class(data)}}, not {.cls data.frame}.",
+  i = "Did you mean to call {.fn as.data.frame}?"
+))
+
+# Avoid - stop() with string concatenation
+stop("`x` must be numeric, not ", typeof(x), call. = FALSE)
 ```
+
+**Inline markup tokens:**
+- `{.arg x}` — argument name (backtick-formatted)
+- `{.fn foo}` — function name
+- `{.cls {class(x)}}` — class name
+- `{.val {value}}` — literal value
+- `{?s}` — pluralisation (`value{?s}` → "value" or "values")
 
 ### Default Arguments
 

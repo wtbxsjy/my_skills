@@ -38,7 +38,10 @@ my_skills/
 │       ├── explanatory-output-style/
 │       └── learning-output-style/
 ├── skills/                     # 用户 Skills（来自 .cc-switch 和 .claude）
-└── plugin-skills/              # 插件提供的 Skills
+├── plugin-skills/              # 插件提供的 Skills
+├── SOURCES.md                  # 每个 skill 的源 GitHub 仓库索引
+├── SOURCES.tsv                 # 源仓库映射表（update-skills.sh 读取）
+└── update-skills.sh            # 一键从上游同步/更新全部 skills
 ```
 
 ## 已安装的 Plugins
@@ -86,12 +89,26 @@ my_skills/
 3. **Settings**: 使用 `settings.template.json` 作为模板，本地密钥保存在 `settings.local.json`（不提交）
 4. **Hooks**: 通过 plugin 管理，配置文件备份在 `config/hooks/`
 
+## Skill 来源与自动更新
+
+每个 skill 都对应一个上游 GitHub 仓库（映射见 [SOURCES.md](./SOURCES.md) / [SOURCES.tsv](./SOURCES.tsv)）。上游发布新版本后，运行：
+
+```bash
+bash update-skills.sh            # 同步全部 skills/ 与 plugin-skills/
+bash update-skills.sh taste-skill # 只同步某一个 skill
+```
+
+脚本会按 `SOURCES.tsv` 从各源仓库（posit-dev/skills、tidymodels/skills、google-deepmind/science-skills、anthropics/skills、duckdb/duckdb-skills、minimax-ai/skills、nexu-io/open-design 等）拉取最新内容并镜像到本仓库。
+
+> 注意：`skills/modern-r` 与 `skills/r-skill-changelog-sync` 为自定义 skill，无公开源，不会参与自动更新。
+
 ## 更新流程
 
 ```bash
-# 添加新 skill 后
-git add skills/new-skill/
-git commit -m "Add skill: new-skill"
+# 更新完 skill 后提交
+bash update-skills.sh
+git add skills/ plugin-skills/ SOURCES.md SOURCES.tsv update-skills.sh
+git commit -m "Update skills from upstream sources"
 git push
 
 # 另一台机器拉取

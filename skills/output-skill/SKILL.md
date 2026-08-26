@@ -1,7 +1,27 @@
 ---
 name: full-output-enforcement
-description: Overrides default LLM truncation behavior. Enforces complete code generation, bans placeholder patterns, and handles token-limit splits cleanly. Apply to any task requiring exhaustive, unabridged output.
+description: |
+  Overrides default LLM truncation behavior. Enforces complete code generation, bans placeholder patterns, and handles token-limit splits cleanly. Apply to any task requiring exhaustive, unabridged output.
+triggers:
+  - "full output"
+  - "no placeholders"
+  - "complete code"
+  - "unabridged implementation"
+od:
+  mode: prototype
+  surface: web
+  platform: desktop
+  scenario: engineering
+  category: agent-workflow
+  upstream: "https://github.com/Leonxlnx/taste-skill"
+  preview:
+    type: html
+  design_system:
+    requires: false
+  example_prompt: |
+    Produce the complete implementation for the requested artifact with no placeholder comments, no omitted sections, and clean split instructions only if output length requires it.
 ---
+
 
 # Full-Output Enforcement
 

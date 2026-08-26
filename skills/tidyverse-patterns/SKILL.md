@@ -1,31 +1,15 @@
 ---
 name: tidyverse-patterns
-description: Concrete tidyverse syntax and coding patterns for R, including modern `dplyr`, `purrr`, `stringr`, joins, grouping, and tidy evaluation. Use when choosing or rewriting specific tidyverse expressions, APIs, or pipelines; not for general R style-only questions or package-development workflow.
+description: Modern tidyverse patterns for R including pipes, joins, grouping, purrr, and stringr. Use when writing tidyverse R code.
 ---
 
 # Modern Tidyverse Patterns
 
-*Best practices for modern tidyverse development with dplyr 1.2+ and R 4.3+*
-
-## Skill Boundaries
-
-Use this skill for exact code-level tidyverse choices:
-
-- which `dplyr` verb or argument to use
-- how to write joins, `.by`, `across()`, `pick()`, or `reframe()`
-- how to write tidyeval helpers with `{{ }}` or `.data[[ ]]`
-- how to replace superseded `purrr` or string-handling idioms
-
-Prefer other skills when the task is broader:
-
-- Use `modern-r` for full-file or cross-cutting modernization decisions.
-- Use `r-style-guide` when the question is mainly formatting, naming, or comments.
-- Use `r-package-development` when the code lives in package workflow questions such as tests, roxygen, `DESCRIPTION`, or `NEWS.md`.
-- Use `r-performance` when benchmarking or optimization is the primary goal.
+*Best practices for modern tidyverse development with dplyr 1.1+ and R 4.3+*
 
 ## Core Principles
 
-1. **Use modern tidyverse patterns** - Prioritize dplyr 1.2+ features, native pipe, and current APIs
+1. **Use modern tidyverse patterns** - Prioritize dplyr 1.1+ features, native pipe, and current APIs
 2. **Profile before optimizing** - Use profvis and bench to identify real bottlenecks
 3. **Write readable code first** - Optimize only when necessary and after profiling
 4. **Follow tidyverse style guide** - Consistent naming, spacing, and structure
@@ -47,7 +31,7 @@ data %>%
   summarise(mean_value = mean(value))
 ```
 
-## Join Syntax (dplyr 1.2+)
+## Join Syntax (dplyr 1.1+)
 
 - **Use `join_by()` instead of character vectors for joins**
 - **Support for inequality, rolling, and overlap joins**
@@ -70,19 +54,39 @@ transactions |>
   inner_join(companies, by = c("company" = "id"))
 ```
 
-## Multiple Match Handling
+## Join Quality Control
 
-- **Use `multiple` and `unmatched` arguments for quality control**
+- **Declare cardinality with `relationship` to validate join assumptions**
+- **Use `unmatched = "error"` to catch unexpected non-matches**
+- **Use `na_matches = "never"` to prevent silent NA joins**
+- **Use `tidylog::` prefix interactively to verify join results**
 
 ```r
-# Expect 1:1 matches, error on multiple
-inner_join(x, y, by = join_by(id), multiple = "error")
+# Validate 1:1 relationship — errors if violated
+inner_join(x, y, by = join_by(id),
+  relationship = "one-to-one")
 
-# Allow multiple matches explicitly
-inner_join(x, y, by = join_by(id), multiple = "all")
+# Validate many-to-one (left has duplicates, right does not)
+left_join(transactions, companies, by = join_by(company == id),
+  relationship = "many-to-one")
 
-# Ensure all rows match
-inner_join(x, y, by = join_by(id), unmatched = "error")
+# Ensure all rows from left match something in right
+inner_join(x, y, by = join_by(id),
+  unmatched = "error")
+
+# Prevent NA values from matching each other silently
+left_join(x, y, by = join_by(id),
+  na_matches = "never")
+
+# Combine for strict joins
+inner_join(x, y, by = join_by(id),
+  relationship = "one-to-one",
+  unmatched = "error",
+  na_matches = "never")
+
+# Interactive verification with tidylog
+# tidylog prints a summary of rows matched/dropped
+tidylog::inner_join(x, y, by = join_by(id))
 ```
 
 ## Data Masking and Tidy Selection
@@ -114,7 +118,7 @@ data |>
 
 ## Modern Grouping and Column Operations
 
-- **Use `.by` for per-operation grouping (dplyr 1.2+, stable)**
+- **Use `.by` for per-operation grouping (dplyr 1.1+)**
 - **Use `pick()` for column selection inside data-masking functions**
 - **Use `across()` for applying functions to multiple columns**
 - **Use `reframe()` for multi-row summaries**
@@ -148,6 +152,69 @@ data |>
   group_by(category) |>
   summarise(mean_value = mean(value)) |>
   ungroup()
+```
+
+## NA-Safe Row Filtering
+
+- **Use `filter_out()` instead of negating conditions** — negation (`!condition`) silently drops NAs
+- **Use `when_any()` and `when_all()` for multi-column OR/AND filters (dplyr 1.2+)**
+
+```r
+# Problem: negation silently drops rows where condition is NA
+filter(data, !(value < 0))       # drops rows where value is NA — silent!
+
+# Good - filter_out() passes NAs through safely
+filter_out(data, value < 0)      # rows where value is NA are kept
+
+# Good - when_any() for OR across columns (dplyr 1.2+)
+filter(data, when_any(x, y, z, \(col) col > 0))  # any column > 0
+
+# Good - when_all() for AND across columns
+filter(data, when_all(x, y, z, \(col) !is.na(col)))  # no NAs in any
+
+# Avoid - verbose base patterns
+filter(data, !(value < 0) | is.na(value))   # workaround, not idiomatic
+```
+
+## Recoding and Conditional Updates
+
+- **Use `replace_when()` for in-place conditional updates** — avoids `case_when()` with `.default = x`
+- **Use `case_when()` with `.unmatched = "error"` when all cases should be handled**
+
+```r
+# Good - replace_when() for in-place updates (type-stable, NAs unaffected)
+mutate(data, status = replace_when(status,
+  value < 0  ~ "negative",
+  value == 0 ~ "zero"
+))
+
+# Avoid - case_when() requires restating the variable in .default
+mutate(data, status = case_when(
+  value < 0  ~ "negative",
+  value == 0 ~ "zero",
+  .default   = status    # repetitive
+))
+
+# Good - case_when() with strict exhaustiveness check
+mutate(data, grade = case_when(
+  score >= 90 ~ "A",
+  score >= 80 ~ "B",
+  score >= 70 ~ "C",
+  .unmatched  = "error"  # error if any row falls through
+))
+```
+
+## Serialization
+
+- **Use `qs2` for fast serialization** — successor to `qs`, not backwards-compatible
+
+```r
+# Good - qs2 (use .qs2 extension)
+qs2::qs_save(object, "data/results.qs2")
+object <- qs2::qs_read("data/results.qs2")
+
+# Avoid - older qs package
+qs::qsave(object, "data/results.qs")   # outdated
 ```
 
 ## Modern purrr Patterns
