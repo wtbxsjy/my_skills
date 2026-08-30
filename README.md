@@ -197,6 +197,7 @@ bash setup.sh        # Linux / macOS（Windows 用 setup.ps1）
 | [**architecture-diagram-generator**](https://github.com/Cocoon-AI/architecture-diagram-generator/tree/main/architecture-diagram) | Create polished dark-themed architecture diagrams as self-contained HTML+SVG files. Use when the user asks for system, infrastructure, cloud,... | Cocoon-AI/architecture-diagram-generator |
 | [**excalidraw-diagram-generator**](https://github.com/github/awesome-copilot/tree/main/skills/excalidraw-diagram-generator) | Generate Excalidraw diagrams from natural language descriptions. Use when asked to "create a diagram", "make a flowchart", "visualize a process",... | github/awesome-copilot |
 | [**fireworks-tech-graph**](https://github.com/yizhiyanhua-ai/fireworks-tech-graph) | Create technical diagrams such as software architecture, data flow, flowcharts, sequence diagrams, C4 reviews, cloud deployments, event streams,... | yizhiyanhua-ai/fireworks-tech-graph |
+| [**lieflat-charts**](https://github.com/larashero3-dotcom/lieflat-charts) | 一套模板驱动的数据可视化与报告生成 skill，既能严格从 Lupi、Basics、Glance、Maps 与 Interactive gallery 的真实实现生成 HTML 图表，也能从 12 套中英文整页报告模板生成可发布的 HTML 报告；以 Mono 为保底，能按数据语义自动选择内置... | larashero3-dotcom/lieflat-charts |
 
 ### 文档 / 办公
 

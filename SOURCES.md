@@ -313,6 +313,12 @@
 | `skills/ljg-word` | `master` | `skills/ljg-word` |  |
 | `skills/ljg-writes` | `master` | `skills/ljg-writes` |  |
 
+### https://github.com/larashero3-dotcom/lieflat-charts
+
+| 本仓库目录 | 上游分支 | 上游路径 | 备注 |
+|---|---|---|---|
+| `skills/lieflat-charts` | `main` | `.` | 模板驱动数据可视化/报告生成 skill（moxt.ai） |
+
 ## 自定义 Skill（无公开源，不参与自动更新）
 
 | Skill | 说明 |
