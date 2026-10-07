@@ -97,7 +97,7 @@ def anchor(t):
 R = ['cli','cran-extrachecks','lifecycle','mirai','r-cli-app','r-package-development','testing-r-packages',
      'r-bayes','r-oop','r-performance','r-style-guide','rlang-patterns','tdd-workflow','tidyverse-patterns',
      'add-dials-parameter','add-parsnip-engine','add-parsnip-model','add-recipe-step','add-yardstick-metric',
-     'shiny-bslib','shiny-bslib-theming','create-release-checklist','release-post']
+     'shiny-bslib','shiny-bslib-theming','create-release-checklist','release-post','gt-xlsx-roundtrip']
 QUARTO = ['quarto-authoring','quarto-alt-text','quarto-talks','alt-text','brand-yml']
 DATA = ['tabular-data-ml','single-cell-rna-qc','scvi-tools','ggsql','attach-db','duckdb-docs','install-duckdb','query','read-file','read-memories']
 BIO = ['alphafold-database-fetch-and-analyze','alphagenome-single-variant-analysis','chembl-database','clinical-trials-database','clinvar-database','credentials','dbsnp-database','embl-ebi-ols','encode-ccres-database','ensembl-database','foldseek-structural-search','gnomad-database','gtex-database','human-protein-atlas-database','interpro-database','jaspar-database','literature-search-arxiv','literature-search-biorxiv','literature-search-europepmc','literature-search-openalex','ncbi-sequence-fetch','openfda-database','opentargets-database','pdb-database','predictingthepast','protein-sequence-msa','protein-sequence-similarity-search','pubchem-database','pubmed-database','pymol','quickgo-database','reactome-database','string-database','ucsc-conservation-and-tfbs','unibind-database','uniprot-database','uv','workflow-skill-creator']
