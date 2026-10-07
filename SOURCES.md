@@ -286,6 +286,7 @@
 | 本仓库目录 | 上游分支 | 上游路径 | 备注 |
 |---|---|---|---|
 | `skills/kb-ops` | `CUSTOM` | `CUSTOM` | 本地知识库运维（自定义，无公开源） |
+| `skills/gt-xlsx-roundtrip` | `CUSTOM` | `CUSTOM` | forgts + gtxlsx 在 Excel 与 gt 表格间往返转换（自定义，无公开源） |
 
 ### https://github.com/lijigang/ljg-skills
 
@@ -326,3 +327,4 @@
 | `skills/modern-r` | 自定义：R 代码现代化改造指南 |
 | `skills/r-skill-changelog-sync` | 自定义：R 包 changelog 同步检查 |
 | `skills/kb-ops` | 自定义：本地知识库运维（kb-template 脚手架） |
+| `skills/gt-xlsx-roundtrip` | 自定义：forgts + gtxlsx 在 Excel 与 gt 表格间往返转换 |

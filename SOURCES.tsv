@@ -140,6 +140,7 @@ skills/find-skills|https://github.com/vercel-labs/skills.git|main|skills/find-sk
 skills/score|https://github.com/getkrafter/resume-toolkit.git|master|skills/score|Krafter resume-toolkit
 skills/travel-planner|https://github.com/ailabs-393/ai-labs-claude-skills.git|main|packages/skills/travel-planner
 skills/kb-ops|CUSTOM|CUSTOM|CUSTOM|本地知识库运维（自定义，无公开源）
+skills/gt-xlsx-roundtrip|CUSTOM|CUSTOM|CUSTOM|forgts + gtxlsx 在 Excel 与 gt 表格间往返转换（自定义，无公开源）
 skills/ljg-blind|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-blind
 skills/ljg-book|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-book
 skills/ljg-card|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-card

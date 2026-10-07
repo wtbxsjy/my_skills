@@ -52,6 +52,7 @@ lines.append('|---|---|')
 lines.append('| `skills/modern-r` | 自定义：R 代码现代化改造指南 |')
 lines.append('| `skills/r-skill-changelog-sync` | 自定义：R 包 changelog 同步检查 |')
 lines.append('| `skills/kb-ops` | 自定义：本地知识库运维（kb-template 脚手架） |')
+lines.append('| `skills/gt-xlsx-roundtrip` | 自定义：forgts + gtxlsx 在 Excel 与 gt 表格间往返转换 |')
 lines.append('')
 
 with open(os.path.join(ROOT, 'SOURCES.md'), 'w', encoding='utf-8') as f:
