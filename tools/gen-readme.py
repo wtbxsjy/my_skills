@@ -107,7 +107,7 @@ CHART = ['fireworks-tech-graph','architecture-diagram-generator','excalidraw-dia
 OFFICE = ['pptx-generator','ppt-master','minimax-docx','minimax-pdf','minimax-xlsx','gif-sticker-maker']
 KNOWLEDGE = ['defuddle','json-canvas','obsidian-bases','obsidian-cli','obsidian-markdown','ima-skill','kb-ops']
 META = ['skill-creator','writing-rules','credentials','uv','find-skills','score','travel-planner']
-LJG = ['ljg-blind','ljg-book','ljg-card','ljg-classic','ljg-constraint','ljg-invest','ljg-is','ljg-learn','ljg-paper','ljg-plain','ljg-present','ljg-push','ljg-qa','ljg-rank','ljg-read','ljg-relationship','ljg-roundtable','ljg-structure','ljg-think','ljg-word','ljg-writes']
+LJG = ['ljg-blind','ljg-book','ljg-card','ljg-classic','ljg-constraint','ljg-invest','ljg-is','ljg-learn','ljg-paper','ljg-explain','ljg-present','ljg-push','ljg-qa','ljg-rank','ljg-read','ljg-relationship','ljg-roundtable','ljg-structure','ljg-think','ljg-word','ljg-writes']
 
 CATS = [
     ('R / Tidyverse / Bioconductor', R),
