@@ -14,15 +14,15 @@
 |---|---|---|---|
 | `skills/alt-text` | `main` | `alt-text` |  |
 | `skills/brand-yml` | `main` | `brand-yml` |  |
-| `skills/cli` | `main` | `r-lib/cli` |  |
-| `skills/cran-extrachecks` | `main` | `r-lib/cran-extrachecks` |  |
+| `skills/cli` | `main` | `r-lib/r-cli` |  |
+| `skills/cran-extrachecks` | `main` | `r-lib/r-cran-extrachecks` |  |
 | `skills/create-release-checklist` | `main` | `open-source/create-release-checklist` |  |
 | `skills/critical-code-reviewer` | `main` | `posit-dev/critical-code-reviewer` |  |
 | `skills/describe-design` | `main` | `posit-dev/describe-design` |  |
 | `skills/ggsql` | `main` | `ggsql/ggsql` |  |
 | `skills/implement` | `main` | `posit-dev/implement` |  |
-| `skills/lifecycle` | `main` | `r-lib/lifecycle` |  |
-| `skills/mirai` | `main` | `r-lib/mirai` |  |
+| `skills/lifecycle` | `main` | `r-lib/r-lifecycle` |  |
+| `skills/mirai` | `main` | `r-lib/r-mirai` |  |
 | `skills/pr-create` | `main` | `github/pr-create` |  |
 | `skills/pr-threads-address` | `main` | `github/pr-threads-address` |  |
 | `skills/pr-threads-resolve` | `main` | `github/pr-threads-resolve` |  |
@@ -32,7 +32,7 @@
 | `skills/release-post` | `main` | `open-source/release-post` |  |
 | `skills/shiny-bslib` | `main` | `shiny/shiny-bslib` |  |
 | `skills/shiny-bslib-theming` | `main` | `shiny/shiny-bslib-theming` |  |
-| `skills/testing-r-packages` | `main` | `r-lib/testing-r-packages` |  |
+| `skills/testing-r-packages` | `main` | `r-lib/r-testthat` |  |
 | `skills/working-on` | `main` | `posit-dev/working-on` |  |
 
 ### https://github.com/tidymodels/skills
