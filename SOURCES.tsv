@@ -3,15 +3,15 @@
 # 目标目录相对于仓库根；"skills/<name>" 表示 skills/ 下的 skill，"plugin-skills/<a>/<b>" 表示插件 skill。
 skills/alt-text|https://github.com/posit-dev/skills.git|main|alt-text|
 skills/brand-yml|https://github.com/posit-dev/skills.git|main|brand-yml|
-skills/cli|https://github.com/posit-dev/skills.git|main|r-lib/cli|
-skills/cran-extrachecks|https://github.com/posit-dev/skills.git|main|r-lib/cran-extrachecks|
+skills/cli|https://github.com/posit-dev/skills.git|main|r-lib/r-cli|
+skills/cran-extrachecks|https://github.com/posit-dev/skills.git|main|r-lib/r-cran-extrachecks|
 skills/create-release-checklist|https://github.com/posit-dev/skills.git|main|open-source/create-release-checklist|
 skills/critical-code-reviewer|https://github.com/posit-dev/skills.git|main|posit-dev/critical-code-reviewer|
 skills/describe-design|https://github.com/posit-dev/skills.git|main|posit-dev/describe-design|
 skills/ggsql|https://github.com/posit-dev/skills.git|main|ggsql/ggsql|
 skills/implement|https://github.com/posit-dev/skills.git|main|posit-dev/implement|
-skills/lifecycle|https://github.com/posit-dev/skills.git|main|r-lib/lifecycle|
-skills/mirai|https://github.com/posit-dev/skills.git|main|r-lib/mirai|
+skills/lifecycle|https://github.com/posit-dev/skills.git|main|r-lib/r-lifecycle|
+skills/mirai|https://github.com/posit-dev/skills.git|main|r-lib/r-mirai|
 skills/pr-create|https://github.com/posit-dev/skills.git|main|github/pr-create|
 skills/pr-threads-address|https://github.com/posit-dev/skills.git|main|github/pr-threads-address|
 skills/pr-threads-resolve|https://github.com/posit-dev/skills.git|main|github/pr-threads-resolve|
@@ -21,7 +21,7 @@ skills/r-package-development|https://github.com/posit-dev/skills.git|main|r-lib/
 skills/release-post|https://github.com/posit-dev/skills.git|main|open-source/release-post|
 skills/shiny-bslib|https://github.com/posit-dev/skills.git|main|shiny/shiny-bslib|
 skills/shiny-bslib-theming|https://github.com/posit-dev/skills.git|main|shiny/shiny-bslib-theming|
-skills/testing-r-packages|https://github.com/posit-dev/skills.git|main|r-lib/testing-r-packages|
+skills/testing-r-packages|https://github.com/posit-dev/skills.git|main|r-lib/r-testthat|
 skills/working-on|https://github.com/posit-dev/skills.git|main|posit-dev/working-on|
 skills/add-dials-parameter|https://github.com/tidymodels/skills.git|main|developers/add-dials-parameter|
 skills/add-parsnip-engine|https://github.com/tidymodels/skills.git|main|developers/add-parsnip-engine|
