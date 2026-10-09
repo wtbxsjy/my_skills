@@ -150,7 +150,7 @@ skills/ljg-invest|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-i
 skills/ljg-is|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-is
 skills/ljg-learn|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-learn
 skills/ljg-paper|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-paper
-skills/ljg-plain|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-plain
+skills/ljg-explain|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-explain
 skills/ljg-present|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-present
 skills/ljg-push|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-push
 skills/ljg-qa|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-qa
@@ -163,3 +163,4 @@ skills/ljg-think|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-th
 skills/ljg-word|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-word
 skills/ljg-writes|https://github.com/lijigang/ljg-skills.git|master|skills/ljg-writes
 skills/lieflat-charts|https://github.com/larashero3-dotcom/lieflat-charts.git|main|.|模板驱动数据可视化/报告生成 skill（moxt.ai）
+skills/diagram-design|https://github.com/cathrynlavery/diagram-design.git|main|skills/diagram-design|Diagram Design（cathrynlavery，MIT）

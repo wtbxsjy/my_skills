@@ -301,7 +301,7 @@
 | `skills/ljg-is` | `master` | `skills/ljg-is` |  |
 | `skills/ljg-learn` | `master` | `skills/ljg-learn` |  |
 | `skills/ljg-paper` | `master` | `skills/ljg-paper` |  |
-| `skills/ljg-plain` | `master` | `skills/ljg-plain` |  |
+| `skills/ljg-explain` | `master` | `skills/ljg-explain` |  |
 | `skills/ljg-present` | `master` | `skills/ljg-present` |  |
 | `skills/ljg-push` | `master` | `skills/ljg-push` |  |
 | `skills/ljg-qa` | `master` | `skills/ljg-qa` |  |
@@ -319,6 +319,12 @@
 | 本仓库目录 | 上游分支 | 上游路径 | 备注 |
 |---|---|---|---|
 | `skills/lieflat-charts` | `main` | `.` | 模板驱动数据可视化/报告生成 skill（moxt.ai） |
+
+### https://github.com/cathrynlavery/diagram-design
+
+| 本仓库目录 | 上游分支 | 上游路径 | 备注 |
+|---|---|---|---|
+| `skills/diagram-design` | `main` | `skills/diagram-design` | Diagram Design（cathrynlavery，MIT） |
 
 ## 自定义 Skill（无公开源，不参与自动更新）
 
