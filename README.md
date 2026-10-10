@@ -199,6 +199,7 @@ bash setup.sh        # Linux / macOS（Windows 用 setup.ps1）
 | [**diagram-design**](https://github.com/cathrynlavery/diagram-design/tree/main/skills/diagram-design) | Create branded architecture, architecture delta, IT current-state, flowchart, sequence, state machine, ER/data model, timeline, swimlane, quadrant,... | cathrynlavery/diagram-design |
 | [**excalidraw-diagram-generator**](https://github.com/github/awesome-copilot/tree/main/skills/excalidraw-diagram-generator) | Generate Excalidraw diagrams from natural language descriptions. Use when asked to "create a diagram", "make a flowchart", "visualize a process",... | github/awesome-copilot |
 | [**fireworks-tech-graph**](https://github.com/yizhiyanhua-ai/fireworks-tech-graph) | Create precise SVG technical diagrams, export PNG or offline HTML, and animate supported semantic SVGs to GIF. Use for architecture, UML, agent,... | yizhiyanhua-ai/fireworks-tech-graph |
+| [**ggplot2-pub**](https://github.com/zhjx19/ggplot2-pub) | 出版级 ggplot2 图表：在 R 中生成、修复或审查达到论文/报告出版标准的统计图。 当用户要求画图、作图、出图、生成图表、论文 figure、按审稿意见改图（字太小/标签重叠/配色乱）、 或用 ggsave 导出图片时使用。... | zhjx19/ggplot2-pub |
 | [**lieflat-charts**](https://github.com/larashero3-dotcom/lieflat-charts) | 一套模板驱动的数据可视化与报告生成 skill，既能严格从 Lupi、Basics、Glance、Maps 与 Interactive gallery 的真实实现生成 HTML 图表，也能从 12 套中英文整页报告模板生成可发布的 HTML 报告；以 Mono 为保底，能按数据语义自动选择内置... | larashero3-dotcom/lieflat-charts |
 
 ### 文档 / 办公

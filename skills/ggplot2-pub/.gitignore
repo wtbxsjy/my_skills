@@ -1,0 +1,7 @@
+# R
+.Rhistory
+.RData
+
+# OS
+Thumbs.db
+.DS_Store

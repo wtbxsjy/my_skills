@@ -326,6 +326,12 @@
 |---|---|---|---|
 | `skills/diagram-design` | `main` | `skills/diagram-design` | Diagram Design（cathrynlavery，MIT） |
 
+### https://github.com/zhjx19/ggplot2-pub
+
+| 本仓库目录 | 上游分支 | 上游路径 | 备注 |
+|---|---|---|---|
+| `skills/ggplot2-pub` | `main` | `.` | 出版级 ggplot2 作图 skill（zhjx19/ggplot2-pub，MIT） |
+
 ## 自定义 Skill（无公开源，不参与自动更新）
 
 | Skill | 说明 |
