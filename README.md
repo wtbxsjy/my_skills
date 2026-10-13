@@ -81,6 +81,7 @@ bash setup.sh        # Linux / macOS（Windows 用 setup.ps1）
 
 | Skill | 描述 | 来源 |
 |---|---|---|
+| [**academic-humanizer**](https://github.com/AIScientists-Dev/academic-humanizer) | Improve the clarity and voice of AI-assisted academic writing (papers, theses, rebuttals) and funding proposals (NSF Project Summary/Description,... | AIScientists-Dev/academic-humanizer |
 | [**alt-text**](https://github.com/posit-dev/skills/tree/main/alt-text) | Generate and improve accessible alt text for data visualizations and images in R packages and Quarto documents. Use when the user wants to add,... | posit-dev/skills |
 | [**brand-yml**](https://github.com/posit-dev/skills/tree/main/brand-yml) | Create and use brand.yml files for consistent branding across Shiny apps and Quarto documents. Covers: (1) Creating new _brand.yml files,... | posit-dev/skills |
 | [**quarto-alt-text**](https://github.com/ai-integr8tor/posit-dev-skills/tree/add-py-shiny-dashboard-skills/quarto/quarto-alt-text) | Generate accessible alt text for data visualizations in Quarto documents. Use when the user wants to add, improve,... | ai-integr8tor/posit-dev-skills |

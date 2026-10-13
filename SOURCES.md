@@ -332,6 +332,12 @@
 |---|---|---|---|
 | `skills/ggplot2-pub` | `main` | `.` | 出版级 ggplot2 作图 skill（zhjx19/ggplot2-pub，MIT） |
 
+### https://github.com/AIScientists-Dev/academic-humanizer
+
+| 本仓库目录 | 上游分支 | 上游路径 | 备注 |
+|---|---|---|---|
+| `skills/academic-humanizer` | `main` | `.` | 学术写作与基金申请书的表达与语气润色（MIT） |
+
 ## 自定义 Skill（无公开源，不参与自动更新）
 
 | Skill | 说明 |
