@@ -1,0 +1,215 @@
+"""数据契约层：本模块与 skill 之间的全部输入输出结构。
+
+设计依据：docs/specs/2026-07-22-数据源模块设计.md·第 6 节。
+文件契约与库契约同构——skill 的 CLI 对 to_dict() 结果直接 json.dump。
+"""
+from __future__ import annotations
+
+import dataclasses
+from dataclasses import dataclass, field
+from typing import Any, Dict, List, Optional
+
+# SourceQuery.error 的取值全集（spec·第 9 节）
+ERROR_CODES = ("TIMEOUT", "CONN_FAILED", "DNS_FAIL",
+               "RATE_LIMITED", "SERVER_ERROR", "PARSE_ERROR")
+
+_DOI_URL_PREFIXES = ("https://doi.org/", "http://doi.org/", "doi.org/", "doi:")
+
+
+def normalize_doi(s: str) -> str:
+    """DOI 规范化：去 URL/scheme 前缀、去首尾空白、统一小写。"""
+    t = s.strip()
+    low = t.lower()
+    for p in _DOI_URL_PREFIXES:
+        if low.startswith(p):
+            t = t[len(p):]
+            low = t.lower()
+    return t.strip().lower()
+
+
+@dataclass
+class Ref:
+    """一条待查证的引用条目（调用方给 id，raw_text 供人工核对包引用原文）。"""
+    id: str
+    doi: Optional[str] = None
+    title: Optional[str] = None
+    authors: List[str] = field(default_factory=list)
+    year: Optional[int] = None
+    raw_text: Optional[str] = None
+
+    def to_dict(self) -> Dict[str, Any]:
+        return dataclasses.asdict(self)
+
+    @classmethod
+    def from_dict(cls, d: Dict[str, Any]) -> "Ref":
+        return cls(id=d["id"], doi=d.get("doi"), title=d.get("title"),
+                   authors=list(d.get("authors") or []), year=d.get("year"),
+                   raw_text=d.get("raw_text"))
+
+
+@dataclass
+class SourceQuery:
+    """一次源查询的记录——核验报告「已查源清单与查询式样」的直接来源。"""
+    source: str
+    query_kind: str            # "doi" | "title_match"
+    outcome: str               # "hit" | "miss" | "error"
+    error: Optional[str] = None    # ∈ ERROR_CODES
+    from_cache: bool = False
+
+    def to_dict(self) -> Dict[str, Any]:
+        return dataclasses.asdict(self)
+
+    @classmethod
+    def from_dict(cls, d: Dict[str, Any]) -> "SourceQuery":
+        return cls(source=d["source"], query_kind=d["query_kind"],
+                   outcome=d["outcome"], error=d.get("error"),
+                   from_cache=bool(d.get("from_cache", False)))
+
+
+@dataclass
+class SourceHit:
+    """一个源的命中：规范化元数据 + 裁剪后的原始响应（供 verify 逐字段比对）。
+
+    `metadata` 是自由 Dict（各源给什么留什么），但下列键有跨源契约、呈现层按键名读：
+
+    | 键 | 含义 | 缺省语义 |
+    | --- | --- | --- |
+    | title / authors[] / year / venue / doi / type | 题录 | None = 该源未给 |
+    | date | 日级日期 YYYY-MM-DD（目前仅 arXiv） | None = 该源无日级粒度 |
+    | cited_by_count | 被引数 | **不设键 / None = 未知，不是零被引** |
+    | abstract | 摘要纯文本 | None = 该源未给 |
+    | author_details[] | 作者 ORCID / 机构（见各 client 的 _author_details） | [] = 各源都没给标识 |
+    | oa | 开放获取可得性六键（见 clients.base.oa_record） | **None = 该源未给出，不是 closed** |
+    | pubtypes[] | 源给的完整出版类型数组（目前仅 PubMed，证据类型标签） | 不设键 = 该源无此概念 |
+    | expression_of_concern | 关注声明（撤稿的中间态，仅 PubMed） | 不设键 = 没查到或没查过 |
+
+    关注声明**有意不进 `retraction`**：那个字段非空即被 paper-verify 判为已撤稿，
+    把「期刊对该文存疑、尚未定论」说成「已撤稿」是替期刊下结论。
+    """
+    source: str
+    metadata: Dict[str, Any]   # 契约键见类文档
+    fetched_at: str            # ISO 8601（UTC）
+    # 撤稿标记：Crossref updated-by（Retraction Watch）/ OpenAlex is_retracted /
+    # PubMed 的 pubtype "Retracted Publication" 与 CommentsCorrections RetractionIn。
+    # 键：type / label / date_parts / source / doi，source 缺失表示源未给出溯源；
+    # PubMed 另带 notice_pmid（撤稿声明自己的 PMID）。
+    retraction: Optional[Dict[str, Any]] = None
+    raw: Dict[str, Any] = field(default_factory=dict)
+    from_cache: bool = False   # 本次命中是否来自本地缓存（供 stats 缓存命中率统计）
+
+    def to_dict(self) -> Dict[str, Any]:
+        return dataclasses.asdict(self)
+
+    @classmethod
+    def from_dict(cls, d: Dict[str, Any]) -> "SourceHit":
+        return cls(source=d["source"], metadata=dict(d.get("metadata") or {}),
+                   fetched_at=d["fetched_at"], retraction=d.get("retraction"),
+                   raw=dict(d.get("raw") or {}),
+                   from_cache=bool(d.get("from_cache", False)))
+
+
+@dataclass
+class Evidence:
+    """一条引用的证据包——六态判定（paper-verify）的输入，本模块的最终产出。"""
+    ref_id: str
+    input: Ref
+    doi_ra: Optional[str] = None   # Crossref|DataCite|ISTIC|not_registered|unknown|ra_unreachable|None(无DOI)
+    route_note: Optional[str] = None
+    queries: List[SourceQuery] = field(default_factory=list)
+    hits: List[SourceHit] = field(default_factory=list)
+
+    def to_dict(self) -> Dict[str, Any]:
+        return dataclasses.asdict(self)   # 递归展开嵌套 Ref/SourceQuery/SourceHit
+
+    @classmethod
+    def from_dict(cls, d: Dict[str, Any]) -> "Evidence":
+        return cls(ref_id=d["ref_id"], input=Ref.from_dict(d["input"]),
+                   doi_ra=d.get("doi_ra"), route_note=d.get("route_note"),
+                   queries=[SourceQuery.from_dict(q) for q in d.get("queries") or []],
+                   hits=[SourceHit.from_dict(h) for h in d.get("hits") or []])
+
+
+@dataclass
+class BatchResult:
+    """批任务结果：证据包集合 + 任务级统计 + 网络状态。"""
+    evidences: Dict[str, Evidence]
+    stats: Dict[str, Any]
+    network_status: str = "ok"     # ok | degraded | offline
+
+    def to_dict(self) -> Dict[str, Any]:
+        return dataclasses.asdict(self)   # asdict 递归 Dict[str, Evidence] 的值
+
+
+@dataclass
+class AuthorCandidate:
+    """一个同名候选作者——**源的消歧结果，不是本项目的判断**。
+
+    源（OpenAlex）自己用 ML 把作者名聚成实体，它会出错：实测同一个 ORCID
+    `0000-0003-3871-9099` 被拆成两个实体（99 篇 + 6 篇）。所以本结构承载的是「源说有
+    这么些候选」，谁和谁是同一个人由用户看着 ORCID / 机构 / 领域自己判断。
+
+    `entity_ids` 是列表而非单值：按 ORCID 归并后（客观键，见 search.py·merge_author_
+    candidates），一个候选可能对应源的多个实体。长度 > 1 就说明源把这个人拆开了。
+    """
+    source: str
+    name: str
+    entity_ids: List[str] = field(default_factory=list)
+    orcid: Optional[str] = None
+    works_count: int = 0
+    # [{"name": 机构名, "years": [年份…]}]——用**历年** affiliations 而不是
+    # last_known_institutions：后者实测常年失准（OpenAlex 给 Yann LeCun 的 last_known 是
+    # "Sanford Broadway Medical Center"），历年列表带年份，用户能自己看出哪段时间在哪。
+    affiliations: List[Dict[str, Any]] = field(default_factory=list)
+    topics: List[str] = field(default_factory=list)      # 研究领域，辨认同名的最强线索
+    name_variants: List[str] = field(default_factory=list)
+    # display_name 是否与查询串逐字相同。False = 源的模糊匹配拽回来的近似名，很可能是
+    # 另一个人：实测搜「周生华」会返回「周华生」（字序颠倒）。呈现层必须标出来。
+    exact_name_match: bool = True
+
+    def to_dict(self) -> Dict[str, Any]:
+        return dataclasses.asdict(self)
+
+
+@dataclass
+class AuthorSearchResult:
+    """作者检索结果 + 覆盖声明 + 源报告的候选总数。
+
+    total_found 是**源说一共有多少个候选**，与 len(candidates) 分开记：实测
+    "Wei Wang" 有 9757 个候选，必须截断呈现，而截掉多少要能如实说清楚。
+    """
+    candidates: List[AuthorCandidate]
+    coverage: List[Dict[str, Any]]
+    total_found: int = 0
+    network_status: str = "ok"
+
+    def to_dict(self) -> Dict[str, Any]:
+        return dataclasses.asdict(self)
+
+
+@dataclass
+class ProbeResult:
+    """健康探测结果。status 用英文态码（语言规范：态码留给日志与契约），
+    paper-doctor 的用户可见报告层转中文（可用 / 不可用 / 部分可用）。"""
+    source: str
+    status: str                # ok | unavailable | partial
+    role: str                  # core | supplementary
+    reason: Optional[str] = None
+
+    def to_dict(self) -> Dict[str, Any]:
+        return dataclasses.asdict(self)
+
+
+@dataclass
+class SearchResult:
+    """检索结果 + 覆盖方式声明（由注册表生成，见 spec·6.2）+ 网络状态。
+
+    network_status 与 BatchResult 同义（ok/degraded/offline）：offline = 被检索的核心源
+    全部失败；degraded = 部分核心源失败，或有降级源（如 S2 无 key 慢速档）；否则 ok。
+    coverage 项承载 hit_count/outcome/error/applied_filters（含非字符串值），故值类型放宽为 Any。
+    """
+    items: List[SourceHit]
+    coverage: List[Dict[str, Any]]
+    network_status: str = "ok"     # ok | degraded | offline
+
+    def to_dict(self) -> Dict[str, Any]:
+        return dataclasses.asdict(self)

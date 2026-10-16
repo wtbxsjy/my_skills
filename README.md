@@ -25,6 +25,7 @@
   - [前端 / 设计](#前端-设计)
   - [图表 / 可视化](#图表-可视化)
   - [文档 / 办公](#文档-办公)
+  - [学术写作 / 文献综述](#学术写作-文献综述)
   - [知识管理 / Obsidian](#知识管理-obsidian)
   - [个人技能集（ljg-*）](#个人技能集ljg-)
   - [Meta / 效率工具](#meta-效率工具)
@@ -74,7 +75,7 @@ bash setup.sh        # Linux / macOS（Windows 用 setup.ps1）
 | [**shiny-bslib**](https://github.com/posit-dev/skills/tree/main/shiny/shiny-bslib) | Build modern Shiny dashboards and applications using bslib (Bootstrap 5). Use when creating new Shiny apps, modernizing legacy apps (fluidPage,... | posit-dev/skills |
 | [**shiny-bslib-theming**](https://github.com/posit-dev/skills/tree/main/shiny/shiny-bslib-theming) | Advanced theming for Shiny apps using bslib and Bootstrap 5. Use when customizing app appearance with bs_theme(), Bootswatch themes, custom colors,... | posit-dev/skills |
 | [**tdd-workflow**](https://github.com/ab604/claude-code-r-skills/tree/main/.claude/skills/tdd-workflow) | Test-driven development workflow for R using testthat. Use when writing new features, fixing bugs, or refactoring code.... | ab604/claude-code-r-skills |
-| [**testing-r-packages**](https://github.com/posit-dev/skills/tree/main/r-lib/r-testthat) | Best practices for writing R package tests using testthat version 3+. Use when writing, organizing, or improving tests for R packages.... | posit-dev/skills |
+| [**testing-r-packages**](https://github.com/posit-dev/skills/tree/main/r-lib/r-testthat) | Best practices for writing R package tests with testthat version 3+.... | posit-dev/skills |
 | [**tidyverse-patterns**](https://github.com/ab604/claude-code-r-skills/tree/main/.claude/skills/tidyverse-patterns) | Modern tidyverse patterns for R including pipes, joins, grouping, purrr, and stringr. Use when writing tidyverse R code. | ab604/claude-code-r-skills |
 
 ### Quarto / 发布与写作
@@ -213,6 +214,36 @@ bash setup.sh        # Linux / macOS（Windows 用 setup.ps1）
 | [**minimax-xlsx**](https://github.com/minimax-ai/skills/tree/main/skills/minimax-xlsx) | Open, create, read, analyze, edit, or validate Excel/spreadsheet files (.xlsx, .xlsm, .csv, .tsv). Use when the user asks to create, build, modify,... | minimax-ai/skills |
 | [**ppt-master**](https://github.com/hugohe3/ppt-master/tree/main/skills/ppt-master) | AI-driven presentation workflow for generating editable PPTX decks and slides, reconstructing page visuals,... | hugohe3/ppt-master |
 | [**pptx-generator**](https://github.com/minimax-ai/skills/tree/main/skills/pptx-generator) | Generate, edit, and read PowerPoint presentations. Create from scratch with PptxGenJS (cover, TOC, content, section divider, summary slides),... | minimax-ai/skills |
+
+### 学术写作 / 文献综述
+
+| Skill | 描述 | 来源 |
+|---|---|---|
+| [**literature-review**](https://github.com/taoyunudt/literature-review-skill) | 帮助用户撰写高质量的文献综述类论文。提供从选题、文献检索、评估筛选、结构规划到最终写作的全流程指导。适用于需要撰写独立文献综述论文或学术论文中文献综述部分的用户。 | taoyunudt/literature-review-skill |
+| [**paper-abstract**](https://github.com/cabbage2000-lab/paper-tutor-skills/tree/main/skills/paper-abstract) | Paper 摘要提炼命令（正文→摘要提炼器）。当用户已有论文正文要写摘要、提炼摘要、凝练摘要、生成 abstract、整理论文摘要、学位论文摘要、期刊投稿摘要、关键词，或说"帮我写摘要""从正文提炼摘要""摘要怎么写""我的论文摘要""abstract 帮我弄一下""关键词帮我选几个"时使用—... | cabbage2000-lab/paper-tutor-skills |
+| [**paper-anchor**](https://github.com/cabbage2000-lab/paper-tutor-skills/tree/main/skills/paper-anchor) | 文献支撑补齐命令（论断—支撑对照器）。当导师或审稿人说"这段缺文献支撑""文献综述不足""缺少与已有研究的对比"， 或用户要给已写好的论断补引用、问"这句话需要引用吗""哪些段落没引用""帮我找支撑这个观点的文献""我这个论断有没有文献支持" 时使用——即使用户只说"帮我补文献""这段要不要加... | cabbage2000-lab/paper-tutor-skills |
+| [**paper-daily**](https://github.com/cabbage2000-lab/paper-tutor-skills/tree/main/skills/paper-daily) | Paper 每日学术雷达命令（抢发检测 + 新发泛读）。当用户手头有研究想法（RQ / 方法 / 想投的会议）、想确认是不是已被人抢发、或想每天泛读该方向新发论文时使用——即使用户只说"今天 arXiv 有什么新论文""这个方向最近有什么新论文""我被人抢发了吗""这个 idea 还能做吗""... | cabbage2000-lab/paper-tutor-skills |
+| [**paper-disclose**](https://github.com/cabbage2000-lab/paper-tutor-skills/tree/main/skills/paper-disclose) | Paper AI 使用说明生成命令（披露汇编器）。当用户要写论文投稿的 AI 使用说明、AI 使用披露、AI 辅助声明、学位论文 AIGC 使用报告,... | cabbage2000-lab/paper-tutor-skills |
+| [**paper-doctor**](https://github.com/cabbage2000-lab/paper-tutor-skills/tree/main/skills/paper-doctor) | Paper 环境就绪度体检命令。当用户要检查 Paper 核验/检索环境能不能用、数据源通不通、凭证配没配、运行环境是否满足要求，或说 doctor / 体检 / 自检 / 环境检查 / 能不能用 / 跑不跑得起来 / 为什么核验不了 时使用——即使用户只说"这个工具到底能不能用"也应使用。... | cabbage2000-lab/paper-tutor-skills |
+| [**paper-draft**](https://github.com/cabbage2000-lab/paper-tutor-skills/tree/main/skills/paper-draft) | Paper 分段正文共写命令（段落正文初稿共写器）。当用户已有论文大纲（/paper-outline 产物或手写大纲）、要逐段展开正文、起草段落、写论文正文、把大纲要点展开成段，或说"帮我把这段引言写一下""这段正文怎么展开""基于大纲写一段方法""我有大纲了、想写正文"时使用——即使用户只说... | cabbage2000-lab/paper-tutor-skills |
+| [**paper-figure**](https://github.com/cabbage2000-lab/paper-tutor-skills/tree/main/skills/paper-figure) | Paper 图表可视化辅助命令（B 诊断 + C 设计建议双模式自适应）。当用户要查图表、图表诊断、图表设计、画图建议、该用什么图、图注怎么写、配色选什么、色盲友好、坐标轴规范、误差棒标注，或说"帮我看看这张图""图表有什么问题""我该画什么图""配色怎么选""figure 帮我查一下""画图... | cabbage2000-lab/paper-tutor-skills |
+| [**paper-help**](https://github.com/cabbage2000-lab/paper-tutor-skills/tree/main/skills/paper-help) | Paper 命令导航器。当用户问 Paper 能做什么、有哪些命令、该用哪个命令，或说 help / 帮助 / 怎么用 / 命令一览 / 不知道从哪开始时使用——即使用户只说"我想写论文但不知道用什么"也应使用。... | cabbage2000-lab/paper-tutor-skills |
+| [**paper-import**](https://github.com/cabbage2000-lab/paper-tutor-skills/tree/main/skills/paper-import) | Paper 题录导入命令（题录整理器 + 题录-草稿一致性核对器）。当用户有从知网/Zotero/EndNote 导出的题录要批量整理、整理参考文献、题录入库、做题录与草稿引用的一致性核对、查哪些草稿引用有对应题录、查题录与草稿字段差异，或说"帮我整理题录""知网题录导入""Zotero 题录... | cabbage2000-lab/paper-tutor-skills |
+| [**paper-init**](https://github.com/cabbage2000-lab/paper-tutor-skills/tree/main/skills/paper-init) | 为研究项目搭建标准科研工作目录的脚手架命令。当用户要开始一个新研究项目或新论文、想初始化或规范科研项目的目录结构、要搭多项目科研工作区，或提到 paper-init、科研工作目录时使用——即使用户只是说"帮我建个放论文材料的文件夹"也应使用。... | cabbage2000-lab/paper-tutor-skills |
+| [**paper-logic**](https://github.com/cabbage2000-lab/paper-tutor-skills/tree/main/skills/paper-logic) | Paper 论证链检查命令（结构对应检查器）。当用户已有论文大纲、要查论证逻辑、查 RQ 与方法结果结论是否对应、查论证链是否闭环、查论文逻辑结构，或说"帮我查查论证有没有问题""我的逻辑完整吗""RQ 和结论对应吗""方法能不能回答我的问题""结论有没有超出结果"时使用——即使用户只说"帮我... | cabbage2000-lab/paper-tutor-skills |
+| [**paper-method**](https://github.com/cabbage2000-lab/paper-tutor-skills/tree/main/skills/paper-method) | Paper 研究设计参谋命令（方法-RQ 匹配检查器 + 方法类引导器）。当用户已有研究问题（RQ）要定研究方法、检查方法能否回答 RQ、选什么方法类、查方法与 RQ 匹配度、研究设计行不行、涉人类被试要理伦理审查提示清单，或说"帮我设计研究方法""我想用 X 方法你看行不行""问卷能回答我的... | cabbage2000-lab/paper-tutor-skills |
+| [**paper-outline**](https://github.com/cabbage2000-lab/paper-tutor-skills/tree/main/skills/paper-outline) | Paper 论文大纲命令（结构草案共写器）。当用户已有研究问题（RQ）和文献笔记、要搭论文骨架、起草章节大纲、写论文结构、整理写作框架，或说"帮我把论文大纲列一下""论文应该怎么组织""章节怎么分""我有 RQ 和文献、想搭个大纲"时使用——即使用户只说"我想列个大纲""帮我想想结构""论文分... | cabbage2000-lab/paper-tutor-skills |
+| [**paper-plot**](https://github.com/cabbage2000-lab/paper-tutor-skills/tree/main/skills/paper-plot) | Paper 绘图代码生成命令（内建于 paper-figure，可独立调用）。当用户要生成绘图代码、plot 代码、画图代码、matplotlib 代码、ggplot2 代码、帮我生成图表代码、帮我写画图脚本、生成柱状图代码、散点图代码、折线图代码、箱线图代码、误差线图代码、直方图代码、热图代... | cabbage2000-lab/paper-tutor-skills |
+| [**paper-proposal**](https://github.com/cabbage2000-lab/paper-tutor-skills/tree/main/skills/paper-proposal) | Paper 开题报告组装命令（多源汇聚组装器）。当用户要写开题报告、组装学位论文开题材料、按中文学位论文制度节点整理立项文档，或说"帮我组装开题报告""开题报告怎么写""开题要准备什么""选题依据怎么写""文献综述部分帮我整理""研究内容部分怎么填""学位论文开题"时使用——即使用户只说"我要... | cabbage2000-lab/paper-tutor-skills |
+| [**paper-review**](https://github.com/cabbage2000-lab/paper-tutor-skills/tree/main/skills/paper-review) | Paper 模拟评审命令（多视角模拟审稿意见器）。当用户要投稿前预演评审、答辩前预演、模拟审稿、预审论文、查审稿人会怎么看、学位论文盲审模拟、期刊审稿模拟、答辩委员追问预演，或说"帮我模拟评审""模拟审稿看看""预审下我的论文""审稿人会提什么意见""盲审会挂吗""答辩委员可能问什么"时使用—... | cabbage2000-lab/paper-tutor-skills |
+| [**paper-revise**](https://github.com/cabbage2000-lab/paper-tutor-skills/tree/main/skills/paper-revise) | Paper 修订辅助命令（修订建议对照表 + 逐点回复信起草器）。当用户投稿/答辩后收到审稿意见要写回复信、要逐点回复审稿人、要改稿、要准备 point-by-point response、要 response letter、要修订建议、要把审稿意见逐条回应、或说"帮我写回复信""审稿意见怎么... | cabbage2000-lab/paper-tutor-skills |
+| [**paper-screen**](https://github.com/cabbage2000-lab/paper-tutor-skills/tree/main/skills/paper-screen) | Paper 系统综述筛选命令（PRISMA 2020 筛选台账 + 流程图生成器）。当用户要做系统性文献综述、做 PRISMA 筛选、定纳入排除标准、两轮筛选文献、文献去重、要 PRISMA 流程图、要数据提取表、要偏倚风险评估清单、要 PRISMA 报告规范自查，或说"帮我做系统综述""这批... | cabbage2000-lab/paper-tutor-skills |
+| [**paper-search**](https://github.com/cabbage2000-lab/paper-tutor-skills/tree/main/skills/paper-search) | 文献检索与综述辅助命令。当用户已有研究问题（RQ）或明确方向，要查文献、做文献综述、找研究缺口（Research Gap）、了解"某方向别人做到哪一步"时使用——即使用户只说"帮我查查这方面的研究""这个领域有哪些论文""有没有人研究过 X""这方面国内外做到什么程度了""帮我搜搜文献""顺着... | cabbage2000-lab/paper-tutor-skills |
+| [**paper-style**](https://github.com/cabbage2000-lab/paper-tutor-skills/tree/main/skills/paper-style) | Paper 风格校准命令（全文风格一致性校准 + 个人风格基线 + AIGC 误判申诉特征陈列）。当用户要查全文文风是否一致、要校准各章语体、要建立自己的写作风格基线供后续起草复用、或论文被 AIGC 检测判为 AI 生成要向学校/期刊申诉时使用——即使用户只说"这几章读着不像一个人写的""帮... | cabbage2000-lab/paper-tutor-skills |
+| [**paper-submit**](https://github.com/cabbage2000-lab/paper-tutor-skills/tree/main/skills/paper-submit) | Paper 投稿准备命令（投稿材料清单整理器 + 期刊常见投稿要求陈列）。当用户论文写完要投稿、要准备投稿材料、要写 cover letter、要整理投稿 checklist、要查期刊投稿要求、要准备投稿文件包、或说"帮我准备投稿""投稿要交什么""这个期刊要什么材料""投稿清单怎么列""co... | cabbage2000-lab/paper-tutor-skills |
+| [**paper-topic**](https://github.com/cabbage2000-lab/paper-tutor-skills/tree/main/skills/paper-topic) | Paper 选题澄清命令（选题导航器）。当用户只有模糊研究方向、说不清要研究什么、想把兴趣聚焦成研究问题（RQ），或已有一个候选题想被检验，或说选题、开题方向、不知道研究什么、帮我想想研究什么、你看这个题行不行、给我几个这个方向常见的研究问题、paper-topic 时使用——即使只说"我想研... | cabbage2000-lab/paper-tutor-skills |
+| [**paper-typeset**](https://github.com/cabbage2000-lab/paper-tutor-skills/tree/main/skills/paper-typeset) | Paper 出版链命令（Markdown → LaTeX / DOCX / PDF 转换管线 + GB/T 7714-2015 国标著录）。... | cabbage2000-lab/paper-tutor-skills |
+| [**paper-verify**](https://github.com/cabbage2000-lab/paper-tutor-skills/tree/main/skills/paper-verify) | 引用存在性核验命令。当用户要核查参考文献是否真实存在、查引用有没有编造、核实 DOI、 查某条引用是否已撤稿、查元数据（作者/年份/标题）对不对得上、检查参考文献格式 （GB/T 7714）、查论文结论是否夸大超出结果支撑，或说 verify / 核验 / 核对引用 / 查 DOI / 参考文... | cabbage2000-lab/paper-tutor-skills |
 
 ### 知识管理 / Obsidian
 

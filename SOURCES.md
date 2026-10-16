@@ -338,6 +338,42 @@
 |---|---|---|---|
 | `skills/academic-humanizer` | `main` | `.` | 学术写作与基金申请书的表达与语气润色（MIT） |
 
+### https://github.com/taoyunudt/literature-review-skill
+
+| 本仓库目录 | 上游分支 | 上游路径 | 备注 |
+|---|---|---|---|
+| `skills/literature-review` | `main` | `.` | 文献综述写作 skill（taoyunudt，MIT） |
+
+### https://github.com/cabbage2000-lab/paper-tutor-skills
+
+| 本仓库目录 | 上游分支 | 上游路径 | 备注 |
+|---|---|---|---|
+| `skills/_shared` | `main` | `skills/_shared` | 学术辅导套件共享层（cabbage2000-lab，PolyForm Noncommercial 1.0.0） |
+| `skills/paper-abstract` | `main` | `skills/paper-abstract` | 学术辅导套件（cabbage2000-lab，PolyForm Noncommercial 1.0.0，仅非商业用途） |
+| `skills/paper-anchor` | `main` | `skills/paper-anchor` | 学术辅导套件（cabbage2000-lab，PolyForm Noncommercial 1.0.0，仅非商业用途） |
+| `skills/paper-daily` | `main` | `skills/paper-daily` | 学术辅导套件（cabbage2000-lab，PolyForm Noncommercial 1.0.0，仅非商业用途） |
+| `skills/paper-disclose` | `main` | `skills/paper-disclose` | 学术辅导套件（cabbage2000-lab，PolyForm Noncommercial 1.0.0，仅非商业用途） |
+| `skills/paper-doctor` | `main` | `skills/paper-doctor` | 学术辅导套件（cabbage2000-lab，PolyForm Noncommercial 1.0.0，仅非商业用途） |
+| `skills/paper-draft` | `main` | `skills/paper-draft` | 学术辅导套件（cabbage2000-lab，PolyForm Noncommercial 1.0.0，仅非商业用途） |
+| `skills/paper-figure` | `main` | `skills/paper-figure` | 学术辅导套件（cabbage2000-lab，PolyForm Noncommercial 1.0.0，仅非商业用途） |
+| `skills/paper-help` | `main` | `skills/paper-help` | 学术辅导套件（cabbage2000-lab，PolyForm Noncommercial 1.0.0，仅非商业用途） |
+| `skills/paper-import` | `main` | `skills/paper-import` | 学术辅导套件（cabbage2000-lab，PolyForm Noncommercial 1.0.0，仅非商业用途） |
+| `skills/paper-init` | `main` | `skills/paper-init` | 学术辅导套件（cabbage2000-lab，PolyForm Noncommercial 1.0.0，仅非商业用途） |
+| `skills/paper-logic` | `main` | `skills/paper-logic` | 学术辅导套件（cabbage2000-lab，PolyForm Noncommercial 1.0.0，仅非商业用途） |
+| `skills/paper-method` | `main` | `skills/paper-method` | 学术辅导套件（cabbage2000-lab，PolyForm Noncommercial 1.0.0，仅非商业用途） |
+| `skills/paper-outline` | `main` | `skills/paper-outline` | 学术辅导套件（cabbage2000-lab，PolyForm Noncommercial 1.0.0，仅非商业用途） |
+| `skills/paper-plot` | `main` | `skills/paper-plot` | 学术辅导套件（cabbage2000-lab，PolyForm Noncommercial 1.0.0，仅非商业用途） |
+| `skills/paper-proposal` | `main` | `skills/paper-proposal` | 学术辅导套件（cabbage2000-lab，PolyForm Noncommercial 1.0.0，仅非商业用途） |
+| `skills/paper-review` | `main` | `skills/paper-review` | 学术辅导套件（cabbage2000-lab，PolyForm Noncommercial 1.0.0，仅非商业用途） |
+| `skills/paper-revise` | `main` | `skills/paper-revise` | 学术辅导套件（cabbage2000-lab，PolyForm Noncommercial 1.0.0，仅非商业用途） |
+| `skills/paper-screen` | `main` | `skills/paper-screen` | 学术辅导套件（cabbage2000-lab，PolyForm Noncommercial 1.0.0，仅非商业用途） |
+| `skills/paper-search` | `main` | `skills/paper-search` | 学术辅导套件（cabbage2000-lab，PolyForm Noncommercial 1.0.0，仅非商业用途） |
+| `skills/paper-style` | `main` | `skills/paper-style` | 学术辅导套件（cabbage2000-lab，PolyForm Noncommercial 1.0.0，仅非商业用途） |
+| `skills/paper-submit` | `main` | `skills/paper-submit` | 学术辅导套件（cabbage2000-lab，PolyForm Noncommercial 1.0.0，仅非商业用途） |
+| `skills/paper-topic` | `main` | `skills/paper-topic` | 学术辅导套件（cabbage2000-lab，PolyForm Noncommercial 1.0.0，仅非商业用途） |
+| `skills/paper-typeset` | `main` | `skills/paper-typeset` | 学术辅导套件（cabbage2000-lab，PolyForm Noncommercial 1.0.0，仅非商业用途） |
+| `skills/paper-verify` | `main` | `skills/paper-verify` | 学术辅导套件（cabbage2000-lab，PolyForm Noncommercial 1.0.0，仅非商业用途） |
+
 ## 自定义 Skill（无公开源，不参与自动更新）
 
 | Skill | 说明 |
