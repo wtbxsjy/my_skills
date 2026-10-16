@@ -71,6 +71,8 @@ def collect_skills(base, prefix):
         d = os.path.join(base, name)
         if not os.path.isdir(d):
             continue
+        if name.startswith('_'):
+            continue
         out[prefix + '/' + name] = get_description(d)
     return out
 
@@ -109,6 +111,8 @@ KNOWLEDGE = ['defuddle','json-canvas','obsidian-bases','obsidian-cli','obsidian-
 META = ['skill-creator','writing-rules','credentials','uv','find-skills','score','travel-planner']
 LJG = ['ljg-blind','ljg-book','ljg-card','ljg-classic','ljg-constraint','ljg-invest','ljg-is','ljg-learn','ljg-paper','ljg-explain','ljg-present','ljg-push','ljg-qa','ljg-rank','ljg-read','ljg-relationship','ljg-roundtable','ljg-structure','ljg-think','ljg-word','ljg-writes']
 
+ACADEMIC = ['literature-review','paper-abstract','paper-anchor','paper-daily','paper-disclose','paper-doctor','paper-draft','paper-figure','paper-help','paper-import','paper-init','paper-logic','paper-method','paper-outline','paper-plot','paper-proposal','paper-review','paper-revise','paper-screen','paper-search','paper-style','paper-submit','paper-topic','paper-typeset','paper-verify']
+
 CATS = [
     ('R / Tidyverse / Bioconductor', R),
     ('Quarto / 发布与写作', QUARTO),
@@ -118,6 +122,7 @@ CATS = [
     ('前端 / 设计', FRONTEND),
     ('图表 / 可视化', CHART),
     ('文档 / 办公', OFFICE),
+    ('学术写作 / 文献综述', ACADEMIC),
     ('知识管理 / Obsidian', KNOWLEDGE),
     ('个人技能集（ljg-*）', LJG),
     ('Meta / 效率工具', META),
