@@ -96,16 +96,22 @@
 | `skills/frontend-design` | `main` | `skills/frontend-design` |  |
 | `skills/skill-creator` | `main` | `skills/skill-creator` |  |
 
-### https://github.com/duckdb/duckdb-skills
+### CUSTOM
 
 | 本仓库目录 | 上游分支 | 上游路径 | 备注 |
 |---|---|---|---|
-| `skills/attach-db` | `main` | `skills/attach-db` |  |
-| `skills/duckdb-docs` | `main` | `skills/duckdb-docs` |  |
-| `skills/install-duckdb` | `main` | `skills/install-duckdb` |  |
-| `skills/query` | `main` | `skills/query` |  |
-| `skills/read-file` | `main` | `skills/read-file` |  |
-| `skills/read-memories` | `main` | `skills/read-memories` |  |
+| `skills/attach-db` | `CUSTOM` | `CUSTOM` | 派生自 duckdb/duckdb-skills@7feda8e，增补 DuckDB 2.0（agent mode 等） |
+| `skills/duckdb-docs` | `CUSTOM` | `CUSTOM` | 派生自 duckdb/duckdb-skills@7feda8e，增补 DuckDB 2.0（agent mode 等） |
+| `skills/install-duckdb` | `CUSTOM` | `CUSTOM` | 派生自 duckdb/duckdb-skills@7feda8e，增补 DuckDB 2.0（agent mode 等） |
+| `skills/query` | `CUSTOM` | `CUSTOM` | 派生自 duckdb/duckdb-skills@7feda8e，增补 DuckDB 2.0（agent mode 等） |
+| `skills/read-file` | `CUSTOM` | `CUSTOM` | 派生自 duckdb/duckdb-skills@7feda8e，增补 DuckDB 2.0（agent mode 等） |
+| `skills/read-memories` | `CUSTOM` | `CUSTOM` | 派生自 duckdb/duckdb-skills@7feda8e，增补 DuckDB 2.0（agent mode 等） |
+| `skills/kb-ops` | `CUSTOM` | `CUSTOM` | 本地知识库运维（自定义，无公开源） |
+| `skills/gt-xlsx-roundtrip` | `CUSTOM` | `CUSTOM` | forgts + gtxlsx 在 Excel 与 gt 表格间往返转换（自定义，无公开源） |
+| `skills/convert-file` | `CUSTOM` | `CUSTOM` | 格式转换，导入自 duckdb/duckdb-skills@7feda8e 并增补 DuckDB 2.0 |
+| `skills/s3-explore` | `CUSTOM` | `CUSTOM` | 对象存储探索，导入自 duckdb/duckdb-skills@7feda8e 并增补 DuckDB 2.0 |
+| `skills/spatial` | `CUSTOM` | `CUSTOM` | 空间数据，导入自 duckdb/duckdb-skills@7feda8e 并增补 DuckDB 2.0 |
+| `skills/duckdb-2-0` | `CUSTOM` | `CUSTOM` | DuckDB 2.0 更新汇总、迁移与 agent mode 指南（自写） |
 
 ### https://github.com/anthropics/knowledge-work-plugins
 
@@ -281,13 +287,6 @@
 |---|---|---|---|
 | `skills/travel-planner` | `main` | `packages/skills/travel-planner` |  |
 
-### CUSTOM
-
-| 本仓库目录 | 上游分支 | 上游路径 | 备注 |
-|---|---|---|---|
-| `skills/kb-ops` | `CUSTOM` | `CUSTOM` | 本地知识库运维（自定义，无公开源） |
-| `skills/gt-xlsx-roundtrip` | `CUSTOM` | `CUSTOM` | forgts + gtxlsx 在 Excel 与 gt 表格间往返转换（自定义，无公开源） |
-
 ### https://github.com/lijigang/ljg-skills
 
 | 本仓库目录 | 上游分支 | 上游路径 | 备注 |
@@ -382,3 +381,13 @@
 | `skills/r-skill-changelog-sync` | 自定义：R 包 changelog 同步检查 |
 | `skills/kb-ops` | 自定义：本地知识库运维（kb-template 脚手架） |
 | `skills/gt-xlsx-roundtrip` | 自定义：forgts + gtxlsx 在 Excel 与 gt 表格间往返转换 |
+| `skills/attach-db` | 派生自 duckdb/duckdb-skills@7feda8e，增补 DuckDB 2.0（agent mode 等） |
+| `skills/duckdb-docs` | 派生自 duckdb/duckdb-skills@7feda8e，增补 DuckDB 2.0（agent mode 等） |
+| `skills/install-duckdb` | 派生自 duckdb/duckdb-skills@7feda8e，增补 DuckDB 2.0（agent mode 等） |
+| `skills/query` | 派生自 duckdb/duckdb-skills@7feda8e，增补 DuckDB 2.0（agent mode 等） |
+| `skills/read-file` | 派生自 duckdb/duckdb-skills@7feda8e，增补 DuckDB 2.0（agent mode 等） |
+| `skills/read-memories` | 派生自 duckdb/duckdb-skills@7feda8e，增补 DuckDB 2.0（agent mode 等） |
+| `skills/convert-file` | 导入自 duckdb/duckdb-skills@7feda8e 并增补 DuckDB 2.0 |
+| `skills/s3-explore` | 导入自 duckdb/duckdb-skills@7feda8e 并增补 DuckDB 2.0 |
+| `skills/spatial` | 导入自 duckdb/duckdb-skills@7feda8e 并增补 DuckDB 2.0 |
+| `skills/duckdb-2-0` | 自定义：DuckDB 2.0 更新汇总、迁移与 agent mode 指南 |

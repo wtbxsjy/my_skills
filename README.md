@@ -93,15 +93,19 @@ bash setup.sh        # Linux / macOS（Windows 用 setup.ps1）
 
 | Skill | 描述 | 来源 |
 |---|---|---|
-| [**attach-db**](https://github.com/duckdb/duckdb-skills/tree/main/skills/attach-db) | Attach a DuckDB database file for use with /duckdb-skills:query. Explores the schema (tables, columns,... | duckdb/duckdb-skills |
-| [**duckdb-docs**](https://github.com/duckdb/duckdb-skills/tree/main/skills/duckdb-docs) | Search DuckDB and DuckLake documentation and blog posts. Returns relevant doc chunks for a question or keyword using full-text search against a loc... | duckdb/duckdb-skills |
+| [**attach-db**](./skills/attach-db) | Attach a DuckDB database file for use with /duckdb-skills:query. Explores the schema (tables, columns,... | 自定义 |
+| [**convert-file**](./skills/convert-file) | Convert any data file to another format: CSV, Parquet, JSON, Excel, GeoJSON, and more. Use when the user says "convert to parquet", "save as xlsx",... | 自定义 |
+| [**duckdb-2-0**](./skills/duckdb-2-0) | DuckDB 2.0 (LTS "Cinnamon Teal", released 2026-10-21) for agents: check the installed version, use the CLI agent mode (compact Markdown output,... | 自定义 |
+| [**duckdb-docs**](./skills/duckdb-docs) | Search DuckDB and DuckLake documentation and blog posts. Returns relevant doc chunks for a question or keyword using full-text search against a loc... | 自定义 |
 | [**ggsql**](https://github.com/posit-dev/skills/tree/main/ggsql/ggsql) | Write ggsql queries — a grammar of graphics for SQL. Use when the user wants to create, modify, or understand a ggsql visualization query. | posit-dev/skills |
-| [**install-duckdb**](https://github.com/duckdb/duckdb-skills/tree/main/skills/install-duckdb) | Install or update DuckDB extensions. Each argument is either a plain extension name (installs from core) or name@repo (e.g. magic@community).... | duckdb/duckdb-skills |
-| [**query**](https://github.com/duckdb/duckdb-skills/tree/main/skills/query) | Run SQL queries against the attached DuckDB database or ad-hoc against files. Accepts raw SQL or natural language questions.... | duckdb/duckdb-skills |
-| [**read-file**](https://github.com/duckdb/duckdb-skills/tree/main/skills/read-file) | Read any data file (CSV, JSON, Parquet, Avro, Excel, spatial, SQLite) or remote URL (S3, HTTPS). Use when user references a data file,... | duckdb/duckdb-skills |
-| [**read-memories**](https://github.com/duckdb/duckdb-skills/tree/main/skills/read-memories) | Search past Claude Code session logs to recall prior decisions, patterns, or unresolved work. Use when user says "do you remember",... | duckdb/duckdb-skills |
+| [**install-duckdb**](./skills/install-duckdb) | Install or update DuckDB extensions. Each argument is either a plain extension name (installs from core) or name@repo (e.g. magic@community).... | 自定义 |
+| [**query**](./skills/query) | Run SQL queries against the attached DuckDB database or ad-hoc against files. Accepts raw SQL or natural language questions.... | 自定义 |
+| [**read-file**](./skills/read-file) | Read any data file (CSV, JSON, Parquet, Avro, Excel, spatial, SQLite) or remote URL (S3, HTTPS). Use when user references a data file,... | 自定义 |
+| [**read-memories**](./skills/read-memories) | Search past Claude Code session logs to recall prior decisions, patterns, or unresolved work. Use when user says "do you remember",... | 自定义 |
+| [**s3-explore**](./skills/s3-explore) | Explore and query data on S3, Cloudflare R2, GCS, MinIO, or any S3-compatible storage. Use when the user mentions an s3://, r2://, gs://,... | 自定义 |
 | [**scvi-tools**](https://github.com/anthropics/knowledge-work-plugins/tree/main/bio-research/skills/scvi-tools) | Deep learning for single-cell analysis using scvi-tools. This skill should be used when users need (1) data integration and batch correction with s... | anthropics/knowledge-work-plugins |
 | [**single-cell-rna-qc**](https://github.com/anthropics/knowledge-work-plugins/tree/main/bio-research/skills/single-cell-rna-qc) | Performs quality control on single-cell RNA-seq data (.h5ad or .h5 files) using scverse best practices with MAD-based filtering and comprehensive v... | anthropics/knowledge-work-plugins |
+| [**spatial**](./skills/spatial) | Answer questions about spatial data using DuckDB. Use when the user mentions locations, coordinates, lat/lng, distances, maps, addresses, "near",... | 自定义 |
 | [**tabular-data-ml**](https://github.com/tidymodels/skills/tree/main/users/tabular-data-ml) | Build machine learning models using tidymodels for tabular data | tidymodels/skills |
 
 ### 生物医药 / 文献数据库

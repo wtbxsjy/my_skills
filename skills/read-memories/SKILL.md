@@ -34,6 +34,13 @@ Search paths:
 
 Replace `<SEARCH_PATH>` and `<KEYWORD>` before running.
 
+**DuckDB 2.x:** the CLI's agent mode turns on automatically for this command (agent environment
+variable set, stdout piped, no `-csv`/`-json` flag), so results are compact Markdown tables with a
+row-count footer, and cells are cut at 500 characters. The query above already limits rows (`LIMIT 40`)
+and text (`left(..., 500)`); if you need longer cells, raise `LIMIT`/`left()` in the SQL and pass
+`-cmd ".maxcellwidth 0"` before `-c` (for example `duckdb :memory: -cmd ".maxcellwidth 0" -c "..."`).
+`read_ndjson(...)` accepts the same options in 2.0.
+
 ## Step 2 — Internalize
 
 From the results, extract decisions, patterns, unresolved TODOs, and user corrections. Use this to inform your current response — do not repeat raw logs to the user.

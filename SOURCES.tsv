@@ -69,12 +69,12 @@ skills/uv|https://github.com/google-deepmind/science-skills.git|main|skills/uv|
 skills/workflow-skill-creator|https://github.com/google-deepmind/science-skills.git|main|skills/workflow_skill_creator|
 skills/frontend-design|https://github.com/anthropics/skills.git|main|skills/frontend-design|
 skills/skill-creator|https://github.com/anthropics/skills.git|main|skills/skill-creator|
-skills/attach-db|https://github.com/duckdb/duckdb-skills.git|main|skills/attach-db|
-skills/duckdb-docs|https://github.com/duckdb/duckdb-skills.git|main|skills/duckdb-docs|
-skills/install-duckdb|https://github.com/duckdb/duckdb-skills.git|main|skills/install-duckdb|
-skills/query|https://github.com/duckdb/duckdb-skills.git|main|skills/query|
-skills/read-file|https://github.com/duckdb/duckdb-skills.git|main|skills/read-file|
-skills/read-memories|https://github.com/duckdb/duckdb-skills.git|main|skills/read-memories|
+skills/attach-db|CUSTOM|CUSTOM|CUSTOM|派生自 duckdb/duckdb-skills@7feda8e，增补 DuckDB 2.0（agent mode 等）
+skills/duckdb-docs|CUSTOM|CUSTOM|CUSTOM|派生自 duckdb/duckdb-skills@7feda8e，增补 DuckDB 2.0（agent mode 等）
+skills/install-duckdb|CUSTOM|CUSTOM|CUSTOM|派生自 duckdb/duckdb-skills@7feda8e，增补 DuckDB 2.0（agent mode 等）
+skills/query|CUSTOM|CUSTOM|CUSTOM|派生自 duckdb/duckdb-skills@7feda8e，增补 DuckDB 2.0（agent mode 等）
+skills/read-file|CUSTOM|CUSTOM|CUSTOM|派生自 duckdb/duckdb-skills@7feda8e，增补 DuckDB 2.0（agent mode 等）
+skills/read-memories|CUSTOM|CUSTOM|CUSTOM|派生自 duckdb/duckdb-skills@7feda8e，增补 DuckDB 2.0（agent mode 等）
 skills/instrument-data-to-allotrope|https://github.com/anthropics/knowledge-work-plugins.git|main|bio-research/skills/instrument-data-to-allotrope|
 skills/nextflow-development|https://github.com/anthropics/knowledge-work-plugins.git|main|bio-research/skills/nextflow-development|
 skills/scientific-problem-selection|https://github.com/anthropics/knowledge-work-plugins.git|main|bio-research/skills/scientific-problem-selection|
@@ -192,3 +192,7 @@ skills/paper-submit|https://github.com/cabbage2000-lab/paper-tutor-skills.git|ma
 skills/paper-topic|https://github.com/cabbage2000-lab/paper-tutor-skills.git|main|skills/paper-topic|学术辅导套件（cabbage2000-lab，PolyForm Noncommercial 1.0.0，仅非商业用途）
 skills/paper-typeset|https://github.com/cabbage2000-lab/paper-tutor-skills.git|main|skills/paper-typeset|学术辅导套件（cabbage2000-lab，PolyForm Noncommercial 1.0.0，仅非商业用途）
 skills/paper-verify|https://github.com/cabbage2000-lab/paper-tutor-skills.git|main|skills/paper-verify|学术辅导套件（cabbage2000-lab，PolyForm Noncommercial 1.0.0，仅非商业用途）
+skills/convert-file|CUSTOM|CUSTOM|CUSTOM|格式转换，导入自 duckdb/duckdb-skills@7feda8e 并增补 DuckDB 2.0
+skills/s3-explore|CUSTOM|CUSTOM|CUSTOM|对象存储探索，导入自 duckdb/duckdb-skills@7feda8e 并增补 DuckDB 2.0
+skills/spatial|CUSTOM|CUSTOM|CUSTOM|空间数据，导入自 duckdb/duckdb-skills@7feda8e 并增补 DuckDB 2.0
+skills/duckdb-2-0|CUSTOM|CUSTOM|CUSTOM|DuckDB 2.0 更新汇总、迁移与 agent mode 指南（自写）

@@ -53,6 +53,13 @@ lines.append('| `skills/modern-r` | 自定义：R 代码现代化改造指南 |'
 lines.append('| `skills/r-skill-changelog-sync` | 自定义：R 包 changelog 同步检查 |')
 lines.append('| `skills/kb-ops` | 自定义：本地知识库运维（kb-template 脚手架） |')
 lines.append('| `skills/gt-xlsx-roundtrip` | 自定义：forgts + gtxlsx 在 Excel 与 gt 表格间往返转换 |')
+for _n in ('attach-db','duckdb-docs','install-duckdb','query','read-file','read-memories'):
+    lines.append('| `skills/' + _n + '` | 派生自 duckdb/duckdb-skills@7feda8e，增补 DuckDB 2.0（agent mode 等） |')
+for _n, _d in (('convert-file','导入自 duckdb/duckdb-skills@7feda8e 并增补 DuckDB 2.0'),
+               ('s3-explore','导入自 duckdb/duckdb-skills@7feda8e 并增补 DuckDB 2.0'),
+               ('spatial','导入自 duckdb/duckdb-skills@7feda8e 并增补 DuckDB 2.0'),
+               ('duckdb-2-0','自定义：DuckDB 2.0 更新汇总、迁移与 agent mode 指南')):
+    lines.append('| `skills/' + _n + '` | ' + _d + ' |')
 lines.append('')
 
 with open(os.path.join(ROOT, 'SOURCES.md'), 'w', encoding='utf-8') as f:
