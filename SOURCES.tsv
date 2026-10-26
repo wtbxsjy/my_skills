@@ -192,3 +192,4 @@ skills/paper-submit|https://github.com/cabbage2000-lab/paper-tutor-skills.git|ma
 skills/paper-topic|https://github.com/cabbage2000-lab/paper-tutor-skills.git|main|skills/paper-topic|学术辅导套件（cabbage2000-lab，PolyForm Noncommercial 1.0.0，仅非商业用途）
 skills/paper-typeset|https://github.com/cabbage2000-lab/paper-tutor-skills.git|main|skills/paper-typeset|学术辅导套件（cabbage2000-lab，PolyForm Noncommercial 1.0.0，仅非商业用途）
 skills/paper-verify|https://github.com/cabbage2000-lab/paper-tutor-skills.git|main|skills/paper-verify|学术辅导套件（cabbage2000-lab，PolyForm Noncommercial 1.0.0，仅非商业用途）
+skills/paper-knowledge-online|https://github.com/wtbxsjy/paper-knowledge.git|main|skills/paper-knowledge-online|论文参考→核验元数据→全文Markdown（CrossRef/arXiv+Sciverse 双源核对；PMC OA/arXiv 抓取，其余 PDF 经 MinerU 解析，MIT）
