@@ -412,3 +412,15 @@ plugin-skills/scientific-agent-skills/zarr-python|https://github.com/K-Dense-AI/
 skills/nextflow-agents|CUSTOM|CUSTOM|CUSTOM|Nextflow agent 原语（docs.seqera.io/nextflow/agent 与官方示例整理，自写）
 skills/nf-core-agents-md|CUSTOM|CUSTOM|CUSTOM|nf-core 官方 AGENTS.md 规则（nf-core/agents，MIT）整理，自写
 skills/nextflow-skills-guide|CUSTOM|CUSTOM|CUSTOM|Nextflow / nf-core 相关 skill 导航（自写）
+skills/benchmark-paper-template|https://github.com/HKUSTDial/Supervisor-Skills.git|main|skills/benchmark-paper-template|CC BY-NC-SA 4.0，description 已按本仓库规范精简，见 licenses/Supervisor-Skills-NOTICE.md
+skills/deep-research|https://github.com/HKUSTDial/Supervisor-Skills.git|main|skills/deep-research|CC BY-NC-SA 4.0，description 已按本仓库规范精简，见 licenses/Supervisor-Skills-NOTICE.md
+skills/figure-designer|https://github.com/HKUSTDial/Supervisor-Skills.git|main|skills/figure-designer|CC BY-NC-SA 4.0，description 已按本仓库规范精简，见 licenses/Supervisor-Skills-NOTICE.md
+skills/idea-evaluator|https://github.com/HKUSTDial/Supervisor-Skills.git|main|skills/idea-evaluator|CC BY-NC-SA 4.0，description 已按本仓库规范精简，见 licenses/Supervisor-Skills-NOTICE.md
+skills/intro-drafter|https://github.com/HKUSTDial/Supervisor-Skills.git|main|skills/intro-drafter|CC BY-NC-SA 4.0，description 已按本仓库规范精简，见 licenses/Supervisor-Skills-NOTICE.md
+skills/paper-polish|https://github.com/HKUSTDial/Supervisor-Skills.git|main|skills/paper-polish|CC BY-NC-SA 4.0，description 已按本仓库规范精简，见 licenses/Supervisor-Skills-NOTICE.md
+skills/paper-writer|https://github.com/HKUSTDial/Supervisor-Skills.git|main|skills/paper-writer|CC BY-NC-SA 4.0，description 已按本仓库规范精简，见 licenses/Supervisor-Skills-NOTICE.md
+skills/pre-submission-reviewer|https://github.com/HKUSTDial/Supervisor-Skills.git|main|skills/pre-submission-reviewer|CC BY-NC-SA 4.0，description 已按本仓库规范精简，见 licenses/Supervisor-Skills-NOTICE.md
+skills/rebuttal-guidance|https://github.com/HKUSTDial/Supervisor-Skills.git|main|skills/rebuttal-guidance|CC BY-NC-SA 4.0，description 已按本仓库规范精简，见 licenses/Supervisor-Skills-NOTICE.md
+skills/tech-paper-template|https://github.com/HKUSTDial/Supervisor-Skills.git|main|skills/tech-paper-template|CC BY-NC-SA 4.0，description 已按本仓库规范精简，见 licenses/Supervisor-Skills-NOTICE.md
+skills/vibe-research-workflow|https://github.com/HKUSTDial/Supervisor-Skills.git|main|skills/vibe-research-workflow|CC BY-NC-SA 4.0，description 已按本仓库规范精简，见 licenses/Supervisor-Skills-NOTICE.md
+skills/drawio-reconstruction|https://github.com/HKUSTDial/Supervisor-Skills.git|main|skills/drawio-reconstruction|CC BY-NC-SA 4.0，description 已按本仓库规范精简，见 licenses/Supervisor-Skills-NOTICE.md
