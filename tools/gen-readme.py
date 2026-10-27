@@ -103,7 +103,17 @@ R = ['cli','cran-extrachecks','lifecycle','mirai','r-cli-app','r-package-develop
 QUARTO = ['academic-humanizer','quarto-authoring','quarto-alt-text','quarto-talks','alt-text','brand-yml']
 DATA = ['tabular-data-ml','single-cell-rna-qc','scvi-tools','ggsql','attach-db','duckdb-docs','install-duckdb','query','read-file','read-memories','convert-file','s3-explore','spatial','duckdb-2-0']
 BIO = ['alphafold-database-fetch-and-analyze','alphagenome-single-variant-analysis','chembl-database','clinical-trials-database','clinvar-database','credentials','dbsnp-database','embl-ebi-ols','encode-ccres-database','ensembl-database','foldseek-structural-search','gnomad-database','gtex-database','human-protein-atlas-database','interpro-database','jaspar-database','literature-search-arxiv','literature-search-biorxiv','literature-search-europepmc','literature-search-openalex','ncbi-sequence-fetch','openfda-database','opentargets-database','pdb-database','predictingthepast','protein-sequence-msa','protein-sequence-similarity-search','pubchem-database','pubmed-database','pymol','quickgo-database','reactome-database','string-database','ucsc-conservation-and-tfbs','unibind-database','uniprot-database','uv','workflow-skill-creator']
-DEV = ['cpp-pro','rust-skills','karpathy-guidelines','playwright-cli','critical-code-reviewer','describe-design','implement','working-on','pr-create','pr-threads-address','pr-threads-resolve','session-report','claude-automation-recommender','claude-md-improver','scientific-problem-selection','start','nextflow-development','instrument-data-to-allotrope']
+DEV = ['cpp-pro','rust-skills','karpathy-guidelines','playwright-cli','critical-code-reviewer','describe-design','implement','working-on','pr-create','pr-threads-address','pr-threads-resolve','session-report','claude-automation-recommender','claude-md-improver','scientific-problem-selection','start','instrument-data-to-allotrope']
+NEXTFLOW = ['nextflow-development','nextflow-agents','nf-core-agents-md','nextflow-skills-guide']
+NEXTFLOW_TITLE = 'Nextflow / nf-core 工作流'
+SCI_TITLE = '科学研究 Agent Skills（K-Dense）'
+# plugin-skills/<namespace>/ 下的整包来源归入专门分类（其余仍归"插件附带 Skills"）
+PLUGIN_NS_CAT = {
+    'nextflow-agent-skills': NEXTFLOW_TITLE,
+    'seqera-nextflow-plugin': NEXTFLOW_TITLE,
+    'nf-core-skills': NEXTFLOW_TITLE,
+    'scientific-agent-skills': SCI_TITLE,
+}
 FRONTEND = ['frontend-design','frontend-dev','fullstack-dev','taste-skill','taste-skill-v1','gpt-tasteskill','brandkit','brutalist-skill','minimalist-skill','output-skill','soft-skill','redesign-skill','stitch-skill','imagegen-frontend-mobile','imagegen-frontend-web','image-to-code-skill','frontend-slides','guizang-ppt-skill']
 CHART = ['ggplot2-pub','diagram-design','fireworks-tech-graph','architecture-diagram-generator','excalidraw-diagram-generator','lieflat-charts']
 OFFICE = ['pptx-generator','ppt-master','minimax-docx','minimax-pdf','minimax-xlsx','gif-sticker-maker']
@@ -119,6 +129,8 @@ CATS = [
     ('数据科学 / 机器学习 / 数据查询', DATA),
     ('生物医药 / 文献数据库', BIO),
     ('开发 / 工程 / 工作流', DEV),
+    (NEXTFLOW_TITLE, NEXTFLOW),
+    (SCI_TITLE, []),
     ('前端 / 设计', FRONTEND),
     ('图表 / 可视化', CHART),
     ('文档 / 办公', OFFICE),
@@ -133,7 +145,7 @@ CUSTOM_TITLE = '自定义 Skills（无公开源）'
 
 def cat_of(dest):
     if dest.startswith('plugin-skills/'):
-        return PLUGIN_TITLE
+        return PLUGIN_NS_CAT.get(dest.split('/')[1], PLUGIN_TITLE)
     name = dest.split('/')[-1]
     for title, names in CATS:
         if name in names:

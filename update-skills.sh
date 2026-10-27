@@ -36,10 +36,12 @@ clone_or_update() {
   slug="$(echo "$repo" | sed 's#https://github.com/##; s#\.git$##; s#/#__#g')"
   repo_dir="$CACHE_DIR/$slug"
   if [[ -d "$repo_dir/.git" ]]; then
-    echo "  [缓存] $repo"
-    git -C "$repo_dir" fetch --depth 1 origin "$branch" >/dev/null 2>&1 || true
+    echo "  [缓存] $repo" >&2
+    if git -C "$repo_dir" fetch --depth 1 origin "$branch" >/dev/null 2>&1; then
+      git -C "$repo_dir" checkout -q -f FETCH_HEAD >/dev/null 2>&1 || true
+    fi
   else
-    echo "  [克隆] $repo @ $branch"
+    echo "  [克隆] $repo @ $branch" >&2
     git clone --depth 1 --filter=blob:none --sparse -b "$branch" "$repo" "$repo_dir" >/dev/null 2>&1
   fi
   echo "$repo_dir"

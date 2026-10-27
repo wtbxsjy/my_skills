@@ -60,6 +60,10 @@ for _n, _d in (('convert-file','导入自 duckdb/duckdb-skills@7feda8e 并增补
                ('spatial','导入自 duckdb/duckdb-skills@7feda8e 并增补 DuckDB 2.0'),
                ('duckdb-2-0','自定义：DuckDB 2.0 更新汇总、迁移与 agent mode 指南')):
     lines.append('| `skills/' + _n + '` | ' + _d + ' |')
+for _n, _d in (('nextflow-agents','自定义：Nextflow agent 原语（docs.seqera.io/nextflow/agent 与官方示例整理）'),
+               ('nf-core-agents-md','自定义：nf-core 官方 AGENTS.md 规则（nf-core/agents，MIT）整理'),
+               ('nextflow-skills-guide','自定义：Nextflow / nf-core 相关 skill 导航')):
+    lines.append('| `skills/' + _n + '` | ' + _d + ' |')
 lines.append('')
 
 with open(os.path.join(ROOT, 'SOURCES.md'), 'w', encoding='utf-8') as f:

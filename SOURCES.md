@@ -112,6 +112,9 @@
 | `skills/s3-explore` | `CUSTOM` | `CUSTOM` | 对象存储探索，导入自 duckdb/duckdb-skills@7feda8e 并增补 DuckDB 2.0 |
 | `skills/spatial` | `CUSTOM` | `CUSTOM` | 空间数据，导入自 duckdb/duckdb-skills@7feda8e 并增补 DuckDB 2.0 |
 | `skills/duckdb-2-0` | `CUSTOM` | `CUSTOM` | DuckDB 2.0 更新汇总、迁移与 agent mode 指南（自写） |
+| `skills/nextflow-agents` | `CUSTOM` | `CUSTOM` | Nextflow agent 原语（docs.seqera.io/nextflow/agent 与官方示例整理，自写） |
+| `skills/nf-core-agents-md` | `CUSTOM` | `CUSTOM` | nf-core 官方 AGENTS.md 规则（nf-core/agents，MIT）整理，自写 |
+| `skills/nextflow-skills-guide` | `CUSTOM` | `CUSTOM` | Nextflow / nf-core 相关 skill 导航（自写） |
 
 ### https://github.com/anthropics/knowledge-work-plugins
 
@@ -379,6 +382,238 @@
 |---|---|---|---|
 | `skills/paper-knowledge-online` | `main` | `skills/paper-knowledge-online` | 论文参考→核验元数据→全文Markdown（CrossRef/arXiv+Sciverse 双源核对；PMC OA/arXiv 抓取，其余 PDF 经 MinerU 解析，MIT） |
 
+### https://github.com/nextflow-io/agent-skills
+
+| 本仓库目录 | 上游分支 | 上游路径 | 备注 |
+|---|---|---|---|
+| `plugin-skills/nextflow-agent-skills/create-workflow` | `master` | `skills/create-workflow` |  |
+| `plugin-skills/nextflow-agent-skills/install-nextflow` | `master` | `skills/install-nextflow` |  |
+| `plugin-skills/nextflow-agent-skills/launch-workflow` | `master` | `skills/launch-workflow` |  |
+| `plugin-skills/nextflow-agent-skills/migrate-nextflow-code` | `master` | `skills/migrate-nextflow-code` |  |
+| `plugin-skills/nextflow-agent-skills/run-module` | `master` | `skills/run-module` |  |
+
+### https://github.com/seqeralabs/nextflow-plugin
+
+| 本仓库目录 | 上游分支 | 上游路径 | 备注 |
+|---|---|---|---|
+| `plugin-skills/seqera-nextflow-plugin/audit-conversion-readiness` | `main` | `skills/audit-conversion-readiness` |  |
+| `plugin-skills/seqera-nextflow-plugin/build-nextflow-pipeline` | `main` | `skills/build-nextflow-pipeline` |  |
+| `plugin-skills/seqera-nextflow-plugin/ce-credentials-setup` | `main` | `skills/ce-credentials-setup` |  |
+| `plugin-skills/seqera-nextflow-plugin/create-container` | `main` | `skills/create-container` |  |
+| `plugin-skills/seqera-nextflow-plugin/debug-local-run` | `main` | `skills/debug-local-run` |  |
+| `plugin-skills/seqera-nextflow-plugin/debug-seqera-failed-run` | `main` | `skills/debug-seqera-failed-run` |  |
+| `plugin-skills/seqera-nextflow-plugin/find-alternative-tools` | `main` | `skills/find-alternative-tools` |  |
+| `plugin-skills/seqera-nextflow-plugin/install-nextflow` | `main` | `skills/install-nextflow` |  |
+| `plugin-skills/seqera-nextflow-plugin/launch-workflow` | `main` | `skills/launch-workflow` |  |
+| `plugin-skills/seqera-nextflow-plugin/maintain-nf-core-pipeline` | `main` | `skills/maintain-nf-core-pipeline` |  |
+| `plugin-skills/seqera-nextflow-plugin/migrate-from-snakemake` | `main` | `skills/migrate-from-snakemake` |  |
+| `plugin-skills/seqera-nextflow-plugin/migrate-nextflow-code` | `main` | `skills/migrate-nextflow-code` |  |
+| `plugin-skills/seqera-nextflow-plugin/nextflow-config` | `main` | `skills/nextflow-config` |  |
+| `plugin-skills/seqera-nextflow-plugin/nextflow-development` | `main` | `skills/nextflow-development` |  |
+| `plugin-skills/seqera-nextflow-plugin/nextflow-history` | `main` | `skills/nextflow-history` |  |
+| `plugin-skills/seqera-nextflow-plugin/nextflow-output-patterns` | `main` | `skills/nextflow-output-patterns` |  |
+| `plugin-skills/seqera-nextflow-plugin/nextflow-schema` | `main` | `skills/nextflow-schema` |  |
+| `plugin-skills/seqera-nextflow-plugin/nf-data-lineage` | `main` | `skills/nf-data-lineage` |  |
+| `plugin-skills/seqera-nextflow-plugin/nf-docker-scripts` | `main` | `skills/nf-docker-scripts` |  |
+| `plugin-skills/seqera-nextflow-plugin/nf-pipeline-design` | `main` | `skills/nf-pipeline-design` |  |
+| `plugin-skills/seqera-nextflow-plugin/nf-plugin-development` | `main` | `skills/nf-plugin-development` |  |
+| `plugin-skills/seqera-nextflow-plugin/nf-plugin-legacy-migration` | `main` | `skills/nf-plugin-legacy-migration` |  |
+| `plugin-skills/seqera-nextflow-plugin/nf-test` | `main` | `skills/nf-test` |  |
+| `plugin-skills/seqera-nextflow-plugin/repair-workflow` | `main` | `skills/repair-workflow` |  |
+| `plugin-skills/seqera-nextflow-plugin/run-module` | `main` | `skills/run-module` |  |
+| `plugin-skills/seqera-nextflow-plugin/search-existing-modules` | `main` | `skills/search-existing-modules` |  |
+| `plugin-skills/seqera-nextflow-plugin/seqera-data-links` | `main` | `skills/seqera-data-links` |  |
+| `plugin-skills/seqera-nextflow-plugin/seqerakit` | `main` | `skills/seqerakit` |  |
+
+### https://github.com/edmundmiller/nf-core-skills
+
+| 本仓库目录 | 上游分支 | 上游路径 | 备注 |
+|---|---|---|---|
+| `plugin-skills/nf-core-skills/nf-core-lint` | `main` | `skills/nf-core-lint` |  |
+| `plugin-skills/nf-core-skills/nf-core-pipeline` | `main` | `skills/nf-core-pipeline` |  |
+
+### https://github.com/K-Dense-AI/claude-scientific-skills
+
+| 本仓库目录 | 上游分支 | 上游路径 | 备注 |
+|---|---|---|---|
+| `plugin-skills/scientific-agent-skills/13c-metabolic-flux` | `main` | `skills/13c-metabolic-flux` |  |
+| `plugin-skills/scientific-agent-skills/adaptyv` | `main` | `skills/adaptyv` |  |
+| `plugin-skills/scientific-agent-skills/aeon` | `main` | `skills/aeon` |  |
+| `plugin-skills/scientific-agent-skills/alphagenome` | `main` | `skills/alphagenome` |  |
+| `plugin-skills/scientific-agent-skills/analytical-method-validation` | `main` | `skills/analytical-method-validation` |  |
+| `plugin-skills/scientific-agent-skills/anndata` | `main` | `skills/anndata` |  |
+| `plugin-skills/scientific-agent-skills/arbor` | `main` | `skills/arbor` |  |
+| `plugin-skills/scientific-agent-skills/arboreto` | `main` | `skills/arboreto` |  |
+| `plugin-skills/scientific-agent-skills/astropy` | `main` | `skills/astropy` |  |
+| `plugin-skills/scientific-agent-skills/autoskill` | `main` | `skills/autoskill` |  |
+| `plugin-skills/scientific-agent-skills/benchling-integration` | `main` | `skills/benchling-integration` |  |
+| `plugin-skills/scientific-agent-skills/bgpt-paper-search` | `main` | `skills/bgpt-paper-search` |  |
+| `plugin-skills/scientific-agent-skills/bids` | `main` | `skills/bids` |  |
+| `plugin-skills/scientific-agent-skills/biopython` | `main` | `skills/biopython` |  |
+| `plugin-skills/scientific-agent-skills/bioservices` | `main` | `skills/bioservices` |  |
+| `plugin-skills/scientific-agent-skills/bulk-rnaseq` | `main` | `skills/bulk-rnaseq` |  |
+| `plugin-skills/scientific-agent-skills/cantera` | `main` | `skills/cantera` |  |
+| `plugin-skills/scientific-agent-skills/cellprofiler` | `main` | `skills/cellprofiler` |  |
+| `plugin-skills/scientific-agent-skills/cellxgene-census` | `main` | `skills/cellxgene-census` |  |
+| `plugin-skills/scientific-agent-skills/cirq` | `main` | `skills/cirq` |  |
+| `plugin-skills/scientific-agent-skills/citation-management` | `main` | `skills/citation-management` |  |
+| `plugin-skills/scientific-agent-skills/clinical-decision-support` | `main` | `skills/clinical-decision-support` |  |
+| `plugin-skills/scientific-agent-skills/clinical-reports` | `main` | `skills/clinical-reports` |  |
+| `plugin-skills/scientific-agent-skills/cobrapy` | `main` | `skills/cobrapy` |  |
+| `plugin-skills/scientific-agent-skills/consciousness-council` | `main` | `skills/consciousness-council` |  |
+| `plugin-skills/scientific-agent-skills/dask` | `main` | `skills/dask` |  |
+| `plugin-skills/scientific-agent-skills/database-lookup` | `main` | `skills/database-lookup` |  |
+| `plugin-skills/scientific-agent-skills/datalad` | `main` | `skills/datalad` |  |
+| `plugin-skills/scientific-agent-skills/datamol` | `main` | `skills/datamol` |  |
+| `plugin-skills/scientific-agent-skills/deepchem` | `main` | `skills/deepchem` |  |
+| `plugin-skills/scientific-agent-skills/deepspot-m` | `main` | `skills/deepspot-m` |  |
+| `plugin-skills/scientific-agent-skills/deeptools` | `main` | `skills/deeptools` |  |
+| `plugin-skills/scientific-agent-skills/depmap` | `main` | `skills/depmap` |  |
+| `plugin-skills/scientific-agent-skills/dhdna-profiler` | `main` | `skills/dhdna-profiler` |  |
+| `plugin-skills/scientific-agent-skills/diffdock` | `main` | `skills/diffdock` |  |
+| `plugin-skills/scientific-agent-skills/dnanexus-integration` | `main` | `skills/dnanexus-integration` |  |
+| `plugin-skills/scientific-agent-skills/esm` | `main` | `skills/esm` |  |
+| `plugin-skills/scientific-agent-skills/etetoolkit` | `main` | `skills/etetoolkit` |  |
+| `plugin-skills/scientific-agent-skills/exa-search` | `main` | `skills/exa-search` |  |
+| `plugin-skills/scientific-agent-skills/experimental-design` | `main` | `skills/experimental-design` |  |
+| `plugin-skills/scientific-agent-skills/exploratory-data-analysis` | `main` | `skills/exploratory-data-analysis` |  |
+| `plugin-skills/scientific-agent-skills/fictiv` | `main` | `skills/fictiv` |  |
+| `plugin-skills/scientific-agent-skills/flowio` | `main` | `skills/flowio` |  |
+| `plugin-skills/scientific-agent-skills/flowkit` | `main` | `skills/flowkit` |  |
+| `plugin-skills/scientific-agent-skills/fluidsim` | `main` | `skills/fluidsim` |  |
+| `plugin-skills/scientific-agent-skills/folklore-variant-evidence` | `main` | `skills/folklore-variant-evidence` |  |
+| `plugin-skills/scientific-agent-skills/generate-image` | `main` | `skills/generate-image` |  |
+| `plugin-skills/scientific-agent-skills/geniml` | `main` | `skills/geniml` |  |
+| `plugin-skills/scientific-agent-skills/genomic-coordinates` | `main` | `skills/genomic-coordinates` |  |
+| `plugin-skills/scientific-agent-skills/genomic-intelligence` | `main` | `skills/genomic-intelligence` |  |
+| `plugin-skills/scientific-agent-skills/geomaster` | `main` | `skills/geomaster` |  |
+| `plugin-skills/scientific-agent-skills/geopandas` | `main` | `skills/geopandas` |  |
+| `plugin-skills/scientific-agent-skills/get-available-resources` | `main` | `skills/get-available-resources` |  |
+| `plugin-skills/scientific-agent-skills/gget` | `main` | `skills/gget` |  |
+| `plugin-skills/scientific-agent-skills/ginkgo-cloud-lab` | `main` | `skills/ginkgo-cloud-lab` |  |
+| `plugin-skills/scientific-agent-skills/glycoengineering` | `main` | `skills/glycoengineering` |  |
+| `plugin-skills/scientific-agent-skills/gtars` | `main` | `skills/gtars` |  |
+| `plugin-skills/scientific-agent-skills/histolab` | `main` | `skills/histolab` |  |
+| `plugin-skills/scientific-agent-skills/hugging-science` | `main` | `skills/hugging-science` |  |
+| `plugin-skills/scientific-agent-skills/hypogenic` | `main` | `skills/hypogenic` |  |
+| `plugin-skills/scientific-agent-skills/hypothesis-generation` | `main` | `skills/hypothesis-generation` |  |
+| `plugin-skills/scientific-agent-skills/imaging-data-commons` | `main` | `skills/imaging-data-commons` |  |
+| `plugin-skills/scientific-agent-skills/infographics` | `main` | `skills/infographics` |  |
+| `plugin-skills/scientific-agent-skills/iso-standards-readiness` | `main` | `skills/iso-standards-readiness` |  |
+| `plugin-skills/scientific-agent-skills/lab-hardware-cad` | `main` | `skills/lab-hardware-cad` |  |
+| `plugin-skills/scientific-agent-skills/labarchive-integration` | `main` | `skills/labarchive-integration` |  |
+| `plugin-skills/scientific-agent-skills/lamindb` | `main` | `skills/lamindb` |  |
+| `plugin-skills/scientific-agent-skills/latchbio-integration` | `main` | `skills/latchbio-integration` |  |
+| `plugin-skills/scientific-agent-skills/latex-posters` | `main` | `skills/latex-posters` |  |
+| `plugin-skills/scientific-agent-skills/liteparse` | `main` | `skills/liteparse` |  |
+| `plugin-skills/scientific-agent-skills/literature-review` | `main` | `skills/literature-review` |  |
+| `plugin-skills/scientific-agent-skills/mageck` | `main` | `skills/mageck` |  |
+| `plugin-skills/scientific-agent-skills/marine-carbonate-chemistry` | `main` | `skills/marine-carbonate-chemistry` |  |
+| `plugin-skills/scientific-agent-skills/markdown-mermaid-writing` | `main` | `skills/markdown-mermaid-writing` |  |
+| `plugin-skills/scientific-agent-skills/market-research-reports` | `main` | `skills/market-research-reports` |  |
+| `plugin-skills/scientific-agent-skills/markitdown` | `main` | `skills/markitdown` |  |
+| `plugin-skills/scientific-agent-skills/matchms` | `main` | `skills/matchms` |  |
+| `plugin-skills/scientific-agent-skills/matlab` | `main` | `skills/matlab` |  |
+| `plugin-skills/scientific-agent-skills/matplotlib` | `main` | `skills/matplotlib` |  |
+| `plugin-skills/scientific-agent-skills/medchem` | `main` | `skills/medchem` |  |
+| `plugin-skills/scientific-agent-skills/modal` | `main` | `skills/modal` |  |
+| `plugin-skills/scientific-agent-skills/molecular-dynamics` | `main` | `skills/molecular-dynamics` |  |
+| `plugin-skills/scientific-agent-skills/molfeat` | `main` | `skills/molfeat` |  |
+| `plugin-skills/scientific-agent-skills/ncats-arax` | `main` | `skills/ncats-arax` |  |
+| `plugin-skills/scientific-agent-skills/networkx` | `main` | `skills/networkx` |  |
+| `plugin-skills/scientific-agent-skills/neurokit2` | `main` | `skills/neurokit2` |  |
+| `plugin-skills/scientific-agent-skills/neuropixels-analysis` | `main` | `skills/neuropixels-analysis` |  |
+| `plugin-skills/scientific-agent-skills/nextflow` | `main` | `skills/nextflow` |  |
+| `plugin-skills/scientific-agent-skills/nmrglue` | `main` | `skills/nmrglue` |  |
+| `plugin-skills/scientific-agent-skills/nwb-conversion` | `main` | `skills/nwb-conversion` |  |
+| `plugin-skills/scientific-agent-skills/omero-integration` | `main` | `skills/omero-integration` |  |
+| `plugin-skills/scientific-agent-skills/onekgpd` | `main` | `skills/onekgpd` |  |
+| `plugin-skills/scientific-agent-skills/ontology-term-resolution` | `main` | `skills/ontology-term-resolution` |  |
+| `plugin-skills/scientific-agent-skills/open-notebook` | `main` | `skills/open-notebook` |  |
+| `plugin-skills/scientific-agent-skills/openpiv` | `main` | `skills/openpiv` |  |
+| `plugin-skills/scientific-agent-skills/opentrons-integration` | `main` | `skills/opentrons-integration` |  |
+| `plugin-skills/scientific-agent-skills/optimize-for-gpu` | `main` | `skills/optimize-for-gpu` |  |
+| `plugin-skills/scientific-agent-skills/pacsomatic` | `main` | `skills/pacsomatic` |  |
+| `plugin-skills/scientific-agent-skills/paper-lookup` | `main` | `skills/paper-lookup` |  |
+| `plugin-skills/scientific-agent-skills/paperclip` | `main` | `skills/paperclip` |  |
+| `plugin-skills/scientific-agent-skills/paperzilla` | `main` | `skills/paperzilla` |  |
+| `plugin-skills/scientific-agent-skills/parallel-web` | `main` | `skills/parallel-web` |  |
+| `plugin-skills/scientific-agent-skills/pathml` | `main` | `skills/pathml` |  |
+| `plugin-skills/scientific-agent-skills/pathogen-variant-surveillance` | `main` | `skills/pathogen-variant-surveillance` |  |
+| `plugin-skills/scientific-agent-skills/pathway-enrichment` | `main` | `skills/pathway-enrichment` |  |
+| `plugin-skills/scientific-agent-skills/peer-review` | `main` | `skills/peer-review` |  |
+| `plugin-skills/scientific-agent-skills/pennylane` | `main` | `skills/pennylane` |  |
+| `plugin-skills/scientific-agent-skills/phylogenetics` | `main` | `skills/phylogenetics` |  |
+| `plugin-skills/scientific-agent-skills/pi-agent` | `main` | `skills/pi-agent` |  |
+| `plugin-skills/scientific-agent-skills/pkpd-modeling` | `main` | `skills/pkpd-modeling` |  |
+| `plugin-skills/scientific-agent-skills/polars` | `main` | `skills/polars` |  |
+| `plugin-skills/scientific-agent-skills/polars-bio` | `main` | `skills/polars-bio` |  |
+| `plugin-skills/scientific-agent-skills/pptx-posters` | `main` | `skills/pptx-posters` |  |
+| `plugin-skills/scientific-agent-skills/primekg` | `main` | `skills/primekg` |  |
+| `plugin-skills/scientific-agent-skills/primer-design` | `main` | `skills/primer-design` |  |
+| `plugin-skills/scientific-agent-skills/protocolsio-integration` | `main` | `skills/protocolsio-integration` |  |
+| `plugin-skills/scientific-agent-skills/pufferlib` | `main` | `skills/pufferlib` |  |
+| `plugin-skills/scientific-agent-skills/pybamm` | `main` | `skills/pybamm` |  |
+| `plugin-skills/scientific-agent-skills/pycalphad` | `main` | `skills/pycalphad` |  |
+| `plugin-skills/scientific-agent-skills/pydeseq2` | `main` | `skills/pydeseq2` |  |
+| `plugin-skills/scientific-agent-skills/pydicom` | `main` | `skills/pydicom` |  |
+| `plugin-skills/scientific-agent-skills/pyhealth` | `main` | `skills/pyhealth` |  |
+| `plugin-skills/scientific-agent-skills/pylabrobot` | `main` | `skills/pylabrobot` |  |
+| `plugin-skills/scientific-agent-skills/pymatgen` | `main` | `skills/pymatgen` |  |
+| `plugin-skills/scientific-agent-skills/pymc` | `main` | `skills/pymc` |  |
+| `plugin-skills/scientific-agent-skills/pymoo` | `main` | `skills/pymoo` |  |
+| `plugin-skills/scientific-agent-skills/pyopenms` | `main` | `skills/pyopenms` |  |
+| `plugin-skills/scientific-agent-skills/pysam` | `main` | `skills/pysam` |  |
+| `plugin-skills/scientific-agent-skills/pytdc` | `main` | `skills/pytdc` |  |
+| `plugin-skills/scientific-agent-skills/pytorch-lightning` | `main` | `skills/pytorch-lightning` |  |
+| `plugin-skills/scientific-agent-skills/pyzotero` | `main` | `skills/pyzotero` |  |
+| `plugin-skills/scientific-agent-skills/qiime2-amplicon` | `main` | `skills/qiime2-amplicon` |  |
+| `plugin-skills/scientific-agent-skills/qiskit` | `main` | `skills/qiskit` |  |
+| `plugin-skills/scientific-agent-skills/qutip` | `main` | `skills/qutip` |  |
+| `plugin-skills/scientific-agent-skills/rdkit` | `main` | `skills/rdkit` |  |
+| `plugin-skills/scientific-agent-skills/relion` | `main` | `skills/relion` |  |
+| `plugin-skills/scientific-agent-skills/relsa-severity-assessment` | `main` | `skills/relsa-severity-assessment` |  |
+| `plugin-skills/scientific-agent-skills/research-grants` | `main` | `skills/research-grants` |  |
+| `plugin-skills/scientific-agent-skills/research-lookup` | `main` | `skills/research-lookup` |  |
+| `plugin-skills/scientific-agent-skills/rowan` | `main` | `skills/rowan` |  |
+| `plugin-skills/scientific-agent-skills/scanpy` | `main` | `skills/scanpy` |  |
+| `plugin-skills/scientific-agent-skills/scholar-evaluation` | `main` | `skills/scholar-evaluation` |  |
+| `plugin-skills/scientific-agent-skills/scientific-brainstorming` | `main` | `skills/scientific-brainstorming` |  |
+| `plugin-skills/scientific-agent-skills/scientific-critical-thinking` | `main` | `skills/scientific-critical-thinking` |  |
+| `plugin-skills/scientific-agent-skills/scientific-schematics` | `main` | `skills/scientific-schematics` |  |
+| `plugin-skills/scientific-agent-skills/scientific-slides` | `main` | `skills/scientific-slides` |  |
+| `plugin-skills/scientific-agent-skills/scientific-visualization` | `main` | `skills/scientific-visualization` |  |
+| `plugin-skills/scientific-agent-skills/scientific-writing` | `main` | `skills/scientific-writing` |  |
+| `plugin-skills/scientific-agent-skills/scikit-bio` | `main` | `skills/scikit-bio` |  |
+| `plugin-skills/scientific-agent-skills/scikit-learn` | `main` | `skills/scikit-learn` |  |
+| `plugin-skills/scientific-agent-skills/scikit-survival` | `main` | `skills/scikit-survival` |  |
+| `plugin-skills/scientific-agent-skills/scvelo` | `main` | `skills/scvelo` |  |
+| `plugin-skills/scientific-agent-skills/scvi-tools` | `main` | `skills/scvi-tools` |  |
+| `plugin-skills/scientific-agent-skills/seaborn` | `main` | `skills/seaborn` |  |
+| `plugin-skills/scientific-agent-skills/shap` | `main` | `skills/shap` |  |
+| `plugin-skills/scientific-agent-skills/simpy` | `main` | `skills/simpy` |  |
+| `plugin-skills/scientific-agent-skills/stable-baselines3` | `main` | `skills/stable-baselines3` |  |
+| `plugin-skills/scientific-agent-skills/statistical-analysis` | `main` | `skills/statistical-analysis` |  |
+| `plugin-skills/scientific-agent-skills/statistical-power` | `main` | `skills/statistical-power` |  |
+| `plugin-skills/scientific-agent-skills/statsmodels` | `main` | `skills/statsmodels` |  |
+| `plugin-skills/scientific-agent-skills/sympy` | `main` | `skills/sympy` |  |
+| `plugin-skills/scientific-agent-skills/tamarind` | `main` | `skills/tamarind` |  |
+| `plugin-skills/scientific-agent-skills/tellurium` | `main` | `skills/tellurium` |  |
+| `plugin-skills/scientific-agent-skills/tiledbvcf` | `main` | `skills/tiledbvcf` |  |
+| `plugin-skills/scientific-agent-skills/timesfm-forecasting` | `main` | `skills/timesfm-forecasting` |  |
+| `plugin-skills/scientific-agent-skills/torch-geometric` | `main` | `skills/torch-geometric` |  |
+| `plugin-skills/scientific-agent-skills/torchdrug` | `main` | `skills/torchdrug` |  |
+| `plugin-skills/scientific-agent-skills/transformers` | `main` | `skills/transformers` |  |
+| `plugin-skills/scientific-agent-skills/treatment-plans` | `main` | `skills/treatment-plans` |  |
+| `plugin-skills/scientific-agent-skills/umap-learn` | `main` | `skills/umap-learn` |  |
+| `plugin-skills/scientific-agent-skills/uncertainty-and-units` | `main` | `skills/uncertainty-and-units` |  |
+| `plugin-skills/scientific-agent-skills/usfiscaldata` | `main` | `skills/usfiscaldata` |  |
+| `plugin-skills/scientific-agent-skills/vaex` | `main` | `skills/vaex` |  |
+| `plugin-skills/scientific-agent-skills/venue-templates` | `main` | `skills/venue-templates` |  |
+| `plugin-skills/scientific-agent-skills/waypoint-bio` | `main` | `skills/waypoint-bio` |  |
+| `plugin-skills/scientific-agent-skills/what-if-oracle` | `main` | `skills/what-if-oracle` |  |
+| `plugin-skills/scientific-agent-skills/zarr-python` | `main` | `skills/zarr-python` |  |
+
 ## 自定义 Skill（无公开源，不参与自动更新）
 
 | Skill | 说明 |
@@ -397,3 +632,6 @@
 | `skills/s3-explore` | 导入自 duckdb/duckdb-skills@7feda8e 并增补 DuckDB 2.0 |
 | `skills/spatial` | 导入自 duckdb/duckdb-skills@7feda8e 并增补 DuckDB 2.0 |
 | `skills/duckdb-2-0` | 自定义：DuckDB 2.0 更新汇总、迁移与 agent mode 指南 |
+| `skills/nextflow-agents` | 自定义：Nextflow agent 原语（docs.seqera.io/nextflow/agent 与官方示例整理） |
+| `skills/nf-core-agents-md` | 自定义：nf-core 官方 AGENTS.md 规则（nf-core/agents，MIT）整理 |
+| `skills/nextflow-skills-guide` | 自定义：Nextflow / nf-core 相关 skill 导航 |
