@@ -74,6 +74,31 @@ FROM read_any('RESOLVED_PATH') LIMIT 20;
 - **Missing extension** (e.g. spatial files, xlsx, sqlite) → retry with `INSTALL spatial; LOAD spatial;` or `INSTALL sqlite_scanner; LOAD sqlite_scanner;` prepended before the macro.
 - **Wrong reader / parse error** → use the correct `read_*` function directly instead of `read_any`.
 
+## DuckDB 2.0 notes
+
+Check `duckdb --version`. The `read_any` macro and the readers above work unchanged on 2.0 (verified
+for CSV, JSON and Parquet on 2.0.0). What changes:
+
+- **Output / agent mode (2.x only).** The command above passes `-csv`, which switches the CLI's
+  automatic *agent mode* off. On 2.x, drop `-csv` (or prefix `DUCKDB_AGENT_MODE=1`, which older CLIs
+  ignore) to get compact Markdown tables with column types, a row-count + hash footer, and JSON
+  errors. Read the footer: `first 20 and last 20 of N rows` means the middle was cut. Keep `-csv`
+  on 1.x. Details: `/duckdb-skills:duckdb-2-0` (`references/agent-mode.md`).
+- **Cheap profiling of big files.** `DESCRIBE FROM read_any(...)` is already cheap; for a quick
+  profile use `SUMMARIZE FROM read_any(...)`. `DESCRIBE <query>` shows result columns without running it.
+- **Remote files are faster.** 2.0 reads Parquet, CSV and DuckDB files asynchronously (many requests in
+  flight), which mostly helps `s3://`, `gs://` and `https://` sources. Related settings:
+  `async_threads`, `http_client_pool_capacity`.
+- **S3 credentials must come from secrets.** Passing S3 settings as URL parameters
+  (`s3://bucket/f.csv?s3_access_key_id=...`) is disabled in 2.0; the `?...` becomes part of the object
+  key. Use the `CREATE SECRET` lines in the table above.
+- **JSON with different shapes per row.** `read_json_auto` unions all keys into many sparse columns.
+  On 2.x, `SELECT json::VARIANT AS payload FROM read_json_objects('FILE')` keeps each row as is, and
+  `variant_type`, `variant_keys(payload)`, `variant_extract_string(payload, 'key')` inspect it
+  (verified on 2.0.0).
+- **Database files from 2.0** (`.db`/`.duckdb`) cannot be opened by an older CLI (error mentions
+  "version number 69"); upgrade with `/duckdb-skills:install-duckdb --update`.
+
 ## Step 2 — Answer
 
 Using the schema, row count, and sample rows, answer:

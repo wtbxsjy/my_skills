@@ -38,16 +38,20 @@ The query is: `$@`
 
 There are two search indexes available:
 
-| Index | Remote URL | Local cache filename | Versions | Use when |
+| Index | Remote URL | Local cache filename | Version labels | Use when |
 |-------|-----------|---------------------|----------|----------|
-| **DuckDB docs + blog** | `https://duckdb.org/data/docs-search.duckdb` | `duckdb-docs.duckdb` | `lts`, `current`, `blog` | Default — any DuckDB question |
+| **DuckDB docs + blog** | `https://duckdb.org/data/docs-search.duckdb` | `duckdb-docs.duckdb` | `2.0`, `blog` (indexes built before DuckDB 2.0 used `lts`, `current`, `blog`) | Default — any DuckDB question |
 | **DuckLake docs** | `https://ducklake.select/data/docs-search.duckdb` | `ducklake-docs.duckdb` | `stable`, `preview` | Query mentions DuckLake, catalogs, or DuckLake-specific features |
+
+The version labels follow the documentation versions and **changed with DuckDB 2.0** (the index
+builder now emits the docs version number, e.g. `2.0`, instead of `lts`/`current`). Do not hard-code
+a label: discover the labels that the downloaded index actually contains in Step 5.
 
 Both indexes share the same schema:
 
 | Column | Type | Description |
 |--------|------|-------------|
-| `chunk_id` | `VARCHAR` (PK) | e.g. `stable/sql/functions/numeric#absx` |
+| `chunk_id` | `VARCHAR` (PK) | e.g. `2.0/sql/functions/numeric#absx` (older indexes: `stable/...`, `lts/...`) |
 | `page_title` | `VARCHAR` | Page title from front matter |
 | `section` | `VARCHAR` | Section heading (null for page intros) |
 | `breadcrumb` | `VARCHAR` | e.g. `SQL > Functions > Numeric` |
@@ -55,10 +59,14 @@ Both indexes share the same schema:
 | `version` | `VARCHAR` | See table above |
 | `text` | `TEXT` | Full markdown of the chunk |
 
-By default, search **DuckDB docs** and filter to `version = 'lts'`. Use different versions when:
+By default, search **DuckDB docs** and filter to the **newest numeric documentation version** in the
+index (`2.0` at the time of DuckDB 2.0.0; older indexes: `lts`). Use different versions when:
 
-- The user explicitly asks about `current`/nightly features → `version = 'current'`
-- The user asks about a blog post or wants background/motivation → `version = 'blog'`
+- The user asks about an older DuckDB (for example 1.x) and the index still has that label → use it; if the
+  label is missing, say that only the newest docs are indexed and note which behavior changed in 2.0
+  (`/duckdb-skills:duckdb-2-0`)
+- The user asks about a blog post or wants background/motivation (release announcements, agent mode,
+  async I/O, ...) → `version = 'blog'`
 - The user asks about DuckLake → search the DuckLake index with `version = 'stable'`
 - When unsure, omit the version filter to search across all versions.
 
@@ -111,6 +119,17 @@ Replace `REMOTE_URL` and `CACHE_FILENAME` per Step 3. If the fetch fails (networ
 
 ## Step 5 — Search the docs
 
+First list the version labels that this index contains, and pick `VERSION` from them
+(newest numeric label for the docs; `blog` for blog posts):
+
+```bash
+duckdb "$HOME/.duckdb/docs/CACHE_FILENAME" -readonly -csv -c "
+SELECT version, count() AS chunks FROM docs_chunks GROUP BY ALL ORDER BY version DESC;
+"
+```
+
+Then search:
+
 ```bash
 duckdb "$HOME/.duckdb/docs/CACHE_FILENAME" -readonly -json -c "
 LOAD fts;
@@ -127,11 +146,20 @@ LIMIT 8;
 
 Replace `CACHE_FILENAME`, `SEARCH_QUERY`, and `VERSION` per Step 3. Remove the `AND version = 'VERSION'` line if searching across all versions.
 
-If the user's question could benefit from both DuckDB docs and blog results, run two queries (one with `version = 'stable'`, one with `version = 'blog'`) or omit the version filter entirely.
+If the user's question could benefit from both DuckDB docs and blog results, run two queries (one with the docs `VERSION` from the list above, one with `version = 'blog'`) or omit the version filter entirely.
+
+**Tip (DuckDB 2.0 CLI):** for a single function, `duckdb -manual <function>` (or `.manual <function>` in the shell)
+prints its signatures, description and examples from the installed DuckDB — no network or index needed.
+It also works with `LIKE` patterns such as `list_%`. For 1.x, use `FROM duckdb_functions() WHERE function_name = '<name>'`.
 
 ## Step 6 — Handle errors
 
 - **Extension not installed** (`httpfs` or `fts` not found): run `duckdb :memory: -c "INSTALL httpfs; INSTALL fts;"` and retry.
+- **ATTACH fails with `Trying to read a database file with version number 69 ...`**: the hosted index
+  was written by DuckDB 2.0 and the local CLI is older. Run `/duckdb-skills:install-duckdb --update`
+  (upgrade to 2.x) and retry; delete a stale `$HOME/.duckdb/docs/*.duckdb` cache that was copied before.
+- **Search returns nothing although the topic exists**: the `version` label is probably wrong (labels
+  changed from `lts`/`current` to `2.0` in DuckDB 2.0) — rerun the version listing in Step 5.
 - **ATTACH fails / network unreachable**: inform the user that the docs index is unavailable and suggest checking their internet connection. The DuckDB index is hosted at `https://duckdb.org/data/docs-search.duckdb` and the DuckLake index at `https://ducklake.select/data/docs-search.duckdb`.
 - **No results** (all scores NULL or empty result set): try broadening the query — drop the least specific term, or try a single-word version of the query — then retry Step 5. If still no results, tell the user no matching documentation was found and suggest visiting https://duckdb.org/docs or https://ducklake.select/docs directly.
 
