@@ -565,6 +565,9 @@ bash update-skills.sh taste-skill  # 只同步某一个 skill
 git add -A && git commit -m "Update skills" && git push
 ```
 
+同步会把上游的长 description 一并带回来。`update-skills.sh` 结束时会按 [descriptions.slim.json](./descriptions.slim.json) 自动把精简版写回（需要 `python3`）。
+手动精简了某个 skill 的 description 之后，用 `python3 tools/slim-descriptions.py capture <skill-dir>` 登记；`python3 tools/slim-descriptions.py status` 列出不同步的条目和尚未精简的长 description。
+
 ## 多环境同步策略
 
 1. **Skills**：通过 Git 管理，`.cc-switch` 在新机器上做符号链接激活
@@ -575,5 +578,5 @@ git add -A && git commit -m "Update skills" && git push
 ## Contributing
 
 - 添加新 skill：放入 `skills/<name>/`，并在 `SOURCES.tsv` 中登记上游仓库后提交
-- 同步上游更新：运行 `bash update-skills.sh` 后提交
+- 同步上游更新：运行 `bash update-skills.sh` 后提交（被精简过的 description 会自动写回，上游改写了描述时会提示复核）
 - 自定义 skill（无公开源）：保留在仓库中，并在 `SOURCES.tsv` 中标注 `CUSTOM`

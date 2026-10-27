@@ -6,8 +6,9 @@
 #   bash update-skills.sh              # 同步全部 skill
 #   bash update-skills.sh <skill-dir>  # 只同步指定 skill（如 skills/taste-skill）
 #
-# 依赖: git, cp（rsync 可选）
+# 依赖: git, cp（rsync 可选）；重新精简 description 另需 python3
 # 说明: 映射表见 SOURCES.tsv；目标目录与上游"镜像"同步（多余文件会被删除）。
+#       同步后会按 descriptions.slim.json 自动把被精简过的 description 写回。
 # =============================================================================
 set -euo pipefail
 
@@ -48,6 +49,7 @@ clone_or_update() {
 }
 
 declare -A CLONED
+declare -a UPDATED=()
 count_total=0; count_updated=0
 
 for i in "${!DEST[@]}"; do
@@ -65,15 +67,18 @@ for i in "${!DEST[@]}"; do
   if [[ -z "$repo_dir" ]]; then
     repo_dir="$(clone_or_update "$repo" "$branch")"
     CLONED["$repo"]="$repo_dir"
-    # 稀疏检出本仓库需要的全部路径
-    paths=()
+    # 稀疏检出本仓库需要的全部路径；只要有一条映射的仓库内路径是 "."（整个仓库就是一个 skill），
+    # 就必须检出完整工作树，否则稀疏模式只有根目录文件，rsync --delete 会把子目录全部删掉
+    paths=(); whole_repo=0
     for j in "${!DEST[@]}"; do
       if [[ "${REPO[$j]}" == "$repo" ]]; then
         p="${SRCPATH[$j]}"
-        [[ "$p" != "." ]] && paths+=("$p")
+        if [[ "$p" == "." ]]; then whole_repo=1; else paths+=("$p"); fi
       fi
     done
-    if [[ ${#paths[@]} -gt 0 ]]; then
+    if [[ $whole_repo -eq 1 ]]; then
+      git -C "$repo_dir" sparse-checkout disable >/dev/null 2>&1 || true
+    elif [[ ${#paths[@]} -gt 0 ]]; then
       git -C "$repo_dir" sparse-checkout set "${paths[@]}" >/dev/null 2>&1 || true
     fi
   fi
@@ -85,14 +90,29 @@ for i in "${!DEST[@]}"; do
   fi
 
   if command -v rsync >/dev/null 2>&1; then
-    rsync -a --delete "$src/" "$abs_dest/"
+    rsync -a --delete --exclude='.git' "$src/" "$abs_dest/"
   else
     rm -rf "$abs_dest"
     cp -a "$src" "$abs_dest"
+    rm -rf "$abs_dest/.git"
   fi
   echo "  [更新] $dest <- $repo:$branch/$srcpath"
+  UPDATED+=("$dest")
   count_updated=$((count_updated + 1))
 done
 
 echo
 echo "完成: 共处理 $count_total 个目录，更新 $count_updated 个"
+
+# 镜像同步会把上游的长 description 带回来；按 descriptions.slim.json 重新精简
+# （登记与检查见 tools/slim-descriptions.py：capture / apply / status）
+if [[ ${#UPDATED[@]} -gt 0 && -f "$ROOT/tools/slim-descriptions.py" ]]; then
+  if command -v python3 >/dev/null 2>&1; then
+    echo
+    echo "重新精简 description:"
+    python3 "$ROOT/tools/slim-descriptions.py" apply --exact "${UPDATED[@]}" \
+      || echo "  [警告] 精简失败，请手动运行: python3 tools/slim-descriptions.py apply" >&2
+  else
+    echo "[警告] 未找到 python3，description 未重新精简；请运行 tools/slim-descriptions.py apply" >&2
+  fi
+fi
