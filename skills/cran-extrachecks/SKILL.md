@@ -1,7 +1,6 @@
 ---
 name: cran-extrachecks
-description: >
-  Prepare R packages for CRAN submission by checking for common ad-hoc requirements not caught by devtools::check(). Use when: (1) Preparing a package for first CRAN release, (2) Preparing a package update for CRAN resubmission, (3) Reviewing a package to ensure CRAN compliance, (4) Responding to CRAN reviewer feedback. Covers documentation requirements, DESCRIPTION field standards, URL validation, examples, and administrative requirements.
+description: "Prepare an R package for CRAN submission: catch ad-hoc requirements devtools::check() misses — documentation, DESCRIPTION fields, URLs, examples, administrative rules; also for resubmissions and answering reviewer feedback."
 metadata:
   author: Garrick Aden-Buie (@gadenbuie)
   version: "1.0"

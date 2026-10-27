@@ -1,12 +1,6 @@
 ---
 name: pubmed-database
-description: >-
-  Search PubMed for scientific literature, including published clinical trials.
-  Fetch abstracts and full text. Link published research to biological databases
-  (gene, protein, nucleotide, PubChem) to discover associations between papers
-  and specific compounds or genes. Verify medical spelling, match raw citations,
-  and cache result sets for bulk processing. Interfaces NCBI E-utilities and PMC
-  BioC APIs.
+description: "Search PubMed for literature and clinical trials: fetch abstracts and full text, link papers to genes/proteins/compounds (PubChem), match citations, cache result sets for bulk work. Uses NCBI E-utilities and PMC BioC."
 ---
 
 # PubMed API

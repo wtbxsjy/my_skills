@@ -1,6 +1,6 @@
 ---
 name: ljg-learn
-description: Deep concept anatomist that deconstructs any concept through 8 exploration dimensions (history, dialectics, phenomenology, linguistics, formalization, existentialism, aesthetics, meta-philosophy) and compresses insights into an epiphany. Use when user asks to explain, dissect, or deeply understand a concept, term, or idea. Triggers on '解剖概念', '概念解剖', 'explain concept', 'learn concept', '/ljg-learn'. Produces org-mode output.
+description: "概念解剖：从历史、辩证、现象学、语言学、形式化、存在主义、美学、元哲学八个维度拆解一个概念，收敛成顿悟，输出 org 笔记。用户说解剖概念、概念解剖、explain concept、/ljg-learn 时使用。"
 ---
 
 ## Usage

@@ -1,6 +1,6 @@
 ---
 name: ljg-qa
-description: 信息提问机。给一篇文章/论文/书，把核心观点抽成 Q-A 对——Question 切要害，不教科书；Answer 简洁清晰，有形式化收口，逻辑链完整。读者顺 Q 链走过，每个 A 砸下一枚钉子，复现作者整套推理。Use when user says '问答', 'Q&A', 'QA', '提问', '抽取问题', '/ljg-qa', or shares an article/paper/book and asks for Q-A extraction. Triggers when the user wants ideas extracted not as a summary but as a sequence of incisive questions with answered. NOT FOR FAQ generation, glossary creation, or comprehension quizzes — this is intellectual scaffolding, not study aids.
+description: "信息提问机：把文章/论文/书的核心观点抽成 Q-A 对，问题切要害、答案简洁有收口，读者顺着 Q 链复现作者推理。用户说问答、Q&A、QA、提问、抽取问题时使用；不用于 FAQ、术语表或阅读理解题。"
 user_invocable: true
 ---
 

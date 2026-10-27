@@ -1,13 +1,6 @@
 ---
 name: nextflow-skills-guide
-description: >
-  Map of every Nextflow / nf-core related skill in this repository and which one to use for a task:
-  building, converting (Snakemake, scripts, notebooks), migrating, testing, debugging and running Nextflow
-  pipelines; nf-core pipelines and lint; Seqera Platform and the Seqera MCP; Nextflow Registry modules;
-  Nextflow `agent` blocks. Also explains the duplicated skill names (install-nextflow, run-module,
-  launch-workflow, migrate-nextflow-code, nextflow-development) and how to enable one copy. Use when the
-  user asks "which Nextflow skill", mentions Nextflow/nf-core/Seqera and it is unclear which skill fits,
-  or wants to set up Nextflow skills for an agent.
+description: "Map of every Nextflow / nf-core skill in this repository and which one to use: build, convert, migrate, test, debug, run pipelines; Seqera Platform; Nextflow Registry modules; agent blocks. Use when it is unclear which Nextflow skill fits."
 argument-hint: <task description>
 allowed-tools: Read, Bash
 ---

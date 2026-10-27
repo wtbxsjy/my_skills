@@ -1,12 +1,6 @@
 ---
 name: interpro-database
-description: >
-  Identify domains, families, and sites in proteins; find all proteins in a
-  family or sharing a domain; explore species distribution for a domain;
-  annotate genomes with protein families and GO terms. InterPro combines 14
-  databases (e.g., Pfam, CDD) into one searchable resource. InterPro-N
-  significantly expands annotation and sequence coverage with deep learning.
-  Includes domain architecture (IDA) search.
+description: "Find protein domains, families and sites; list proteins in a family or sharing a domain; species distribution; annotate genomes with InterPro/Pfam families and GO terms; domain architecture (IDA) search across 14 member databases."
 ---
 
 # InterPro Database Access

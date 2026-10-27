@@ -1,13 +1,6 @@
 ---
 name: duckdb-2-0
-description: >
-  DuckDB 2.0 (LTS "Cinnamon Teal", released 2026-10-21) for agents: check the installed version,
-  use the CLI agent mode (compact Markdown output, result caps with a hash footer, JSON errors, cost
-  estimates), migrate from 1.x (storage format v69, lambda syntax, PEG parser, integer division by
-  zero, ...), and use new features (Quack server + CONNECT, VARIANT, triggers, async I/O, NEAREST
-  joins, data-modifying CTEs). Use when the user mentions DuckDB 2.0, v2, agent mode, upgrading
-  DuckDB, or hits an error that appeared after upgrading (for example "version number 69",
-  "Deprecated lambda arrow", "Division by zero").
+description: "DuckDB 2.0 (LTS) for agents: check version, use CLI agent mode (compact output, result caps, JSON errors), migrate from 1.x (storage v69, lambda syntax, PEG parser), use Quack/VARIANT/triggers/NEAREST joins. Use for DuckDB 2.0, upgrading, post-upgrade errors."
 argument-hint: <question, or "agent mode" / "migrate" / "what's new">
 allowed-tools: Bash
 ---

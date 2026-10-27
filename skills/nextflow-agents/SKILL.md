@@ -1,12 +1,6 @@
 ---
 name: nextflow-agents
-description: >
-  Write, run and debug Nextflow `agent` blocks: the process-like primitive (Nextflow 26.10+, preview)
-  that runs an LLM-driven step inside a pipeline with typed inputs/outputs, a rendered prompt,
-  tools (`nf:module_run`, `fs:*`, `shell:bash`), skills, caching, retries and lineage. Use when the user
-  mentions Nextflow agents, `agent {` blocks, `agent.runner`, the `nf-agent` / `nf-agent-pi` plugins,
-  "LLM step in a Nextflow pipeline", agentic map-reduce, or docs.seqera.io/nextflow/agent. Not for
-  coding agents that help write Nextflow (see the nextflow-skills-guide skill) and not for ordinary processes.
+description: "Write, run and debug Nextflow agent blocks (26.10+, preview): LLM steps inside a pipeline with typed I/O, prompt, tools, skills, caching, retries and lineage. Triggers: Nextflow agents, agent.runner, nf-agent plugins. Not for ordinary processes."
 argument-hint: <what the agent should do | error message>
 allowed-tools: Bash, Read, Write, Edit
 ---

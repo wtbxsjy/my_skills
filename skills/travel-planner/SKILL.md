@@ -1,6 +1,6 @@
 ---
 name: travel-planner
-description: This skill should be used whenever users need help planning trips, creating travel itineraries, managing travel budgets, or seeking destination advice. On first use, collects comprehensive travel preferences including budget level, travel style, interests, and dietary restrictions. Generates detailed travel plans with day-by-day itineraries, budget breakdowns, packing checklists, cultural do's and don'ts, and region-specific schedules. Maintains database of preferences and past trips for personalized recommendations.
+description: "Plan trips: collect budget, style, interests and dietary needs, then produce day-by-day itineraries, budget breakdowns, packing checklists, cultural do and do-not lists, and keep a database of preferences and past trips."
 ---
 
 # Travel Planner

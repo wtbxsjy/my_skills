@@ -1,6 +1,6 @@
 ---
 name: pr-create
-description: Creates a pull request from current changes, monitors GitHub CI, and debugs any failures until CI passes. Activate when the user says "create pr", "make a pr", "open pull request", "submit pr", "pr for these changes", or wants to get their current work into a reviewable PR. Assumes the project uses git, is hosted on GitHub, and has GitHub Actions CI with automated checks (lint, build, tests, etc.). Does NOT merge - stops when CI passes and provides the PR link.
+description: "Create a pull request from current changes, watch GitHub CI and debug failures until it passes; stops when CI is green and returns the PR link. Triggers: create pr, open pull request, submit pr. Does not merge."
 compatibility: Designed for Claude Code; requires TaskCreate, TaskUpdate, and TaskList tools
 metadata:
   author: Garrick Aden-Buie (@gadenbuie)

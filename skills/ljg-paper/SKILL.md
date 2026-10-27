@@ -1,6 +1,6 @@
 ---
 name: ljg-paper
-description: "Explain research papers to readers without a specialist background: what the paper studies, what the authors contribute, how the findings follow, and what the evidence does not establish. USE WHEN the user shares an arXiv link, paper URL, PDF, local paper, or paper title, or asks to read, explain, analyze, or understand a paper. Defaults to a saved Org note. NOT FOR reproduction, formal peer review, benchmark tables, or literature surveys."
+description: "讲论文：给 arXiv 链接、PDF 或论文题目，讲清研究了什么、作者贡献、结论如何得出、证据没证明什么，默认存 Org 笔记。用户说要读、分析或理解一篇论文时使用；不做复现、正式同行评审或文献综述。"
 ---
 
 # ljg-paper：讲清论文，让读者理解结论是怎样得来的

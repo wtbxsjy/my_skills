@@ -1,12 +1,6 @@
 ---
 name: pymol
-description: >
-  Visualize, analyze, and render protein and molecular structures using PyMOL.
-  Use when the user wants to create images of protein structures, perform
-  structural alignments or superposition, measure distances or contacts,
-  highlight binding sites or active site residues, color by B-factor/pLDDT,
-  or analyze protein-ligand interactions. Do not use for docking,
-  molecular dynamics, or sequence-only analysis.
+description: "Visualize, align and render protein/molecular structures in PyMOL: images, superposition, distances and contacts, highlight binding sites, color by B-factor/pLDDT, protein-ligand interactions. Not for docking, MD or sequence-only work."
 ---
 
 # PyMOL

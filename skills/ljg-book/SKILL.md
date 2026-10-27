@@ -1,6 +1,6 @@
 ---
 name: ljg-book
-description: "Explain a whole book to readers without specialist knowledge: what it follows, how its main threads connect, where it ends, and how its evidence or events change understanding. Keep the book's specific content; a general lesson alone is not enough. USE WHEN given a book title, PDF, EPUB, excerpt, or asked 拆书, 分析这本书, 这本书在讲什么, 压缩一本书, or book. Defaults to a saved Org note. NOT FOR chapter summaries, papers, formal reviews, or single-concept deep dives."
+description: "拆书：给书名、PDF、EPUB 或节选，讲清全书跟着什么走、主线怎么连、证据如何改变理解，保留书的具体内容而非只给通用结论，默认存 Org 笔记。用户说拆书、分析这本书、这本书在讲什么、压缩一本书时使用。"
 user_invocable: true
 ---
 

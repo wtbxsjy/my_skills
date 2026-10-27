@@ -1,6 +1,6 @@
 ---
 name: r-skill-changelog-sync
-description: Sync installed Codex R skills with current upstream package changes by checking official changelog sources such as CRAN package pages, CRAN NEWS pages, and pkgdown news sites. Use when an R-focused skill may be stale, when package guidance mentions old versions or deprecated APIs, or when refreshing skills for packages like dplyr, tidyr, purrr, stringr, rlang, tibble, or other CRAN packages after a release.
+description: "Refresh R skills against upstream package changes by checking CRAN package and NEWS pages, pkgdown news and changelogs; use when guidance mentions old versions or deprecated APIs for dplyr, tidyr, purrr, stringr, rlang or tibble."
 ---
 
 # R Skill Changelog Sync

@@ -1,13 +1,6 @@
 ---
 name: paper-knowledge-online
-description: >
-  Turn paper references (DOI, arXiv id, PMID/PMCID, or title + author/journal/year)
-  into verified metadata and full-text Markdown. Metadata is checked against two
-  sources (CrossRef or arXiv, plus Sciverse); disagreements are shown to the user,
-  never resolved silently. Full text comes from the PMC Open Access subset (JATS XML)
-  or arXiv; for other papers the user downloads the PDF from the links given, and
-  it is parsed with the MinerU cloud API. Use when a user wants papers collected,
-  verified, or converted to Markdown for reading or a knowledge base.
+description: "Verify and convert paper references (DOI/arXiv/PMID or title) into checked metadata and full-text Markdown: two-source metadata check, PMC OA or arXiv full text, MinerU for PDFs. Use when collecting, verifying or converting papers."
 compatibility: Python 3.11+, standard library only. Network access required.
 metadata:
   version: 0.1.0

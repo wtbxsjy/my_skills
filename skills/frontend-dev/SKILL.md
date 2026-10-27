@@ -1,12 +1,6 @@
 ---
 name: frontend-dev
-description: |
-  Full-stack frontend development combining premium UI design, cinematic animations,
-  AI-generated media assets, persuasive copywriting, and visual art. Builds complete,
-  visually striking web pages with real media, advanced motion, and compelling copy.
-  Use when: building landing pages, marketing sites, product pages, dashboards,
-  generating media assets (image/video/audio/music), writing conversion copy,
-  creating generative art, or implementing cinematic scroll animations.
+description: "Build complete, visually striking web pages: premium UI design, cinematic animations, AI-generated media, conversion copy, generative art. Use for landing pages, marketing sites, product pages, dashboards, scroll animations."
 license: MIT
 metadata:
   version: "1.0.0"

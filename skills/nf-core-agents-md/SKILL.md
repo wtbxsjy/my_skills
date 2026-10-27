@@ -1,13 +1,6 @@
 ---
 name: nf-core-agents-md
-description: >
-  Apply the official nf-core AI-agent rules (nf-core/agents `AGENTS.md`) when creating or editing an nf-core
-  Nextflow pipeline: hard rules for the template structure, modules and subworkflows, config files, the meta
-  map, nf-core tools, nf-test snapshots, git/branch policy (never TEMPLATE, never main), commit and push
-  routine (`prek`, `nf-core pipelines lint`, `nf-test`), PR procedure and agent self-disclosure. Use when
-  the working directory is an nf-core pipeline (has `nextflow_schema.json`, `modules/nf-core`, a
-  `TEMPLATE` branch, `.nf-core.yml`), when the user says "nf-core", "follow nf-core guidelines", or asks
-  how to add an AGENTS.md to a pipeline.
+description: "Apply the official nf-core AI-agent rules (AGENTS.md) when creating or editing an nf-core Nextflow pipeline: template structure, modules, configs, nf-test snapshots, git/branch policy (never TEMPLATE or main), lint/commit routine, PR procedure."
 argument-hint: <task in an nf-core pipeline | "install">
 allowed-tools: Bash, Read, Write, Edit
 ---

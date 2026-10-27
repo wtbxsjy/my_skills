@@ -1,12 +1,6 @@
 ---
 name: release-post
-description: >
-  Create professional package release blog posts following Tidyverse or Shiny blog conventions.
-  Use when the user needs to: (1) Write a release announcement blog post for an R or Python package
-  for tidyverse.org or shiny.posit.co, (2) Transform NEWS/changelog content into blog format,
-  (3) Generate acknowledgments sections with contributor lists, (4) Format posts following specific
-  blog platform requirements. Supports both Tidyverse (hugodown) and Shiny (Quarto) blog formats with
-  automated contributor fetching and comprehensive style guidance.
+description: "Write package release blog posts in Tidyverse (hugodown) or Shiny (Quarto) style: turn NEWS/changelog into a release announcement, fetch contributor acknowledgments, follow platform formatting."
 metadata:
   author: Garrick Aden-Buie (@gadenbuie)
   version: "1.0"

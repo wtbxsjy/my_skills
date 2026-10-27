@@ -1,6 +1,6 @@
 ---
 name: shiny-bslib
-description: Build modern Shiny dashboards and applications using bslib (Bootstrap 5). Use when creating new Shiny apps, modernizing legacy apps (fluidPage, fluidRow/column, tabsetPanel, wellPanel, shinythemes), or working with bslib page layouts, grid systems, cards, value boxes, navigation, sidebars, filling layouts, theming, accordions, tooltips, popovers, toasts, or bslib inputs. Assumes familiarity with basic Shiny.
+description: "Build modern Shiny dashboards with bslib (Bootstrap 5): page layouts, grid, cards, value boxes, nav, sidebars, filling layouts, theming, accordions, tooltips, popovers, toasts. Also modernizing legacy fluidPage/fluidRow/tabsetPanel apps."
 metadata:
   author: Garrick Aden-Buie (@gadenbuie)
   version: "1.0"
