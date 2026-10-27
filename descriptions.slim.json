@@ -1,0 +1,309 @@
+{
+ "skills": {
+  "skills/academic-humanizer": {
+   "orig": "4216985b2d43357e",
+   "slim": "Improve clarity and voice of AI-assisted academic writing and grant proposals: preserve scholarly conventions, match claims to evidence (and feasibility), keep the author's voice. Never changes numbers, results or citations; not for evading AI-use disclosure."
+  },
+  "skills/alphagenome-single-variant-analysis": {
+   "orig": "fddf8d4393036676",
+   "slim": "Analyze genetic variant effects with the AlphaGenome API: expression, chromatin accessibility, histone marks and TF binding; non-coding variant pathogenicity and splicing effects; resolve tissue/cell-type ontologies (UBERON/CL)."
+  },
+  "skills/benchmark-paper-template": {
+   "orig": "f26d33327a295d21",
+   "slim": "Structure a Benchmark/Evaluation paper with the five-pillar framework (gap, construction pipeline, evaluation, findings, optional method): completeness audit, Introduction logic chain, Section 2-7 skeleton. Use when writing or checking a benchmark paper."
+  },
+  "skills/brandkit": {
+   "orig": "cc10f613c5c58f27",
+   "slim": "Generate premium brand-kit imagery: brand-guidelines boards, logo systems, identity decks, visual-world presentations; minimalist, cinematic, editorial, luxury or dark-tech directions with intentional logo concepting and mockups."
+  },
+  "skills/cli": {
+   "orig": "c1f3ffa27ceeb915",
+   "slim": "Style R command-line output with the cli package: inline markup and color, cli_abort/cli_warn/cli_inform, progress bars, semantic headers/lists/alerts, themes, pluralization, ANSI strings and hyperlinks. Also for migrating off base message/warning/stop."
+  },
+  "skills/cran-extrachecks": {
+   "orig": "94bd5f727bec3d8c",
+   "slim": "Prepare an R package for CRAN submission: catch ad-hoc requirements devtools::check() misses — documentation, DESCRIPTION fields, URLs, examples, administrative rules; also for resubmissions and answering reviewer feedback."
+  },
+  "skills/deep-research": {
+   "orig": "69ab807a208697a5",
+   "slim": "Survey-grade literature investigation: freeze research questions, search from adversarial perspectives, verify every citation, synthesize a MECE taxonomy and an evidence-first report. Use for literature reviews, field surveys, landscape mapping, deep dives."
+  },
+  "skills/describe-design": {
+   "orig": "de3723cb9661bdb7",
+   "slim": "Research a codebase and write architecture documentation: how a feature works, system overview, code structure for onboarding, with Mermaid diagrams and stable code references. For humans and AI agents."
+  },
+  "skills/diagram-design": {
+   "orig": "49a88d917059551c",
+   "slim": "Create branded architecture, flow, sequence, ER, timeline, org-chart, Sankey, Wardley and service-blueprint diagrams (40+ types) as HTML/SVG/PNG, with .drawio, Mermaid and .excalidraw import."
+  },
+  "skills/drawio-reconstruction": {
+   "orig": "76cb80a88ae7b26d",
+   "slim": "Rebuild reference images (research figures, architecture diagrams, slides, UI screenshots) into editable Draw.io `.drawio` XML with rendered previews; supports batch manifests. Use to turn an image or image folder into Draw.io."
+  },
+  "skills/figure-designer": {
+   "orig": "90e7ced2be9533fd",
+   "slim": "Design the three core paper figures, Motivated Example (Fig. 1), Solution Overview, Experimental Results: pick paradigm, layout, labels and tool, then audit quality. Use for 'design/draw Figure 1', chart choice, figure tools, or an unprofessional-looking figure."
+  },
+  "skills/frontend-dev": {
+   "orig": "920026a672a40e4f",
+   "slim": "Build complete, visually striking web pages: premium UI design, cinematic animations, AI-generated media, conversion copy, generative art. Use for landing pages, marketing sites, product pages, dashboards, scroll animations."
+  },
+  "skills/fullstack-dev": {
+   "orig": "d19a363e2998f435",
+   "slim": "Full-stack architecture guide: apps with REST/JSON APIs, backend services, CRUD/real-time/chat features (Express, Next.js, Node, Python, Go), service layers, auth, uploads, SSE/WebSocket, production hardening. Not for pure UI, CSS or schema-only work."
+  },
+  "skills/gnomad-database": {
+   "orig": "98eb9bbf07bb40b8",
+   "slim": "Query gnomAD: variant rarity and allele frequency, gene constraint (pLI, LOEUF), variants in a region or gene, structural variants. Not for individual patient genomes, somatic cancer mutations (COSMIC) or raw reads (ENA)."
+  },
+  "skills/idea-evaluator": {
+   "orig": "cfc6702e2e0e2b35",
+   "slim": "Evaluate a draft research idea on Higher/Faster/Stronger/Cheaper/Broader, lifecycle and capability fit, paradigm-shift probe and fatal-flaw audit; reviewer-style verdict. Use for 'evaluate/score this idea', feasibility, novelty check, or before fixing paper scope."
+  },
+  "skills/ima-skill": {
+   "orig": "d93c34c16d77f301",
+   "slim": "Install, troubleshoot and personalize the official Tencent IMA skill: configure ima-skill and API keys, search IMA knowledge bases and notes (知识库搜索/笔记搜索), fan-out search with preferred KBs, fix invalid-SKILL.md loading bugs."
+  },
+  "skills/image-to-code-skill": {
+   "orig": "9e716e0ede600796",
+   "slim": "Image-to-code for Codex web work: generate section-level design images first, analyze them, then implement the page to match — large readable images, clean hero, no cards-in-cards. For visually important frontend tasks."
+  },
+  "skills/imagegen-frontend-mobile": {
+   "orig": "24c790491b1813eb",
+   "slim": "Generate premium app-native mobile screen concepts and flows as images: iOS/Android, clean hierarchy, multi-screen consistency, controlled palettes, phone mockups. Generates images only, no code."
+  },
+  "skills/imagegen-frontend-web": {
+   "orig": "4f6d9769e518de95",
+   "slim": "Generate premium website design references as images: one horizontal image per section, varied composition and hero scale, one consistent palette. For landing pages and marketing sites a developer can recreate."
+  },
+  "skills/instrument-data-to-allotrope": {
+   "orig": "eed639b6c15777ca",
+   "slim": "Convert lab instrument output (PDF, CSV, Excel, TXT) to Allotrope Simple Model JSON or flattened CSV: auto-detect instrument type, standardize data for LIMS/ELN upload, and export parser code for production pipelines."
+  },
+  "skills/interpro-database": {
+   "orig": "167768cd7da96cb8",
+   "slim": "Find protein domains, families and sites; list proteins in a family or sharing a domain; species distribution; annotate genomes with InterPro/Pfam families and GO terms; domain architecture (IDA) search across 14 member databases."
+  },
+  "skills/intro-drafter": {
+   "orig": "d9364efab49c2d3b",
+   "slim": "Draft a technical paper's Introduction as flowing prose via a six-paragraph logic (background, limitations, problem, challenges, solution, contributions); aligns contributions with challenges. Use to draft, outline or restructure an Introduction."
+  },
+  "skills/lifecycle": {
+   "orig": "105703dc562956e6",
+   "slim": "Manage R package lifecycle with the lifecycle package: deprecate or rename functions and arguments, supersede, mark experimental, and write deprecation helpers following tidyverse principles."
+  },
+  "skills/ljg-blind": {
+   "orig": "03dc77883db4949f",
+   "slim": "盲区扫描：读昨天你与 AI 的全部对话，照出让你看不见某类真相的思维习惯，再从微信读书挑一章精准补上，落成分析笔记。用户说扫盲区、盲区、照盲区时使用，可传日期；不用于深钻观点或降秩。"
+  },
+  "skills/ljg-book": {
+   "orig": "02f89a81ef6a375a",
+   "slim": "拆书：给书名、PDF、EPUB 或节选，讲清全书跟着什么走、主线怎么连、证据如何改变理解，保留书的具体内容而非只给通用结论，默认存 Org 笔记。用户说拆书、分析这本书、这本书在讲什么、压缩一本书时使用。"
+  },
+  "skills/ljg-constraint": {
+   "orig": "a556a5e6ec55122d",
+   "slim": "给领域/专业/角色/产品/争论找真正框住它的几条约束，判世界/规则/解释（硬/软/自设），看约束如何定义身份、框出解空间。用户说找约束、本质约束、硬约束还是自设约束、边界在哪、constraint 时使用；不用于降秩或纵向深钻。"
+  },
+  "skills/ljg-learn": {
+   "orig": "72845bea75cbabaf",
+   "slim": "概念解剖：从历史、辩证、现象学、语言学、形式化、存在主义、美学、元哲学八个维度拆解一个概念，收敛成顿悟，输出 org 笔记。用户说解剖概念、概念解剖、explain concept、/ljg-learn 时使用。"
+  },
+  "skills/ljg-paper": {
+   "orig": "c7b96ce6317e512d",
+   "slim": "讲论文：给 arXiv 链接、PDF 或论文题目，讲清研究了什么、作者贡献、结论如何得出、证据没证明什么，默认存 Org 笔记。用户说要读、分析或理解一篇论文时使用；不做复现、正式同行评审或文献综述。"
+  },
+  "skills/ljg-qa": {
+   "orig": "03112a198e5d6045",
+   "slim": "信息提问机：把文章/论文/书的核心观点抽成 Q-A 对，问题切要害、答案简洁有收口，读者顺着 Q 链复现作者推理。用户说问答、Q&A、QA、提问、抽取问题时使用；不用于 FAQ、术语表或阅读理解题。"
+  },
+  "skills/minimax-docx": {
+   "orig": "332c0ff2fa492112",
+   "slim": "Create, edit and format Word .docx documents with OpenXML SDK: build from scratch, fill or modify existing docs, apply template formatting with XSD validation. Use for any report, proposal, contract or formal printable document."
+  },
+  "skills/minimax-pdf": {
+   "orig": "b151ee3158cc4ab4",
+   "slim": "Generate print-ready, designed PDFs (reports, proposals, resumes, cover pages), fill PDF form fields, or restyle an existing doc or Markdown into a styled PDF. Use when appearance matters, not just any PDF output."
+  },
+  "skills/minimax-xlsx": {
+   "orig": "9116d72272903d7e",
+   "slim": "Create, read, analyze, edit or validate Excel files (.xlsx, .xlsm, .csv): build workbooks, edit with zero format loss, recalculate formulas, apply professional financial formatting. Triggers: spreadsheet, pivot table, financial model."
+  },
+  "skills/obsidian-cli": {
+   "orig": "6ab701baf33b9852",
+   "slim": "Operate an Obsidian vault from the CLI: read, create, search and manage notes, tasks and properties; develop and debug plugins and themes, reload plugins, run JavaScript, capture errors, take screenshots."
+  },
+  "skills/paper-abstract": {
+   "orig": "93095c7b5b459628",
+   "slim": "Paper 摘要提炼：从已完成的论文正文提炼摘要与关键词，每句可追溯回出处、不夸大结果、不代写正文。用户说写摘要、提炼摘要、abstract、关键词、学位论文摘要时使用。"
+  },
+  "skills/paper-anchor": {
+   "orig": "c2acdd29ee17d335",
+   "slim": "Paper 文献支撑补齐：统计引用密度定位零引用段，按五类摘出论断并检索真实候选，摆字段级比对供你判定。导师说缺文献支撑、这段要不要加引用、文献综述不足时使用。"
+  },
+  "skills/paper-daily": {
+   "orig": "99be851242b02030",
+   "slim": "Paper 每日学术雷达：抢发检测与新发论文泛读，arXiv 自动轨加多源补充轨。用户问今天 arXiv 有什么新论文、这个 idea 还能做吗、最近一周新论文时使用。"
+  },
+  "skills/paper-disclose": {
+   "orig": "952a6478bc84f0f5",
+   "slim": "Paper AI 使用说明：只读 .paper/ 真实留痕，按四级辅助级别汇编可对外披露的 AI 使用说明，不编造留痕。用户说要交 AI 披露、AIGC 误判申诉、列一下用了哪些 AI 时使用。"
+  },
+  "skills/paper-doctor": {
+   "orig": "6e3caab60980d266",
+   "slim": "Paper 环境体检：一条命令查运行环境、数据源 API、网络、凭证、缓存五维就绪度，只体检不代修。用户说 doctor、体检、自检、能不能用、为什么核验不了时使用。"
+  },
+  "skills/paper-draft": {
+   "orig": "9b750e67f629a414",
+   "slim": "Paper 分段正文共写：基于大纲与文献笔记逐段起草，每段挂真实锚点、无支撑处标注。用户说这段正文怎么写、基于大纲写正文、这一段写不下去时使用。"
+  },
+  "skills/paper-figure": {
+   "orig": "a48d43ac72bb62fe",
+   "slim": "Paper 图表诊断与设计建议：图类、图注、配色、坐标轴、色盲友好的常见选项陈列，摆事实不推荐。用户问图表有什么问题、该画什么图、配色怎么选、figure 帮我看看时使用。"
+  },
+  "skills/paper-help": {
+   "orig": "bb4abc78b350015f",
+   "slim": "Paper 命令导航：问清你想做什么，推荐 1-3 个最匹配命令并说明理由，只导航不代执行。用户问 Paper 能做什么、有哪些命令、该用哪个命令、怎么用时使用。"
+  },
+  "skills/paper-import": {
+   "orig": "c562392eb7b895ea",
+   "slim": "Paper 题录整理：导入知网、Zotero、EndNote 题录并核对题录与草稿引用的一致性，字段缺失标占位、不凭记忆补全。用户说整理题录、参考文献整理、引用管理时使用。"
+  },
+  "skills/paper-init": {
+   "orig": "8c861c31315a6a91",
+   "slim": "Paper 项目脚手架：为新研究项目建标准科研工作目录（README、.gitignore、project.paper.yaml），方案确认前零创建。用户说新建研究项目、初始化论文目录时使用。"
+  },
+  "skills/paper-knowledge-online": {
+   "orig": "8a01c9eae8e97a54",
+   "slim": "Verify and convert paper references (DOI/arXiv/PMID or title) into checked metadata and full-text Markdown: two-source metadata check, PMC OA or arXiv full text, MinerU for PDFs. Use when collecting, verifying or converting papers."
+  },
+  "skills/paper-logic": {
+   "orig": "d20e3aa7722b4b7c",
+   "slim": "Paper 论证链检查：核对 RQ 到方法、结果、结论的结构对应与闭环，只核结构不核真伪、不下价值判断。用户问论文逻辑完整吗、RQ 和结论对应吗、结论有没有超出结果时使用。"
+  },
+  "skills/paper-method": {
+   "orig": "46fb773f88d6be90",
+   "slim": "Paper 研究设计参谋：检查方法与 RQ 的匹配维度，或摆方法类常见项供你拍板；涉人类被试强制列伦理审查提示。用户说方法怎么选、问卷能回答我的问题吗、要伦理审查吗时使用。"
+  },
+  "skills/paper-outline": {
+   "orig": "512f0ed473bc029f",
+   "slim": "Paper 大纲共写：基于 RQ 与文献笔记起草带锚点的章节大纲，无支撑处标纯结构占位，结构由你逐章拍板。用户说把论文大纲列一下、章节怎么分、论文怎么组织时使用。"
+  },
+  "skills/paper-plot": {
+   "orig": "e7df2cb230f58425",
+   "slim": "Paper 绘图代码生成：柱状、折线、散点、箱线、误差线、直方图、热图的 matplotlib 或 ggplot2 代码，配色取公开色板。用户说生成绘图代码、帮我写画图脚本、给我一个 matplotlib 脚本时使用。"
+  },
+  "skills/paper-polish": {
+   "orig": "4ea2de204c1b5361",
+   "slim": "Polish academic prose while preserving meaning: grammar, flow, tone vs evidence, AI-tone removal, Chinese-to-English rewriting; never invents data or citations. Use for polishing a draft, awkward wording, de-AI-flavoring, translating a Chinese manuscript."
+  },
+  "skills/paper-proposal": {
+   "orig": "9a64ce0d1a100681",
+   "slim": "Paper 开题报告组装：从 topic、literature、method 产物提取片段，按中文学位论文开题节点摆骨架，自有内容标占位。用户说写开题报告、开题要准备什么、选题依据怎么写时使用。"
+  },
+  "skills/paper-review": {
+   "orig": "ff1f825e154e05cf",
+   "slim": "Paper 模拟评审：以期刊审稿、盲审、答辩委员视角陈列常见意见并分项评分，标模拟、不下录用判断，不受理他人在审稿件。用户说模拟评审、预审论文、盲审会挂吗时使用。"
+  },
+  "skills/paper-revise": {
+   "orig": "e78c464c0b999689",
+   "slim": "Paper 修订辅助：基于审稿意见出修订对照表与逐点回复信候选措辞，采纳与否由你逐条拍板。用户说写回复信、审稿意见怎么回、逐点回复怎么写、改稿建议时使用。"
+  },
+  "skills/paper-screen": {
+   "orig": "f2bc8d30d476906c",
+   "slim": "Paper 系统综述筛选：PRISMA 2020 筛选台账与流程图，纳入排除由你逐篇拍板，流程图数字由脚本算出。用户说做系统综述、纳排标准怎么定、要 PRISMA 流程图时使用。"
+  },
+  "skills/paper-search": {
+   "orig": "1950b67971813063",
+   "slim": "Paper 文献检索：Crossref、OpenAlex、Semantic Scholar、arXiv 自动检索，中文走知网万方检索方案，支持滚雪球与按作者检索、查 OA 与 PMC 全文。用户说帮我查文献、找研究缺口、谁引用了这篇时使用。"
+  },
+  "skills/paper-style": {
+   "orig": "72ee3cdeb8f009d9",
+   "slim": "Paper 风格校准：由脚本机械算出句长、虚词密度、引用位置等特征并解读，建立个人文风基线，不服务降 AI 率。用户说文风统不统一、这几章不像一个人写的、被判成 AI 怎么办时使用。"
+  },
+  "skills/paper-submit": {
+   "orig": "eaa7fbd0c8346327",
+   "slim": "Paper 投稿准备：陈列目标期刊常见要求类目，整理投稿材料清单与 cover letter 要点骨架，不替你选刊。用户说要投稿了、投稿要交什么、cover letter 怎么写时使用。"
+  },
+  "skills/paper-topic": {
+   "orig": "c8895760a9f1a9e9",
+   "slim": "Paper 选题澄清：逐层给该方向常见研究问题供你拍板，收敛出你的 RQ，不推荐不排序。用户说不知道研究什么、你看这个题行不行、帮我想研究什么时使用。"
+  },
+  "skills/paper-typeset": {
+   "orig": "06d2dc956c46a407",
+   "slim": "Paper 出版链：Markdown 转 LaTeX、DOCX、PDF 并渲染 GB/T 7714 参考文献，只换容器不改一字。用户说投稿要 Word 版、转成 LaTeX、导出 docx、出个 PDF 时使用。"
+  },
+  "skills/paper-verify": {
+   "orig": "f2223f48ba032fa9",
+   "slim": "Paper 引用核验：逐条调真实 API 判六态（已核实、元数据不符、已撤稿、未找到、无法核实、待人工核对），中文文献只标待人工核对，并查结论是否夸大。用户说查引用是不是真的、核对 DOI、投稿前自查时使用。"
+  },
+  "skills/paper-writer": {
+   "orig": "22f39949fa05ed2d",
+   "slim": "Draft paper prose from the author's own materials, from a paragraph to a full manuscript; every claim traces to user input or verified sources, no placeholder tags. Use to write a section, turn an idea or results into text, or draft a full paper."
+  },
+  "skills/ppt-master": {
+   "orig": "e4674879af71e828",
+   "slim": "Build editable PPTX decks: generate or reconstruct slides, reusable Brand/Style/Layout/Deck workspaces, fill native templates, beautify finished decks, add narration or self-running video. Triggers: PPTX, slide deck, courseware."
+  },
+  "skills/pr-create": {
+   "orig": "b71d832f88919ab8",
+   "slim": "Create a pull request from current changes, watch GitHub CI and debug failures until it passes; stops when CI is green and returns the PR link. Triggers: create pr, open pull request, submit pr. Does not merge."
+  },
+  "skills/pre-submission-reviewer": {
+   "orig": "aca50e91b581b92c",
+   "slim": "Pre-submission review of a technical paper across logic, writing details, grammar, LaTeX and figures with CRITICAL/MAJOR/MINOR severity; flags AI-tone words and em-dash misuse. Use for 'review/audit/proofread this paper' or near a deadline."
+  },
+  "skills/protein-sequence-msa": {
+   "orig": "eea6de74e0226ac6",
+   "slim": "Align protein sequences with EBI Clustal Omega (up to 4000 sequences, 4 MB): assess similarity, domain and residue conservation. Not for searching homologues (MMseqs2/BLAST), DNA/RNA, structural alignment (Foldseek/PyMOL) or a single sequence."
+  },
+  "skills/pubmed-database": {
+   "orig": "f75830584c2abca2",
+   "slim": "Search PubMed for literature and clinical trials: fetch abstracts and full text, link papers to genes/proteins/compounds (PubChem), match citations, cache result sets for bulk work. Uses NCBI E-utilities and PMC BioC."
+  },
+  "skills/pymol": {
+   "orig": "22d9ac2bab238d53",
+   "slim": "Visualize, align and render protein/molecular structures in PyMOL: images, superposition, distances and contacts, highlight binding sites, color by B-factor/pLDDT, protein-ligand interactions. Not for docking, MD or sequence-only work."
+  },
+  "skills/quarto-authoring": {
+   "orig": "37f887c242670d78",
+   "slim": "Work with Quarto: .qmd files, _quarto.yml, projects, callouts, cross-references, citations, Mermaid, extensions, websites, books, presentations; also migration from R Markdown, bookdown, blogdown, xaringan or Jupyter. Not for general R Markdown unless Quarto is involved."
+  },
+  "skills/rebuttal-guidance": {
+   "orig": "46c474e5bbea3ce3",
+   "slim": "Peer-review rebuttal guidance, not full rebuttal prose: match the reviewer's mindset, recommend a strategy, optionally ground it in manuscript evidence. Use when the user pastes reviewer comments or asks for rebuttal help or how to reply to R1.W2."
+  },
+  "skills/release-post": {
+   "orig": "8ac8056d0f9a80b8",
+   "slim": "Write package release blog posts in Tidyverse (hugodown) or Shiny (Quarto) style: turn NEWS/changelog into a release announcement, fetch contributor acknowledgments, follow platform formatting."
+  },
+  "skills/scientific-problem-selection": {
+   "orig": "fe9e5f745c339cc8",
+   "slim": "Help scientists pick and pressure-test research problems: pitch a new idea, work through a stuck project, evaluate risks, plan research strategy and decision trees. Use for I have an idea, I am stuck on my research, what should I work on."
+  },
+  "skills/scvi-tools": {
+   "orig": "9de82b63854a82c9",
+   "slim": "Deep-learning single-cell analysis with scvi-tools: scVI/scANVI integration, PeakVI (ATAC), totalVI (CITE-seq), MultiVI (multiome), DestVI (spatial), scArches label transfer, veloVI (velocity). Triggers: scVI, VAE, batch correction, reference mapping."
+  },
+  "skills/shiny-bslib": {
+   "orig": "8cf261dbfebbda06",
+   "slim": "Build modern Shiny dashboards with bslib (Bootstrap 5): page layouts, grid, cards, value boxes, nav, sidebars, filling layouts, theming, accordions, tooltips, popovers, toasts. Also modernizing legacy fluidPage/fluidRow/tabsetPanel apps."
+  },
+  "skills/tech-paper-template": {
+   "orig": "b0c52f99dc10ea4a",
+   "slim": "Plan a technical paper's logical skeleton with a thinking-template table (background, limitations, key idea, challenges, modules, contributions) and a four-point consistency check. Use when brainstorming a paper or planning before drafting."
+  },
+  "skills/travel-planner": {
+   "orig": "597786984e26510f",
+   "slim": "Plan trips: collect budget, style, interests and dietary needs, then produce day-by-day itineraries, budget breakdowns, packing checklists, cultural do and do-not lists, and keep a database of preferences and past trips."
+  },
+  "skills/vibe-research-workflow": {
+   "orig": "316deeb57c957ac9",
+   "slim": "Guide AI-assisted research (Vibe Coding, Vibe Figure, Vibe Writing): you keep academic judgment, AI does the mechanical work; recommends tools (Cursor, Claude Code, Codex, Figma, Gemini). Use for 'how to use AI for research' or which AI tool to pick."
+  },
+  "skills/workflow-skill-creator": {
+   "orig": "338d8f4a60f41630",
+   "slim": "Distill a completed workflow or interaction into a reusable agent skill. Use when the user says make this a skill, create a skill from what we just did, package this workflow. Not for writing a skill from scratch with no existing workflow."
+  }
+ },
+ "version": 1
+}
