@@ -307,6 +307,7 @@ bash setup.sh        # Linux / macOS（Windows 用 setup.ps1）
 | [**writing-rules**](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/hookify/skills/writing-rules) | This skill should be used when the user asks to "create a hookify rule", "write a hook rule", "configure hookify", "add a hookify rule",... | anthropics/claude-plugins-official |
 | [**session-report**](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/session-report/skills/session-report) | Generate an explorable HTML report of Claude Code session usage (tokens, cache, subagents, skills,... | anthropics/claude-plugins-official |
 | [**skill-creator**](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/skill-creator/skills/skill-creator) | Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit,... | anthropics/claude-plugins-official |
+| [**paper-knowledge-online**](https://github.com/wtbxsjy/paper-knowledge/tree/main/skills/paper-knowledge-online) | Turn paper references (DOI, arXiv id, PMID/PMCID, or title + author/journal/year) into verified metadata and full-text Markdown.... | wtbxsjy/paper-knowledge |
 
 ### 自定义 Skills（无公开源）
 

@@ -373,6 +373,12 @@
 | `skills/paper-typeset` | `main` | `skills/paper-typeset` | 学术辅导套件（cabbage2000-lab，PolyForm Noncommercial 1.0.0，仅非商业用途） |
 | `skills/paper-verify` | `main` | `skills/paper-verify` | 学术辅导套件（cabbage2000-lab，PolyForm Noncommercial 1.0.0，仅非商业用途） |
 
+### https://github.com/wtbxsjy/paper-knowledge
+
+| 本仓库目录 | 上游分支 | 上游路径 | 备注 |
+|---|---|---|---|
+| `skills/paper-knowledge-online` | `main` | `skills/paper-knowledge-online` | 论文参考→核验元数据→全文Markdown（CrossRef/arXiv+Sciverse 双源核对；PMC OA/arXiv 抓取，其余 PDF 经 MinerU 解析，MIT） |
+
 ## 自定义 Skill（无公开源，不参与自动更新）
 
 | Skill | 说明 |

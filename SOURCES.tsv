@@ -196,3 +196,4 @@ skills/convert-file|CUSTOM|CUSTOM|CUSTOM|格式转换，导入自 duckdb/duckdb-
 skills/s3-explore|CUSTOM|CUSTOM|CUSTOM|对象存储探索，导入自 duckdb/duckdb-skills@7feda8e 并增补 DuckDB 2.0
 skills/spatial|CUSTOM|CUSTOM|CUSTOM|空间数据，导入自 duckdb/duckdb-skills@7feda8e 并增补 DuckDB 2.0
 skills/duckdb-2-0|CUSTOM|CUSTOM|CUSTOM|DuckDB 2.0 更新汇总、迁移与 agent mode 指南（自写）
+skills/paper-knowledge-online|https://github.com/wtbxsjy/paper-knowledge.git|main|skills/paper-knowledge-online|论文参考→核验元数据→全文Markdown（CrossRef/arXiv+Sciverse 双源核对；PMC OA/arXiv 抓取，其余 PDF 经 MinerU 解析，MIT）
