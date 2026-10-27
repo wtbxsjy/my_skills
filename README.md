@@ -430,6 +430,7 @@ bash setup.sh        # Linux / macOS（Windows 用 setup.ps1）
 |---|---|---|
 | [**architecture-diagram-generator**](https://github.com/Cocoon-AI/architecture-diagram-generator/tree/main/architecture-diagram) | Create polished dark-themed architecture diagrams as self-contained HTML+SVG files. Use when the user asks for system, infrastructure, cloud,... | Cocoon-AI/architecture-diagram-generator |
 | [**diagram-design**](https://github.com/cathrynlavery/diagram-design/tree/main/skills/diagram-design) | Create branded architecture, flow, sequence, ER, timeline, org-chart, Sankey, Wardley and service-blueprint diagrams (40+ types) as HTML/SVG/PNG,... | cathrynlavery/diagram-design |
+| [**drawio-reconstruction**](https://github.com/HKUSTDial/Supervisor-Skills/tree/main/skills/drawio-reconstruction) | Rebuild reference images (research figures, architecture diagrams, slides,... | HKUSTDial/Supervisor-Skills |
 | [**excalidraw-diagram-generator**](https://github.com/github/awesome-copilot/tree/main/skills/excalidraw-diagram-generator) | Generate Excalidraw diagrams from natural language descriptions. Use when asked to "create a diagram", "make a flowchart", "visualize a process",... | github/awesome-copilot |
 | [**fireworks-tech-graph**](https://github.com/yizhiyanhua-ai/fireworks-tech-graph) | Create precise SVG technical diagrams, export PNG or offline HTML, and animate supported semantic SVGs to GIF. Use for architecture, UML, agent,... | yizhiyanhua-ai/fireworks-tech-graph |
 | [**ggplot2-pub**](https://github.com/zhjx19/ggplot2-pub) | 出版级 ggplot2 图表：在 R 中生成、修复或审查达到论文/报告出版标准的统计图。 当用户要求画图、作图、出图、生成图表、论文 figure、按审稿意见改图（字太小/标签重叠/配色乱）、 或用 ggsave 导出图片时使用。... | zhjx19/ggplot2-pub |
@@ -450,6 +451,11 @@ bash setup.sh        # Linux / macOS（Windows 用 setup.ps1）
 
 | Skill | 描述 | 来源 |
 |---|---|---|
+| [**benchmark-paper-template**](https://github.com/HKUSTDial/Supervisor-Skills/tree/main/skills/benchmark-paper-template) | Structure a Benchmark/Evaluation paper with the five-pillar framework (gap, construction pipeline, evaluation, findings,... | HKUSTDial/Supervisor-Skills |
+| [**deep-research**](https://github.com/HKUSTDial/Supervisor-Skills/tree/main/skills/deep-research) | Survey-grade literature investigation: freeze research questions, search from adversarial perspectives, verify every citation,... | HKUSTDial/Supervisor-Skills |
+| [**figure-designer**](https://github.com/HKUSTDial/Supervisor-Skills/tree/main/skills/figure-designer) | Design the three core paper figures, Motivated Example (Fig. 1), Solution Overview, Experimental Results: pick paradigm, layout, labels and tool,... | HKUSTDial/Supervisor-Skills |
+| [**idea-evaluator**](https://github.com/HKUSTDial/Supervisor-Skills/tree/main/skills/idea-evaluator) | Evaluate a draft research idea on Higher/Faster/Stronger/Cheaper/Broader, lifecycle and capability fit,... | HKUSTDial/Supervisor-Skills |
+| [**intro-drafter**](https://github.com/HKUSTDial/Supervisor-Skills/tree/main/skills/intro-drafter) | Draft a technical paper's Introduction as flowing prose via a six-paragraph logic (background, limitations, problem, challenges, solution,... | HKUSTDial/Supervisor-Skills |
 | [**literature-review**](https://github.com/taoyunudt/literature-review-skill) | 帮助用户撰写高质量的文献综述类论文。提供从选题、文献检索、评估筛选、结构规划到最终写作的全流程指导。适用于需要撰写独立文献综述论文或学术论文中文献综述部分的用户。 | taoyunudt/literature-review-skill |
 | [**paper-abstract**](https://github.com/cabbage2000-lab/paper-tutor-skills/tree/main/skills/paper-abstract) | Paper 摘要提炼：从已完成的论文正文提炼摘要与关键词，每句可追溯回出处、不夸大结果、不代写正文。用户说写摘要、提炼摘要、abstract、关键词、学位论文摘要时使用。 | cabbage2000-lab/paper-tutor-skills |
 | [**paper-anchor**](https://github.com/cabbage2000-lab/paper-tutor-skills/tree/main/skills/paper-anchor) | Paper 文献支撑补齐：统计引用密度定位零引用段，按五类摘出论断并检索真实候选，摆字段级比对供你判定。导师说缺文献支撑、这段要不要加引用、文献综述不足时使用。 | cabbage2000-lab/paper-tutor-skills |
@@ -465,6 +471,7 @@ bash setup.sh        # Linux / macOS（Windows 用 setup.ps1）
 | [**paper-method**](https://github.com/cabbage2000-lab/paper-tutor-skills/tree/main/skills/paper-method) | Paper 研究设计参谋：检查方法与 RQ 的匹配维度，或摆方法类常见项供你拍板；涉人类被试强制列伦理审查提示。用户说方法怎么选、问卷能回答我的问题吗、要伦理审查吗时使用。 | cabbage2000-lab/paper-tutor-skills |
 | [**paper-outline**](https://github.com/cabbage2000-lab/paper-tutor-skills/tree/main/skills/paper-outline) | Paper 大纲共写：基于 RQ 与文献笔记起草带锚点的章节大纲，无支撑处标纯结构占位，结构由你逐章拍板。用户说把论文大纲列一下、章节怎么分、论文怎么组织时使用。 | cabbage2000-lab/paper-tutor-skills |
 | [**paper-plot**](https://github.com/cabbage2000-lab/paper-tutor-skills/tree/main/skills/paper-plot) | Paper 绘图代码生成：柱状、折线、散点、箱线、误差线、直方图、热图的 matplotlib 或 ggplot2 代码，配色取公开色板。用户说生成绘图代码、帮我写画图脚本、给我一个 matplotlib 脚本时使用。 | cabbage2000-lab/paper-tutor-skills |
+| [**paper-polish**](https://github.com/HKUSTDial/Supervisor-Skills/tree/main/skills/paper-polish) | Polish academic prose while preserving meaning: grammar, flow, tone vs evidence, AI-tone removal,... | HKUSTDial/Supervisor-Skills |
 | [**paper-proposal**](https://github.com/cabbage2000-lab/paper-tutor-skills/tree/main/skills/paper-proposal) | Paper 开题报告组装：从 topic、literature、method 产物提取片段，按中文学位论文开题节点摆骨架，自有内容标占位。用户说写开题报告、开题要准备什么、选题依据怎么写时使用。 | cabbage2000-lab/paper-tutor-skills |
 | [**paper-review**](https://github.com/cabbage2000-lab/paper-tutor-skills/tree/main/skills/paper-review) | Paper 模拟评审：以期刊审稿、盲审、答辩委员视角陈列常见意见并分项评分，标模拟、不下录用判断，不受理他人在审稿件。用户说模拟评审、预审论文、盲审会挂吗时使用。 | cabbage2000-lab/paper-tutor-skills |
 | [**paper-revise**](https://github.com/cabbage2000-lab/paper-tutor-skills/tree/main/skills/paper-revise) | Paper 修订辅助：基于审稿意见出修订对照表与逐点回复信候选措辞，采纳与否由你逐条拍板。用户说写回复信、审稿意见怎么回、逐点回复怎么写、改稿建议时使用。 | cabbage2000-lab/paper-tutor-skills |
@@ -475,6 +482,11 @@ bash setup.sh        # Linux / macOS（Windows 用 setup.ps1）
 | [**paper-topic**](https://github.com/cabbage2000-lab/paper-tutor-skills/tree/main/skills/paper-topic) | Paper 选题澄清：逐层给该方向常见研究问题供你拍板，收敛出你的 RQ，不推荐不排序。用户说不知道研究什么、你看这个题行不行、帮我想研究什么时使用。 | cabbage2000-lab/paper-tutor-skills |
 | [**paper-typeset**](https://github.com/cabbage2000-lab/paper-tutor-skills/tree/main/skills/paper-typeset) | Paper 出版链：Markdown 转 LaTeX、DOCX、PDF 并渲染 GB/T 7714 参考文献，只换容器不改一字。用户说投稿要 Word 版、转成 LaTeX、导出 docx、出个 PDF 时使用。 | cabbage2000-lab/paper-tutor-skills |
 | [**paper-verify**](https://github.com/cabbage2000-lab/paper-tutor-skills/tree/main/skills/paper-verify) | Paper 引用核验：逐条调真实 API 判六态（已核实、元数据不符、已撤稿、未找到、无法核实、待人工核对），中文文献只标待人工核对，并查结论是否夸大。用户说查引用是不是真的、核对 DOI、投稿前自查时使用。 | cabbage2000-lab/paper-tutor-skills |
+| [**paper-writer**](https://github.com/HKUSTDial/Supervisor-Skills/tree/main/skills/paper-writer) | Draft paper prose from the author's own materials, from a paragraph to a full manuscript; every claim traces to user input or verified sources,... | HKUSTDial/Supervisor-Skills |
+| [**pre-submission-reviewer**](https://github.com/HKUSTDial/Supervisor-Skills/tree/main/skills/pre-submission-reviewer) | Pre-submission review of a technical paper across logic, writing details, grammar,... | HKUSTDial/Supervisor-Skills |
+| [**rebuttal-guidance**](https://github.com/HKUSTDial/Supervisor-Skills/tree/main/skills/rebuttal-guidance) | Peer-review rebuttal guidance, not full rebuttal prose: match the reviewer's mindset, recommend a strategy,... | HKUSTDial/Supervisor-Skills |
+| [**tech-paper-template**](https://github.com/HKUSTDial/Supervisor-Skills/tree/main/skills/tech-paper-template) | Plan a technical paper's logical skeleton with a thinking-template table (background, limitations, key idea, challenges, modules,... | HKUSTDial/Supervisor-Skills |
+| [**vibe-research-workflow**](https://github.com/HKUSTDial/Supervisor-Skills/tree/main/skills/vibe-research-workflow) | Guide AI-assisted research (Vibe Coding, Vibe Figure, Vibe Writing): you keep academic judgment,... | HKUSTDial/Supervisor-Skills |
 
 ### 知识管理 / Obsidian
 

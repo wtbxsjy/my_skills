@@ -614,6 +614,23 @@
 | `plugin-skills/scientific-agent-skills/what-if-oracle` | `main` | `skills/what-if-oracle` |  |
 | `plugin-skills/scientific-agent-skills/zarr-python` | `main` | `skills/zarr-python` |  |
 
+### https://github.com/HKUSTDial/Supervisor-Skills
+
+| 本仓库目录 | 上游分支 | 上游路径 | 备注 |
+|---|---|---|---|
+| `skills/benchmark-paper-template` | `main` | `skills/benchmark-paper-template` | CC BY-NC-SA 4.0，description 已按本仓库规范精简，见 licenses/Supervisor-Skills-NOTICE.md |
+| `skills/deep-research` | `main` | `skills/deep-research` | CC BY-NC-SA 4.0，description 已按本仓库规范精简，见 licenses/Supervisor-Skills-NOTICE.md |
+| `skills/figure-designer` | `main` | `skills/figure-designer` | CC BY-NC-SA 4.0，description 已按本仓库规范精简，见 licenses/Supervisor-Skills-NOTICE.md |
+| `skills/idea-evaluator` | `main` | `skills/idea-evaluator` | CC BY-NC-SA 4.0，description 已按本仓库规范精简，见 licenses/Supervisor-Skills-NOTICE.md |
+| `skills/intro-drafter` | `main` | `skills/intro-drafter` | CC BY-NC-SA 4.0，description 已按本仓库规范精简，见 licenses/Supervisor-Skills-NOTICE.md |
+| `skills/paper-polish` | `main` | `skills/paper-polish` | CC BY-NC-SA 4.0，description 已按本仓库规范精简，见 licenses/Supervisor-Skills-NOTICE.md |
+| `skills/paper-writer` | `main` | `skills/paper-writer` | CC BY-NC-SA 4.0，description 已按本仓库规范精简，见 licenses/Supervisor-Skills-NOTICE.md |
+| `skills/pre-submission-reviewer` | `main` | `skills/pre-submission-reviewer` | CC BY-NC-SA 4.0，description 已按本仓库规范精简，见 licenses/Supervisor-Skills-NOTICE.md |
+| `skills/rebuttal-guidance` | `main` | `skills/rebuttal-guidance` | CC BY-NC-SA 4.0，description 已按本仓库规范精简，见 licenses/Supervisor-Skills-NOTICE.md |
+| `skills/tech-paper-template` | `main` | `skills/tech-paper-template` | CC BY-NC-SA 4.0，description 已按本仓库规范精简，见 licenses/Supervisor-Skills-NOTICE.md |
+| `skills/vibe-research-workflow` | `main` | `skills/vibe-research-workflow` | CC BY-NC-SA 4.0，description 已按本仓库规范精简，见 licenses/Supervisor-Skills-NOTICE.md |
+| `skills/drawio-reconstruction` | `main` | `skills/drawio-reconstruction` | CC BY-NC-SA 4.0，description 已按本仓库规范精简，见 licenses/Supervisor-Skills-NOTICE.md |
+
 ## 自定义 Skill（无公开源，不参与自动更新）
 
 | Skill | 说明 |

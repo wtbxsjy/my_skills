@@ -115,13 +115,13 @@ PLUGIN_NS_CAT = {
     'scientific-agent-skills': SCI_TITLE,
 }
 FRONTEND = ['frontend-design','frontend-dev','fullstack-dev','taste-skill','taste-skill-v1','gpt-tasteskill','brandkit','brutalist-skill','minimalist-skill','output-skill','soft-skill','redesign-skill','stitch-skill','imagegen-frontend-mobile','imagegen-frontend-web','image-to-code-skill','frontend-slides','guizang-ppt-skill']
-CHART = ['ggplot2-pub','diagram-design','fireworks-tech-graph','architecture-diagram-generator','excalidraw-diagram-generator','lieflat-charts']
+CHART = ['ggplot2-pub','diagram-design','fireworks-tech-graph','architecture-diagram-generator','excalidraw-diagram-generator','lieflat-charts','drawio-reconstruction']
 OFFICE = ['pptx-generator','ppt-master','minimax-docx','minimax-pdf','minimax-xlsx','gif-sticker-maker']
 KNOWLEDGE = ['defuddle','json-canvas','obsidian-bases','obsidian-cli','obsidian-markdown','ima-skill','kb-ops']
 META = ['skill-creator','writing-rules','credentials','uv','find-skills','score','travel-planner']
 LJG = ['ljg-blind','ljg-book','ljg-card','ljg-classic','ljg-constraint','ljg-invest','ljg-is','ljg-learn','ljg-paper','ljg-explain','ljg-present','ljg-push','ljg-qa','ljg-rank','ljg-read','ljg-relationship','ljg-roundtable','ljg-structure','ljg-think','ljg-word','ljg-writes']
 
-ACADEMIC = ['literature-review','paper-abstract','paper-anchor','paper-daily','paper-disclose','paper-doctor','paper-draft','paper-figure','paper-help','paper-import','paper-init','paper-logic','paper-method','paper-outline','paper-plot','paper-proposal','paper-review','paper-revise','paper-screen','paper-search','paper-style','paper-submit','paper-topic','paper-typeset','paper-verify']
+ACADEMIC = ['literature-review','paper-abstract','paper-anchor','paper-daily','paper-disclose','paper-doctor','paper-draft','paper-figure','paper-help','paper-import','paper-init','paper-logic','paper-method','paper-outline','paper-plot','paper-proposal','paper-review','paper-revise','paper-screen','paper-search','paper-style','paper-submit','paper-topic','paper-typeset','paper-verify','benchmark-paper-template','deep-research','figure-designer','idea-evaluator','intro-drafter','paper-polish','paper-writer','pre-submission-reviewer','rebuttal-guidance','tech-paper-template','vibe-research-workflow']
 
 CATS = [
     ('R / Tidyverse / Bioconductor', R),
