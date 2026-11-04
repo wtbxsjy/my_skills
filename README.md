@@ -553,6 +553,7 @@ bash setup.sh        # Linux / macOS（Windows 用 setup.ps1）
 | Skill | 描述 | 来源 |
 |---|---|---|
 | [**modern-r**](./skills/modern-r) | Modernize and review existing R code using current idioms and migration priorities across tidyverse, tidy evaluation, style, and performance.... | 自定义 |
+| [**notion-media-upload**](./skills/notion-media-upload) | Insert local images or files into a Notion page as native blocks via the multipart upload API (the JSON-only MCP cannot).... | 自定义 |
 | [**r-skill-changelog-sync**](./skills/r-skill-changelog-sync) | Refresh R skills against upstream package changes by checking CRAN package and NEWS pages,... | 自定义 |
 
 ## Skill 来源与更新

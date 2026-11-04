@@ -1,18 +1,10 @@
 ---
 name: notion-media-upload
 description: >-
-  Insert local images or files into a Notion page as native blocks (real image
-  blocks, not attachments, no format conversion). Use when the user asks to put
-  rendered figures, plots, screenshots, or a report PDF into a Notion page;
-  when they say "把图片插入 Notion / 把图插进报告 / 上传到 Notion / 嵌入
-  Notion 页面"; or when the Notion MCP tools cannot upload local files (they
-  only send JSON, so local image paths silently become empty image blocks).
-  Also covers choosing the insertion anchor (page end, after a block, end of a
-  headed section), per-file captions, replacing an existing figure in place,
-  and permission/404 troubleshooting. Also documents how this environment
-  multiplexes several Notion workspaces (cuhk/hotmail/bgi/polyu) behind one MCP
-  server, and how to configure, verify, rebuild or roll that back in DSH
-  (token file layout, cordis.patch.yml insert block, per-workspace limits).
+  Insert local images or files into a Notion page as native blocks via the
+  multipart upload API (the JSON-only MCP cannot). Use for figures or report
+  PDFs (把图/PDF 插进 Notion); covers anchors, captions, in-place replacement
+  and multi-workspace MCP/DSH setup.
 ---
 
 # Notion Media Upload

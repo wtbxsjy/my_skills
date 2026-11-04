@@ -139,7 +139,7 @@ CATS = [
     ('个人技能集（ljg-*）', LJG),
     ('Meta / 效率工具', META),
 ]
-CUSTOM_NAMES = ['modern-r', 'r-skill-changelog-sync']
+CUSTOM_NAMES = ['modern-r', 'r-skill-changelog-sync', 'notion-media-upload']
 PLUGIN_TITLE = '插件附带 Skills'
 CUSTOM_TITLE = '自定义 Skills（无公开源）'
 
