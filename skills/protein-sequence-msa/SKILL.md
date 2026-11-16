@@ -1,6 +1,8 @@
 ---
 name: protein-sequence-msa
 description: "Align protein sequences with EBI Clustal Omega (up to 4000 sequences, 4 MB): assess similarity, domain and residue conservation. Not for searching homologues (MMseqs2/BLAST), DNA/RNA, structural alignment (Foldseek/PyMOL) or a single sequence."
+metadata:
+  publisher: google
 ---
 
 ## Prerequisites

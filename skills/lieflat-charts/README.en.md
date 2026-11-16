@@ -2,9 +2,17 @@
 
 [中文](README.md) | English
 
-[![Lieflat Charts: a data visualization skill with its own visual language](docs/assets/readme-hero-en.png)](https://moxt.ai/hub?view=skill&id=lieflat-charts)
+**Website & commercial licenses:** [lieflat.work · Lieflat Charts](https://lieflat.work/skills/charts/)
 
-Lieflat Charts is an Agent Skills-compatible data visualization and report-generation skill for moxt, Claude Code, Codex, and other AI agents that support `SKILL.md`. Created at [moxt.ai](https://moxt.ai), it defaults to polished charts; it switches to one of 12 full-page templates, each available in Chinese and English, only when the user explicitly asks for a report, annual report, monthly report, white paper, poster, brief, or similar narrative deliverable.
+![Lieflat Charts: a data visualization skill with its own visual language](docs/assets/readme-hero-en.png)
+
+Lieflat Charts is an Agent Skills-compatible skill for data visualization, slide decks, and full-page reports. It works with Claude Code, Codex, and other AI agents that support `SKILL.md`. It provides both Presentation Mode and Report Mode but defaults to charts. Explicit slide-deck requests produce an HTML or PDF deck; explicit report, annual report, monthly report, white paper, poster, or brief requests produce a full-page HTML report.
+
+> This public edition includes nine Lupi Editorial charts, Chinese and English Mono slide templates, and the other chart and report templates.
+>
+> The full collection includes all 19 Lupi Editorial charts and three 19-slide decks in Porcelain, Palm, and Wire, each in Chinese and English. [Preview and purchase the full collection →](https://lieflat.work/skills/charts/)
+
+For a chart deck, the agent starts from the Chinese or English Mono template and selects charts to fit the supplied data.
 
 Its visual language is built around consistent typography, spacing, line work, and motion. It includes three main chart families:
 
@@ -22,7 +30,7 @@ Representative templates from each chart family.
 
 ### Lupi Editorial
 
-Detailed, record-level, and editorial. Selected examples from 20 narrative templates.
+These previews illustrate the Lupi Editorial style. Nine templates are included in the public edition.
 
 <table>
   <tr>
@@ -129,51 +137,35 @@ A black and gray palette with one fluorescent orange focal point.
 
 ## Latest Update
 
+### Added Presentation Mode
+
+The public edition includes 16:9 single-file HTML slide templates with keyboard navigation, a slide overview, and per-slide printing. Choose charts from `catalog.md` to fit the data.
+
+The previews show the cover, metrics page, and dark chart page of the Mono template.
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/assets/presentations/presentation-en-cover.png" alt="Presentation Mode cover preview" width="100%"></td>
+    <td width="50%"><img src="docs/assets/presentations/presentation-en-metrics.png" alt="Presentation Mode metrics preview" width="100%"></td>
+  </tr>
+  <tr><td colspan="2"><img src="docs/assets/presentations/presentation-en-dark.png" alt="Presentation Mode dark chart preview" width="100%"></td></tr>
+</table>
+
+See [`presentation-catalog.md`](presentation-catalog.md) and [`templates/presentations/index.html`](templates/presentations/index.html).
+
+The full collection also includes the Porcelain, Palm, and Wire slide templates. [Preview and purchase the full collection →](https://lieflat.work/skills/charts/)
+
+Public Mono templates: [`presentation.en.html`](templates/presentations/presentation.en.html) / [`presentation.zh.html`](templates/presentations/presentation.zh.html).
+
 ### Added Report Mode
 
 Lieflat Charts can now generate complete HTML reports in addition to individual charts. The 12 full-page templates are available in Chinese and English for research reports, research briefs, business data reports, financial and economic analysis, product records, dashboards, posters, and personal datasets such as sports, travel, and yearly life logs. Template names describe the layout's character, not a hard use-case restriction; the same layout can move across report types when the information structure fits.
 
-<table>
-  <tr>
-    <td width="25%"><img src="docs/assets/reports/en/report-03.png" alt="Report Template 03 Annual Data Report / Poster" width="100%"><br><strong>R03 · Annual Data Report / Poster</strong></td>
-    <td width="25%"><img src="docs/assets/reports/en/report-09.png" alt="Report Template 09 Business Data / Financial Dashboard" width="100%"><br><strong>R09 · Business Data / Financial Dashboard</strong></td>
-    <td width="25%"><img src="docs/assets/reports/en/report-08.png" alt="Report Template 08 Population / Socioeconomic One-Pager" width="100%"><br><strong>R08 · Population / Socioeconomic One-Pager</strong></td>
-    <td width="25%"><img src="docs/assets/reports/en/report-12-v3.png" alt="Report Template 12 Periodic Data Brief / Monitoring Summary" width="100%"><br><strong>R12 · Periodic Data Brief / Monitoring Summary</strong></td>
-  </tr>
-  <tr>
-    <td width="25%"><img src="docs/assets/reports/en/report-01.png" alt="Report Template 01 Research Report / One-Pager" width="100%"><br><strong>R01 · Research Report / One-Pager</strong></td>
-    <td width="25%"><img src="docs/assets/reports/en/report-05.png" alt="Report Template 05 Project / Product Impact Story" width="100%"><br><strong>R05 · Project / Product Impact Story</strong></td>
-    <td width="25%"><img src="docs/assets/reports/en/report-10.png" alt="Report Template 10 Personal Data / Sports / Travel Record" width="100%"><br><strong>R10 · Personal Data / Sports / Travel Record</strong></td>
-    <td width="25%"><img src="docs/assets/reports/en/report-07.png" alt="Report Template 07 Research / Market Data Collage Poster" width="100%"><br><strong>R07 · Research / Market Data Collage Poster</strong></td>
-  </tr>
-  <tr>
-    <td width="25%"><img src="docs/assets/reports/en/report-02.png" alt="Report Template 02 Annual Review / Performance Recap" width="100%"><br><strong>R02 · Annual Review / Performance Recap</strong></td>
-    <td width="25%"><img src="docs/assets/reports/en/report-11.png" alt="Report Template 11 Research / Financial Brief Card" width="100%"><br><strong>R11 · Research / Financial Brief Card</strong></td>
-    <td width="25%"><img src="docs/assets/reports/en/report-04.png" alt="Report Template 04 Monthly Business / Financial Report" width="100%"><br><strong>R04 · Monthly Business / Financial Report</strong></td>
-    <td width="25%"><img src="docs/assets/reports/en/report-06.png" alt="Report Template 06 Long-Cycle Product / Business Almanac" width="100%"><br><strong>R06 · Long-Cycle Product / Business Almanac</strong></td>
-  </tr>
-</table>
+Report mode keeps chart selection data-driven; browse the report templates in [`report-catalog.md`](report-catalog.md) and [`templates/reports/index.html`](templates/reports/index.html).
 
 ## Quick Start
 
-### Recommended: Use It in Moxt
-
-[![Use Lieflat Charts in Moxt](docs/assets/moxt-quick-start-en.png)](https://moxt.ai/hub?view=skill&id=lieflat-charts)
-
-Lieflat Charts was designed, tested, and continuously refined in [Moxt](https://moxt.ai/hub?view=skill&id=lieflat-charts). Its design rules, template structure, and file workflow were shaped through repeated use with Moxt's Agent collaboration model.
-
-In Moxt, an Agent can more smoothly read the complete design specification, understand the visual language, apply the appropriate templates, and keep previewing and refining the result in the same workspace. This makes the Lieflat Charts design more consistent in practice.
-
-| Lieflat Charts workflow | A typical one-shot chat | In Moxt |
-|---|---|---|
-| Understanding the design language | The Agent rebuilds its understanding from the Skill files | The Skill was designed and validated in the same Agent environment |
-| Reading rules, templates, and data | Files or paths may need to be supplied repeatedly | Rules, templates, data, and output remain together in one workspace |
-| Iterating on charts | Context may need to be explained again in a new conversation | The Agent can continue from the files and context already in the workspace |
-| Producing the final result | Output may remain in a chat or temporary directory | The HTML result stays beside its data and templates for further refinement |
-
-Lieflat Charts still works with other tools that support Agent Skills. Moxt is its native production environment and the recommended path for the most complete workflow with the fewest setup steps.
-
-### Install in Other Agents
+### Install in an Agent
 
 Install with one command:
 
@@ -237,11 +229,12 @@ The number of charts follows the number of independent findings: one chart for o
 
 | Family | Count | Best for | Implementation |
 |---|---:|---|---|
-| **Lupi Editorial** | 15 | Annual reports, papers, long-form articles, posters, portfolios, and readers willing to inspect detail | Handwritten SVG |
+| **Lupi Editorial** | 9 | Annual reports, papers, long-form articles, posters, portfolios, and readers willing to inspect detail | Handwritten SVG |
 | **Lupi Basics** | 13 | Bars, lines, areas, donuts, scatterplots, waterfalls, heatmaps, progress, treemaps, and other foundational data shapes | Handwritten SVG / ECharts |
 | **Glance** | 18 | Weekly reports, dashboards, monitoring, and presentations that require fast comparison | Chart.js / ECharts |
 | **Interactive** | 3 | Networks, paths, multi-segment flows, and high-density relationship data | ECharts / SVG |
 | **Color Presets** | 3 families / 15 samples | Distinguishing real data dimensions or adding one controlled focal point to monochrome charts | Restyled original templates |
+| **Presentation Mode** | 1 bilingual set | 16:9 navigable decks with entrance animations (Mono); layout comes from the template, charts and color system come from user data | Single-file HTML |
 | **Report Templates** | 12 templates / two languages | Research, annual, monthly, dashboard, poster, brief, and notebook-style full-page reports | Single-file HTML |
 
 ### Lupi Editorial
@@ -279,22 +272,24 @@ Lieflat Charts differs from a conventional chart generator in more than color:
 ├── README.md                # Chinese project guide
 ├── README.en.md             # English project guide
 ├── SKILL.md                 # Agent workflow and design rules
-├── catalog.md               # Data-contract index for 49 chart types
+├── catalog.md               # Index of charts and their data contracts
 ├── report-catalog.md        # Scenario index for 12 report templates
+├── presentation-catalog.md  # P01–P10 presentation layout index
 ├── mono-tokens.js           # Shared monochrome design tokens
 ├── color-presets.js         # Three built-in color presets
 ├── templates/               # Lupi, Basics, Glance, interactive, and report templates
 │   ├── color/               # Color-restyled samples
+│   ├── presentations/       # 16:9 deck templates: Mono base, EN/ZH
 │   └── reports/             # 12 report templates, each in Chinese and English
 ├── examples/                # Examples based on public datasets
 ├── docs/assets/             # README screenshots and motion previews
 └── scripts/validate.mjs     # Pre-release validation
 ```
 
-Open the HTML files under `templates/` directly to inspect the galleries. Open `templates/reports/index.html` to browse the report templates and their Chinese/English variants. Report mode chooses a full-page skeleton from `report-catalog.md`, then reuses the real chart implementations indexed in `catalog.md` for each chart slot. Lupi and Basics mainly use native SVG, while F13 Treemap uses ECharts. Glance, Circular, Force, and report templates R11/R12 also load Chart.js or ECharts from a CDN and require an internet connection unless those dependencies are inlined.
+Open the HTML files under `templates/` directly to inspect the galleries. Open `templates/presentations/index.html` to browse the deck templates (Mono base). Open `templates/reports/index.html` to browse the report templates and their Chinese/English variants. Report mode chooses a full-page skeleton from `report-catalog.md`, then reuses the real chart implementations indexed in `catalog.md` for each chart slot. Lupi and Basics mainly use native SVG, while F13 Treemap uses ECharts. Glance, Circular, Force, and report templates R11/R12 also load Chart.js or ECharts from a CDN and require an internet connection unless those dependencies are inlined.
 
 ## License
 
-This project is licensed under the [PolyForm Noncommercial License 1.0.0](LICENSE). Learning, modification, sharing, and noncommercial use are allowed. Commercial use requires separate permission.
+This project is licensed under the [PolyForm Noncommercial License 1.0.0](LICENSE). Learning, modification, sharing, and noncommercial use are allowed. Commercial use requires separate permission. [Choose and purchase a Commercial Use or Product Integration license on lieflat.work](https://lieflat.work/skills/charts/#pricing).
 
 Chart.js, Apache ECharts, and the Inter typeface remain subject to their original licenses. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).

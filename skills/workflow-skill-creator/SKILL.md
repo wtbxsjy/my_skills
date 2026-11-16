@@ -1,6 +1,8 @@
 ---
 name: workflow-skill-creator
 description: "Distill a completed workflow or interaction into a reusable agent skill. Use when the user says make this a skill, create a skill from what we just did, package this workflow. Not for writing a skill from scratch with no existing workflow."
+metadata:
+  publisher: google
 ---
 
 # Workflow-to-Skill Distiller

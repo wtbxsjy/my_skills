@@ -173,7 +173,7 @@ export function validate(content: string, file: string, paperMap?: string): Resu
   if (numericPileParagraphs) warnings.push(`正文有 ${numericPileParagraphs} 段包含 5–6 个数字；检查各项比较是否必要，保留影响结论的区间与不确定性`);
 
   const exampleBlocks = [...content.matchAll(/#\+begin_example\s*\n([\s\S]*?)#\+end_example/gim)];
-  if (!currentFormat && exampleBlocks.length > 1) errors.push("最多保留一个 Org example 图块");
+  if (!currentFormat && exampleBlocks.length > 1) errors.push("最多保留一个 Markdown 围栏图块");
   const maxDiagramWidth = exampleBlocks.reduce((max, block) => {
     const width = block[1].split(/\r?\n/).reduce((lineMax, line) => Math.max(lineMax, displayWidth(line)), 0);
     return Math.max(max, width);

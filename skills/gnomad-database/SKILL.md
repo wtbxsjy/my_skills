@@ -1,6 +1,8 @@
 ---
 name: gnomad-database
 description: "Query gnomAD: variant rarity and allele frequency, gene constraint (pLI, LOEUF), variants in a region or gene, structural variants. Not for individual patient genomes, somatic cancer mutations (COSMIC) or raw reads (ENA)."
+metadata:
+  publisher: google
 ---
 
 # gnomAD Database

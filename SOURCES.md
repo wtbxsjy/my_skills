@@ -115,6 +115,7 @@
 | `skills/nextflow-agents` | `CUSTOM` | `CUSTOM` | Nextflow agent 原语（docs.seqera.io/nextflow/agent 与官方示例整理，自写） |
 | `skills/nf-core-agents-md` | `CUSTOM` | `CUSTOM` | nf-core 官方 AGENTS.md 规则（nf-core/agents，MIT）整理，自写 |
 | `skills/nextflow-skills-guide` | `CUSTOM` | `CUSTOM` | Nextflow / nf-core 相关 skill 导航（自写） |
+| `skills/notion-media-upload` | `CUSTOM` | `CUSTOM` | Notion 多工作空间 MCP 接入 + 本地图片/PDF 上传（multipart 文件上传 API） |
 
 ### https://github.com/anthropics/knowledge-work-plugins
 
@@ -630,6 +631,12 @@
 | `skills/tech-paper-template` | `main` | `skills/tech-paper-template` | CC BY-NC-SA 4.0，description 已按本仓库规范精简，见 licenses/Supervisor-Skills-NOTICE.md |
 | `skills/vibe-research-workflow` | `main` | `skills/vibe-research-workflow` | CC BY-NC-SA 4.0，description 已按本仓库规范精简，见 licenses/Supervisor-Skills-NOTICE.md |
 | `skills/drawio-reconstruction` | `main` | `skills/drawio-reconstruction` | CC BY-NC-SA 4.0，description 已按本仓库规范精简，见 licenses/Supervisor-Skills-NOTICE.md |
+
+### https://github.com/shikokuchuo/mizu
+
+| 本仓库目录 | 上游分支 | 上游路径 | 备注 |
+|---|---|---|---|
+| `skills/r-mizu` | `main` | `inst/skills/r-mizu` | R 同机异步/并行共享内存（mizu 包自带原生 skill，MIT） |
 
 ## 自定义 Skill（无公开源，不参与自动更新）
 

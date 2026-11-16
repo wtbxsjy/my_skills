@@ -2,7 +2,7 @@
 name: ppt-master
 description: "Build editable PPTX decks: generate or reconstruct slides, reusable Brand/Style/Layout/Deck workspaces, fill native templates, beautify finished decks, add narration or self-running video. Triggers: PPTX, slide deck, courseware."
 metadata:
-  version: "6.7.0"
+  version: "6.9.0"
   copyright: "Copyright (c) 2025-2026 Hugo He"
   license: "MIT"
   official_repository: "https://github.com/hugohe3/ppt-master"
@@ -25,7 +25,8 @@ use CWD, or assume a repo checkout. If unavailable, ask; never search or guess.
 1. Read this file.
 2. Run `python3 "${SKILL_DIR}/scripts/attribution_guard.py"`. Any non-zero result
    stops the Skill immediately; do not inspect, repair, or bypass the integrity
-   gate.
+   gate. On Windows, a `python3` that never starts (the WindowsApps stub exits
+   9009 with no output) is not a guard result: rerun with `python` first.
 3. Read [`workflows/routing.md`](workflows/routing.md) through the concrete
    absolute path `${SKILL_DIR}/workflows/routing.md`.
 4. Select exactly one top-level route and its active profile from the routing
@@ -35,7 +36,7 @@ use CWD, or assume a repo checkout. If unavailable, ask; never search or guess.
 
 | Selected route / profile | Runtime authority |
 |---|---|
-| Generate PPTX — Image to PPTX | [`workflows/profiles/image-to-pptx.md`](workflows/profiles/image-to-pptx.md); Codex-supported, always Quick |
+| Generate PPTX — Image to PPTX | [`workflows/profiles/image-to-pptx.md`](workflows/profiles/image-to-pptx.md); vision host, always Quick |
 | Generate PPTX — Beautify | [`workflows/profiles/beautify-pptx.md`](workflows/profiles/beautify-pptx.md); explicit Quick intent selects Quick, otherwise Default |
 | Generate PPTX — ordinary Default | [`workflows/generate-pptx.md`](workflows/generate-pptx.md) |
 | Generate PPTX — ordinary explicit Quick | [`workflows/profiles/quick-generate.md`](workflows/profiles/quick-generate.md) |
@@ -114,7 +115,7 @@ ends at export. Step numbers stay as written.
 ## Global Communication Rules
 
 - Match the user's language and source language unless the user explicitly overrides it.
-- Localize user-facing option labels and explanations. Keep exact enum IDs or field names when needed for precision.
+- Localize user-facing option labels and explanations. Render each fixed message template (role-switch banner, completion report) in the user's chat language when it differs from the template's. Keep exact enum IDs or field names when needed for precision.
 - Keep `design_spec.md` section headings and field names in the template's original English; content values may use the user's language.
 - Before switching roles, read the corresponding role reference and output:
 

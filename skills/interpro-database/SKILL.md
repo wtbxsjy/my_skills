@@ -1,6 +1,8 @@
 ---
 name: interpro-database
 description: "Find protein domains, families and sites; list proteins in a family or sharing a domain; species distribution; annotate genomes with InterPro/Pfam families and GO terms; domain architecture (IDA) search across 14 member databases."
+metadata:
+  publisher: google
 ---
 
 # InterPro Database Access
