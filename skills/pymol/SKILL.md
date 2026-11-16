@@ -1,6 +1,8 @@
 ---
 name: pymol
 description: "Visualize, align and render protein/molecular structures in PyMOL: images, superposition, distances and contacts, highlight binding sites, color by B-factor/pLDDT, protein-ligand interactions. Not for docking, MD or sequence-only work."
+metadata:
+  publisher: google
 ---
 
 # PyMOL

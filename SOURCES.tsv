@@ -425,3 +425,4 @@ skills/tech-paper-template|https://github.com/HKUSTDial/Supervisor-Skills.git|ma
 skills/vibe-research-workflow|https://github.com/HKUSTDial/Supervisor-Skills.git|main|skills/vibe-research-workflow|CC BY-NC-SA 4.0，description 已按本仓库规范精简，见 licenses/Supervisor-Skills-NOTICE.md
 skills/drawio-reconstruction|https://github.com/HKUSTDial/Supervisor-Skills.git|main|skills/drawio-reconstruction|CC BY-NC-SA 4.0，description 已按本仓库规范精简，见 licenses/Supervisor-Skills-NOTICE.md
 skills/notion-media-upload|CUSTOM|CUSTOM|CUSTOM|Notion 多工作空间 MCP 接入 + 本地图片/PDF 上传（multipart 文件上传 API）
+skills/r-mizu|https://github.com/shikokuchuo/mizu.git|main|inst/skills/r-mizu|R 同机异步/并行共享内存（mizu 包自带原生 skill，MIT）

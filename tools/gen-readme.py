@@ -96,7 +96,7 @@ def anchor(t):
     t = re.sub(r'\s+', '-', t)
     return t
 
-R = ['cli','cran-extrachecks','lifecycle','mirai','r-cli-app','r-package-development','testing-r-packages',
+R = ['cli','cran-extrachecks','lifecycle','mirai','r-mizu','r-cli-app','r-package-development','testing-r-packages',
      'r-bayes','r-oop','r-performance','r-style-guide','rlang-patterns','tdd-workflow','tidyverse-patterns',
      'add-dials-parameter','add-parsnip-engine','add-parsnip-model','add-recipe-step','add-yardstick-metric',
      'shiny-bslib','shiny-bslib-theming','create-release-checklist','release-post','gt-xlsx-roundtrip']

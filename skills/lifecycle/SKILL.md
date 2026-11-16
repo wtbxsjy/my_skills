@@ -1,5 +1,5 @@
 ---
-name: lifecycle
+name: r-lifecycle
 description: "Manage R package lifecycle with the lifecycle package: deprecate or rename functions and arguments, supersede, mark experimental, and write deprecation helpers following tidyverse principles."
 metadata:
   author: Garrick Aden-Buie (@gadenbuie)

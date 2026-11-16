@@ -1,6 +1,8 @@
 ---
 name: alphagenome-single-variant-analysis
 description: "Analyze genetic variant effects with the AlphaGenome API: expression, chromatin accessibility, histone marks and TF binding; non-coding variant pathogenicity and splicing effects; resolve tissue/cell-type ontologies (UBERON/CL)."
+metadata:
+  publisher: google
 ---
 
 # Variant Analysis using AlphaGenome

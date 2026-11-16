@@ -46,6 +46,14 @@ python3 "$TMP_ROOT/home/.agents/skills/fireworks-tech-graph/scripts/fireworks.py
 
 test -s "$TMP_ROOT/canary.svg"
 test -s "$TMP_ROOT/canary-layout.json"
+python3 "$TMP_ROOT/home/.agents/skills/fireworks-tech-graph/scripts/fireworks.py" version > "$TMP_ROOT/version.json"
+python3 "$TMP_ROOT/home/.agents/skills/fireworks-tech-graph/scripts/fireworks.py" export-html "$TMP_ROOT/canary.svg" "$TMP_ROOT/canary.html"
+test -s "$TMP_ROOT/canary.html"
+if command -v rsvg-convert >/dev/null || python3 -c 'import cairosvg' 2>/dev/null; then
+    python3 "$TMP_ROOT/home/.agents/skills/fireworks-tech-graph/scripts/fireworks.py" export-png "$TMP_ROOT/canary.svg" "$TMP_ROOT/canary.png" --width 960
+    test -s "$TMP_ROOT/canary.png"
+fi
+
 
 if [ "${FIREWORKS_INSTALL_CANARY_MOTION:-0}" = "1" ]; then
     MOTION_NODE_MODULES="${FIREWORKS_INSTALL_CANARY_NODE_MODULES:-$ROOT/node_modules}"

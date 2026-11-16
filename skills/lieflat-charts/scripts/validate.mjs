@@ -34,6 +34,11 @@ const required = [
   'color-presets.js',
   'agents/openai.yaml',
   'report-catalog.md',
+  'presentation-catalog.md',
+  'references/presentation.md',
+  'templates/presentations/index.html',
+  'templates/presentations/presentation.zh.html',
+  'templates/presentations/presentation.en.html',
   'templates/reports/index.html',
   ...requiredColorTemplates,
 ];
@@ -58,13 +63,12 @@ const galleryGroups = {
   },
   lupi: {
     label: 'Lupi',
-    // mono gallery 用「20 张」，色板版用「L1–L20」，两种写法都算已更新。
-    range: /L1–L20|20 张/,
-    ids: ['matheat', 'calheat', 'beeswarm', 'ridge', 'parallel'],
+    range: /(?:^|\D)9 张/,
+    ids: ['fan', 'cascade', 'barcode', 'arcmatrix', 'hourglass', 'hundredfield', 'ballottally', 'calheat', 'parallel'],
   },
   glance: {
     label: 'Glance',
-    range: /22 张|Glance 22/,
+    range: /20 张|Glance 20/,
     ids: ['violin', 'gheat', 'rankstrip', 'sankey'],
   },
   maps: {
@@ -89,7 +93,7 @@ function walk(dir) {
 }
 
 function rel(file) {
-  return path.relative(root, file);
+  return path.relative(root, file).split(path.sep).join('/');
 }
 
 function lineNumber(source, index) {
@@ -153,10 +157,7 @@ const catalogRows = [
   '| F15 | Tick Box |',
   '| F16 | Stream Ribbon |',
   '| F17 | Candlestick |',
-  '| L16 | Matrix Heat |',
   '| L17 | Calendar Heat |',
-  '| L18 | Beeswarm |',
-  '| L19 | Ridgeline |',
   '| L20 | Parallel Coordinates |',
   '| G19 | Violin |',
   '| G20 | Matrix Heat (Glance) |',
@@ -171,8 +172,8 @@ for (const row of catalogRows) {
 
 const skillSource = fs.readFileSync(path.join(root, 'SKILL.md'), 'utf8');
 // 主力/后备分档是硬约束，别在后续改动里被顺手删掉。
-if (!skillSource.includes('L1–L15 与 F1–F13')) {
-  failures.push('SKILL.md 缺少主力（L1–L15 / F1–F13）优先规则');
+if (!skillSource.includes('L1–L4、L13–L15 与 F1–F13')) {
+  failures.push('SKILL.md 缺少主力（L1–L4、L13–L15 / F1–F13）优先规则');
 }
 for (const backup of ['F17 Candlestick', 'F15 Tick Box', 'L20 Parallel Coordinates', 'L17 Calendar Heat', 'F16 Stream Ribbon']) {
   if (!skillSource.includes(backup)) failures.push(`SKILL.md 缺少后备图例外说明：${backup}`);
@@ -180,6 +181,15 @@ for (const backup of ['F17 Candlestick', 'F15 Tick Box', 'L20 Parallel Coordinat
 if (!catalogSource.includes('主力与后备')) failures.push('catalog.md 缺少主力/后备说明');
 for (const role of ['`BG`', '`TXT`', '`MUT`', '`GRID`', '`DATA`']) {
   if (!skillSource.includes(role)) failures.push(`SKILL.md 的 custom 色板规则缺少角色 ${role}`);
+}
+
+const presentationCatalogSource = fs.readFileSync(path.join(root, 'presentation-catalog.md'), 'utf8');
+for (const marker of ['| P01 |', '| P04 |', '| P08 |', 'presentation.zh.html', 'presentation.en.html']) {
+  if (!presentationCatalogSource.includes(marker)) failures.push(`presentation-catalog.md 缺少 ${marker}`);
+}
+const presentationReference = fs.readFileSync(path.join(root, 'references/presentation.md'), 'utf8');
+for (const marker of ['1600 × 900', 'prefers-reduced-motion', 'catalog.md']) {
+  if (!presentationReference.includes(marker)) failures.push(`references/presentation.md 缺少 ${marker}`);
 }
 
 const reportCatalogSource = fs.readFileSync(path.join(root, 'report-catalog.md'), 'utf8');
@@ -290,7 +300,7 @@ for (const file of textFiles) {
         failures.push(`${relative}:${lineNumber(source, match.index)} 颜色 ${match[0]} 不属于 ${colorTemplate[1]} 预设`);
       }
     }
-  } else if (relative !== 'color-presets.js' && !relative.startsWith('templates/reports/')) {
+  } else if (relative !== 'color-presets.js' && !relative.startsWith('templates/reports/') && relative !== 'templates/presentations/index.html') {
     for (const match of source.matchAll(/#[0-9a-fA-F]{6}\b/g)) {
       const hex = match[0];
       const channels = [

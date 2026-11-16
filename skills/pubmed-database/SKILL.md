@@ -1,6 +1,8 @@
 ---
 name: pubmed-database
 description: "Search PubMed for literature and clinical trials: fetch abstracts and full text, link papers to genes/proteins/compounds (PubChem), match citations, cache result sets for bulk work. Uses NCBI E-utilities and PMC BioC."
+metadata:
+  publisher: google
 ---
 
 # PubMed API

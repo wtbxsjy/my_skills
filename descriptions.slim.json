@@ -33,7 +33,7 @@
    "slim": "Research a codebase and write architecture documentation: how a feature works, system overview, code structure for onboarding, with Mermaid diagrams and stable code references. For humans and AI agents."
   },
   "skills/diagram-design": {
-   "orig": "49a88d917059551c",
+   "orig": "2e709f16c5d27bc9",
    "slim": "Create branded architecture, flow, sequence, ER, timeline, org-chart, Sankey, Wardley and service-blueprint diagrams (40+ types) as HTML/SVG/PNG, with .drawio, Mermaid and .excalidraw import."
   },
   "skills/drawio-reconstruction": {
@@ -97,7 +97,7 @@
    "slim": "盲区扫描：读昨天你与 AI 的全部对话，照出让你看不见某类真相的思维习惯，再从微信读书挑一章精准补上，落成分析笔记。用户说扫盲区、盲区、照盲区时使用，可传日期；不用于深钻观点或降秩。"
   },
   "skills/ljg-book": {
-   "orig": "02f89a81ef6a375a",
+   "orig": "723468bbeb439047",
    "slim": "拆书：给书名、PDF、EPUB 或节选，讲清全书跟着什么走、主线怎么连、证据如何改变理解，保留书的具体内容而非只给通用结论，默认存 Org 笔记。用户说拆书、分析这本书、这本书在讲什么、压缩一本书时使用。"
   },
   "skills/ljg-constraint": {
@@ -267,6 +267,10 @@
   "skills/quarto-authoring": {
    "orig": "37f887c242670d78",
    "slim": "Work with Quarto: .qmd files, _quarto.yml, projects, callouts, cross-references, citations, Mermaid, extensions, websites, books, presentations; also migration from R Markdown, bookdown, blogdown, xaringan or Jupyter. Not for general R Markdown unless Quarto is involved."
+  },
+  "skills/r-mizu": {
+   "orig": "bd012ac6faf5e211",
+   "slim": "Async and parallel R on one machine with mizu: task pools, parallel map, channels, promises and Shiny ExtendedTask over shared memory, incl. converting from future/parallel/mirai. Multi-machine (SSH/HPC) work goes to r-mirai."
   },
   "skills/rebuttal-guidance": {
    "orig": "46c474e5bbea3ce3",
